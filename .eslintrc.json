@@ -1,30 +1,45 @@
 {
   "env": {
-      "browser": true,
-      "commonjs": true,
-      "es6": true,
-      "mocha": true
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "mocha": true
   },
   "extends": [
-      "airbnb-base"
+    // "airbnb-base"
+    // "next/core-web-vitals"
+    // "eslint:recommended",
+    // "plugin:react/recommended"
+    "plugin:react-hooks/recommended"
   ],
   "globals": {
-      "Atomics": "readonly",
-      "SharedArrayBuffer": "readonly"
+    "Atomics": "readonly",
+    "SharedArrayBuffer": "readonly"
   },
   "parserOptions": {
-      "ecmaVersion": 2018
+    "ecmaVersion": 2018
   },
   "rules": {
     "semi": "off",
-    "quotes": ["off", "backtick", {"allowTemplateLiterals": true}],
+    "quotes": [
+      "off",
+      "backtick",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
     "space-before-function-paren": "off",
     "no-unused-vars": "warn",
     "comma-dangle": "off",
     "prefer-const": "off",
     "no-console": "off",
     "arrow-body-style": "off",
-    "no-use-before-define": ["error", { "variables": false }],
+    "no-use-before-define": [
+      "error",
+      {
+        "variables": false
+      }
+    ],
     "camelcase": "off",
     "no-multi-assign": "off",
     "import/order": "off",

@@ -11,9 +11,9 @@ import defaultStyles from "../../core/theme/styles";
 
 const Collection = () => {
   return (
-    <AppLayout>
+    <AppLayout fullWidth>
       <Row justify="center" gutter={[0, 40]} style={{ background: 'rgb(250, 249, 250)', padding: '40px 0px' }}>
-        <Col span={20}>
+        <Col xs={22} md={20}>
           <Link href="/">
             <Button
               className='app-button'
@@ -25,7 +25,7 @@ const Collection = () => {
           </Link>
         </Col>
 
-        <Col span={20}>
+        <Col xs={22} md={20}>
           <Row>
             <Col xs={24} md={12}>
               <Row justify="center" gutter={[0, 30]}>
@@ -110,50 +110,52 @@ const Collection = () => {
         </Col>
 
         <Col
-          span={20}
+          xs={22}
+          md={20}
           style={{
             ...defaultStyles.card,
+            padding: '30px 20px'
           }}
         >
           <span style={defaultStyles.header}>Attributes</span>
           <Divider />
           <Row justify="space-around" align="middle" gutter={[0, 40]}>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>
                 <Col span={24}>(%12.61)</Col>
               </Row>
             </Col>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>
                 <Col span={24}>(%12.61)</Col>
               </Row>
             </Col>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>
                 <Col span={24}>(%12.61)</Col>
               </Row>
             </Col>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>
                 <Col span={24}>(%12.61)</Col>
               </Row>
             </Col>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>
                 <Col span={24}>(%12.61)</Col>
               </Row>
             </Col>
-            <Col xs={24} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
+            <Col xs={20} md={7}  style={{ ...defaultStyles.card, textAlign: 'center' }}>
               <Row align="middle" justify="center" gutter={[0, 10]}>
                 <Col span={24}>BACKGROUNDS</Col>
                 <Col span={24}>Roma</Col>

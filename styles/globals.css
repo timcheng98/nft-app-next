@@ -53,10 +53,48 @@ a {
 	transition: opacity 0.5s ease-in-out
 }
 
+.app-modal .ant-modal-content {
+	border-radius: 30px;
+	padding: 0px;
+	min-width: 140px;
+	width: 350px;
+	margin: auto;
+}
+
+.app-modal .ant-modal-body {
+	padding: 0px;
+	border-radius: 30px;
+}
+
+.ant-notification-notice {
+	border-radius: 25px;
+	min-height: 60px;
+	border: 1px solid rgb(229, 253, 255);
+	border-bottom-width: 3px;
+	margin: 0px;
+}
+
+.ant-notification-notice-icon {
+	/* height: 100%; */
+	background-color: rgb(229, 253, 255);
+}
+
+/* .ant-modal-mask {
+	opacity: 0.2;
+	transition: opacity 0.4s ease;
+	background-color: rgb(69, 42, 122);
+} */
+
 .input-button:hover {
 	background-color: #fff;
 	color: #000;
 	border: 1px solid #eee;
+}
+
+.hover:hover {
+	opacity: 0.65;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
 }
 
 .home-section-card {
@@ -82,6 +120,17 @@ a {
 
 .collection {
 	border-radius: 10px;
+}
+
+.collection-icon {
+	border-radius: 50px;
+	transform: scale(0.8);
+	filter:drop-shadow(5px 5px 5px rgb(69, 42, 122));
+}
+
+.ant-input {
+	font-size: 18px;
+	margin-left: 5px;
 }
 
 .card-hover:hover {

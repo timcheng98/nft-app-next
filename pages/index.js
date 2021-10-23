@@ -3,30 +3,31 @@ import { Row, Col, Button } from 'antd';
 import Image from '../components/Image';
 import Carousel from 'react-multi-carousel';
 import FAQ from '../components/FAQ'
+import React from 'react'
 
 import Link from 'next/link'
 
 const responsive = {
-	superLargeDesktop: {
-		// the naming can be any, depends on you.
-		breakpoint: { max: 4000, min: 3000 },
-		items: 5,
-	},
-	desktop: {
-		breakpoint: { max: 3000, min: 1024 },
-		items: 4,
-	},
-	tablet: {
-		breakpoint: { max: 1024, min: 464 },
-		items: 2,
-	},
-	mobile: {
-		breakpoint: { max: 464, min: 0 },
-		items: 1,
-	},
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 5,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 4,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 2,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
 };
 const Home = () => {
-	return (
+  return (
 		<AppLayout fullWidth>
 			<div className='home-section-card'>
 				<Row
@@ -34,7 +35,7 @@ const Home = () => {
 					align='middle'
 					style={{ padding: '0px 5%', minHeight: 300 }}
 				>
-					<Col>
+					<Col xs={24} md={16}>
 						<Row>
 							<Col span={24}>
 								{' '}
@@ -42,10 +43,10 @@ const Home = () => {
 									Crypto WallStreetBets
 								</h1>
 							</Col>
-							<Col>
+							<Col span={24}>
 								<Row gutter={[30, 0]}>
 									<Col>
-										<Link href="/mint">
+										<Link passHref href="/mint">
 											<Button
 												className='app-button'
 												style={{ height: 50, width: 180 }}
@@ -58,10 +59,10 @@ const Home = () => {
 										<Button
 											className='app-button'
 											style={{
-												height: 50,
-												width: 140,
-												background: 'none',
-												color: 'rgb(181, 132, 56)',
+											  height: 50,
+											  width: 140,
+											  background: 'none',
+											  color: 'rgb(181, 132, 56)',
 											}}
 										>
 											Airdrop
@@ -71,8 +72,13 @@ const Home = () => {
 							</Col>
 						</Row>
 					</Col>
-					<Col span={4}>
-						<Image alt='icon' src='wallstreetbet.png' className='icon' />
+					<Col xs={24} md={8}>
+						<div style={{
+								borderRadius: 50
+
+						}}>
+						<Image alt='icon' src='wallstreetbet.png' className="collection-icon" />
+						</div>
 					</Col>
 				</Row>
 			</div>
@@ -88,23 +94,23 @@ const Home = () => {
 			</Row>
 			<FAQ />
 		</AppLayout>
-	);
+  );
 };
 
 const CollectionItem = ({ show }) => {
-	return (
+  return (
 		<Col xs={22} md={20}>
 			<Link href="/collection/123">
 				<div
 					className="card-hover"
 					style={{
-						cursor: "pointer",
-						transition: 'opacity 0.3s ease-in-out',
-						border: '1px solid #e5e5e5',
-						borderBottomWidth: 3,
-						height: '100%',
-						width: '100%',
-						borderRadius: 15,
+					  cursor: "pointer",
+					  transition: 'opacity 0.3s ease-in-out',
+					  border: '1px solid #e5e5e5',
+					  borderBottomWidth: 3,
+					  height: '100%',
+					  width: '100%',
+					  borderRadius: 15,
 					}}
 				>
 					<Image
@@ -133,11 +139,11 @@ const CollectionItem = ({ show }) => {
 				</div>
 			</Link>
 		</Col>
-	);
+  );
 };
 
 const CollectionCarousel = () => {
-	return (
+  return (
 		<Carousel
 			swipeable
 			draggable
@@ -149,7 +155,7 @@ const CollectionCarousel = () => {
 			autoPlaySpeed={3000}
 			keyBoardControl
 			// customTransition='all .5'
-			transitionDuration={1500}
+			transitionDuration={2000}
 			containerClass='carousel-container'
 			removeArrowOnDeviceType={['desktop', 'tablet', 'mobile']}
 		// deviceType={this.props.deviceType}
@@ -166,11 +172,11 @@ const CollectionCarousel = () => {
 			<CollectionItem />
 			<CollectionItem />
 		</Carousel>
-	);
+  );
 };
 
 const Background = () => {
-	return (
+  return (
 		<div className='sc-dwqccx cZaRmu'>
 			<div className='sc-gUUBao fnnsya'>
 				<svg
@@ -206,7 +212,7 @@ const Background = () => {
 				</svg>
 			</div>
 		</div>
-	);
+  );
 };
 
 export default Home;

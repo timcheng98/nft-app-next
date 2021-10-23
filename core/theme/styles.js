@@ -14,8 +14,13 @@ const defaultStyles = {
   },
   subHeader: {
     fontSize: 18,
-    color: '#2b2b2b',
+    color: 'rgb(40, 13, 95)',
     fontWeight: '500'
+  },
+  subBody: {
+    fontSize: 16,
+    color: 'rgb(40, 13, 95)',
+    fontWeight: '400'
   },
   card: {
     border: '1px solid rgb(231, 227, 235)',

@@ -1,28 +1,36 @@
 import { Row, Col, Button } from 'antd';
 import React, { useState } from 'react';
+import WalletModal from './WalletModal'
 import Image from './Image';
 import Link from 'next/link'
 
 const AppHeader = () => {
+	const [visible, setVisible] = useState(false)
 	return (
-		<div style={{ padding: '0px 50px', minHeight: 80 }}>
+		<Row justify="center" style={{ padding: '0px', minHeight: 60 }}>
+			<Col xs={22} md={23}>
 			<Row
 				justify='space-between'
 				align='middle'
-				style={{ minHeight: 'inherit', padding: '20px 0px' }}
+				style={{ minHeight: 'inherit', padding: '10px 0px' }}
 			>
-				<Link href="/">
+				<Link passHref href="/">
 					<Col xs={4} sm={4} md={2} lg={1} style={{ cursor: 'pointer' }}>
 						<Image alt="icon" src='icon.gif' className="icon" />
 					</Col>
 				</Link>
 				<Col>
-					<Button icon={<WalletIcon />} className='app-button'>
+					<Button
+						onClick={() => setVisible(true)}
+						icon={<WalletIcon />}
+						className='app-button'>
 						<span style={{ padding: '0px 10px' }}>Connect Wallet</span>
 					</Button>
 				</Col>
 			</Row>
-		</div>
+			<WalletModal visible={visible} setVisible={setVisible} />
+			</Col>
+		</Row>
 	);
 };
 
