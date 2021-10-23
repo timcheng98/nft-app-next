@@ -2,6 +2,11 @@ const defaultStyles = {
   tabBarTitle: {
     // color: ''
   },
+  banner: {
+    color: 'rgb(181, 132, 56)',
+    fontSize: 36,
+    fontWeight: '600',
+  },
   header: {
     color: 'rgb(181, 132, 56)',
     fontSize: 28,
