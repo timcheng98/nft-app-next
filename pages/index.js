@@ -36,14 +36,12 @@ const Home = () => {
 				>
 					<Col>
 						<Row>
-							<Link href="/collection/123">
-								<Col span={24}>
-									{' '}
-									<h1 style={{ color: 'rgb(181, 132, 56)', fontSize: 60, fontWeight: '600' }}>
-										Crypto WallStreetBets
-									</h1>
-								</Col>
-							</Link>
+							<Col span={24}>
+								{' '}
+								<h1 style={{ color: 'rgb(181, 132, 56)', fontSize: 60, fontWeight: '600' }}>
+									Crypto WallStreetBets
+								</h1>
+							</Col>
 							<Col>
 								<Row gutter={[30, 0]}>
 									<Col>
@@ -56,7 +54,6 @@ const Home = () => {
 									</Col>
 									<Col>
 										<Button
-											onClick={() => router.push('/collection/12')}
 											className='app-button'
 											style={{
 												height: 50,
