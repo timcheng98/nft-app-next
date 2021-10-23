@@ -5,5 +5,6 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 module.exports = withTM(withImages({
+  extends: ["eslint:recommended", "next"]
   // 你项目中其他的 Next.js 配置
 }));
