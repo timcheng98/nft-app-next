@@ -27,7 +27,7 @@ const responsive = {
 };
 const Home = () => {
 	return (
-		<AppLayout>
+		<AppLayout fullWidth>
 			<div className='home-section-card'>
 				<Row
 					justify='space-between'
@@ -45,12 +45,14 @@ const Home = () => {
 							<Col>
 								<Row gutter={[30, 0]}>
 									<Col>
-										<Button
-											className='app-button'
-											style={{ height: 50, width: 180 }}
-										>
-											Minting Event
-										</Button>
+										<Link href="/mint">
+											<Button
+												className='app-button'
+												style={{ height: 50, width: 180 }}
+											>
+												Minting Event
+											</Button>
+										</Link>
 									</Col>
 									<Col>
 										<Button
