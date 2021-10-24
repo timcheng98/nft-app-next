@@ -140,6 +140,7 @@ const AccountInfo = ({ setVisible }) => {
             </Col>
             <Col span={24} className='account-address'>
               <Input
+                disabled
                 style={{
                   background: "rgb(246, 246, 246)",
                   border: "none",

@@ -90,6 +90,7 @@ a {
 
 .account-address .ant-input {
 	background-color: transparent;
+  color: rgb(40, 13, 95);
 }
 
 .account-address::after {
