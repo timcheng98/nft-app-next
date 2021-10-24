@@ -69,8 +69,9 @@ const AppTabBar = () => {
   ];
 
   return (
-    <div style={{ position: "sticky", bottom: 0, background: "#fff" }}>
+    <div style={{ position: "sticky", bottom: 0, background: "#fff", zIndex: 999 }}>
       <TabBar
+      
         activeKey={activeKey}
         onChange={(value) => {
           setActiveKey(value);
