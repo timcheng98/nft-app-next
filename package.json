@@ -18,10 +18,11 @@
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "react-multi-carousel": "^2.6.5"
+    "react-multi-carousel": "^2.6.5",
+    "web3": "^1.6.0"
   },
   "devDependencies": {
-    "eslint": "8.1.0",
+    "eslint": "^8.1.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-next": "11.1.2",
     "eslint-plugin-import": "^2.25.2",
