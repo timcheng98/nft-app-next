@@ -31,7 +31,7 @@ const WalletModal = ({ setVisible, visible }) => {
       }}
       onCancel={() => setVisible(false)}
       bodyStyle={{ minHeight: 350 }}
-      className='app-modal'
+      className={blockchain.account ? "app-modal-account" : "app-modal"}
     >
       {blockchain.account ? (
         <AccountInfo setVisible={setVisible} />

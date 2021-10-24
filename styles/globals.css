@@ -67,6 +67,19 @@ a {
   border-radius: 30px;
 }
 
+.app-modal-account .ant-modal-content {
+  border-radius: 30px;
+  padding: 0px;
+  min-width: 200px;
+  width: 380px;
+  margin: auto;
+}
+
+.app-modal-account .ant-modal-body {
+  padding: 0px;
+  border-radius: 30px;
+}
+
 .ant-notification-notice {
   border-radius: 25px;
   min-height: 60px;

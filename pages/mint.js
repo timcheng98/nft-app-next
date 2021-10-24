@@ -1,21 +1,89 @@
 import AppLayout from "../components/AppLayout";
 import Image from "../components/Image";
 import { GiftOutline, QuestionCircleOutline } from "antd-mobile-icons";
-import { Row, Col, Divider, Button, Input } from "antd";
+import {
+  Row,
+  Col,
+  Divider,
+  Button,
+  Input,
+  InputNumber,
+  notification,
+} from "antd";
 import defaultStyles from "../core/theme/styles";
 import { Popover } from "antd-mobile";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import WalletModal from "../components/WalletModal";
+import { useDispatch, useSelector } from "react-redux";
+import _ from "lodash";
+import { fetchData } from "../redux/data/dataActions";
 
 const Mint = () => {
+  const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [amount, setAmount] = useState(1);
+  const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
+
+  useEffect(() => {
+    setLoading(true);
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+      setLoading(false);
+    }
+    setLoading(false);
+  }, [blockchain.smartContract, dispatch]);
+
+  const mint = async (count) => {
+    if (!blockchain.account) {
+      return notification.warning({
+        message: "please connect metamask wallet",
+      });
+    }
+
+    setLoading(true);
+
+    // const amount = data.price * amount; // Willing to send 2 ethers
+    const amountToSend = blockchain.web3.utils.toWei(
+      _.toString(data.price * amount),
+      "ether"
+    ); // Convert to wei value
+    blockchain.smartContract.methods
+      .mint(amount)
+      .send({ from: blockchain.account, value: amountToSend })
+      .once("error", (err) => {
+        console.log(err);
+        setLoading(false);
+        notification.error({
+          message: "Error",
+        });
+      })
+      .then((receipt) => {
+        console.log(receipt);
+        setLoading(false);
+        // clearCanvas();
+        dispatch(fetchData(blockchain.account));
+        notification.success({
+          message: "Successfully minting your NFT",
+        });
+      });
+  };
+
   return (
     <AppLayout>
-      <Row style={{ marginTop: 40 }} justify='center'>
+      <Row style={{ marginTop: 40 }}>
         <Col span={24} style={defaultStyles.banner}>
           Mint a Crypto WallStreetBets NFT
         </Col>
-
+        <Col span={18} style={defaultStyles.subBody}>
+          Crypto WallStreetBets are 9630 art pieces with a one-of-a-kind digital
+          collection of various NFTs that are stored on the Polygon Blockchain.
+          Each one has been meticulously created, hand-picked, and perfectly
+          formed.
+        </Col>
+      </Row>
+      <Row justify='center'>
         <Divider />
 
         <Col xs={24} md={10}>
@@ -80,9 +148,17 @@ const Mint = () => {
 
               <Col span={24}>
                 <Input
-                  defaultValue={1}
+                  value={_.toInteger(amount)}
+                  // defaultValue={1}
+                  max={20}
+                  disabled={!blockchain.account}
                   className='input-button'
                   placeholder='Mint'
+                  onChange={(e) => {
+                    // if (!_.toInteger(e.target.value)) return setAmount(0);
+                    if (e.target.value > 20) return setAmount(20);
+                    setAmount(_.toInteger(e.target.value));
+                  }}
                   style={{
                     height: 54,
                     borderRadius: 15,
@@ -90,7 +166,15 @@ const Mint = () => {
                   }}
                   suffix={
                     <Row align='middle' gutter={[5, 0]}>
-                      <Col style={defaultStyles.subHeader}>Max</Col>
+                      <Col
+                        onClick={() => setAmount(20)}
+                        style={{
+                          ...defaultStyles.subHeader,
+                          cursor: "pointer",
+                        }}
+                      >
+                        Max
+                      </Col>
                       <Col>
                         <Popover
                           content='Max 20 NFTs can be minted per transaction'
@@ -111,54 +195,83 @@ const Mint = () => {
                     padding: "20px 20px",
                   }}
                 >
+                  <Row justify='center'>
+                    <Col
+                      style={{
+                        ...defaultStyles.subHeader,
+                        textAlign: "center",
+                      }}
+                    >
+                      50% OFF
+                    </Col>
+                  </Row>
                   <Row justify='space-between' style={{ marginBottom: 10 }}>
                     <Col>Price</Col>
-                    <Col span={6}>
+                    <Col>
                       <Row align='middle' justify='end' gutter={[10, 0]}>
-                        <Col xs={10} md={6}>
+                        <Col>
                           <div>
-                            <Image
-                              src='matic.png'
+                            <img
+                              style={{ width: 20, height: 20 }}
+                              src='/matic.png'
                               alt='matic'
                               className='icon'
                             />
                           </div>
                         </Col>
-                        <Col>$00</Col>
+                        <Col>{`${data.price}`}</Col>
+                        <Col>
+                          <span
+                            style={{
+                              textDecoration: "line-through",
+                              fontSize: 12,
+                            }}
+                          >{`${data.price * 2}`}</span>
+                        </Col>
                       </Row>
                     </Col>
                   </Row>
                   <Row justify='space-between' style={{ marginBottom: 10 }}>
                     <Col>Total</Col>
-                    <Col span={6}>
+                    <Col>
                       <Row align='middle' justify='end' gutter={[10, 0]}>
-                        <Col xs={10} md={6}>
+                        <Col>
                           <div>
-                            <Image
-                              src='matic.png'
+                            <img
+                              style={{ width: 20, height: 20 }}
+                              src='/matic.png'
                               alt='matic'
                               className='icon'
                             />
                           </div>
                         </Col>
-                        <Col>$00</Col>
+                        <Col>{`${(amount ? amount : 0) * data.price}`}</Col>
+                        <Col>
+                          <span
+                            style={{
+                              textDecoration: "line-through",
+                              fontSize: 12,
+                            }}
+                          >{`${(amount ? amount : 0) * data.price * 2}`}</span>
+                        </Col>
                       </Row>
                     </Col>
                   </Row>
                   <Row justify='space-between'>
                     <Col>MATIC in wallet</Col>
-                    <Col span={6}>
+                    <Col>
                       <Row align='middle' justify='end' gutter={[10, 0]}>
-                        <Col xs={10} md={6}>
+                        <Col>
                           <div>
-                            <Image
-                              src='matic.png'
+                            <img
+                              style={{ width: 20, height: 20 }}
+                              src='/matic.png'
                               alt='matic'
                               className='icon'
                             />
                           </div>
                         </Col>
-                        <Col>$00</Col>
+                        <Col>{`${blockchain.balance}`}</Col>
                       </Row>
                     </Col>
                   </Row>
@@ -166,11 +279,27 @@ const Mint = () => {
               </Col>
               <Col span={24}>
                 <Button
-                  onClick={() => setVisible(true)}
+                  disabled={loading}
+                  onClick={async () => {
+                    if (blockchain.account) {
+                      if (
+                        blockchain.balance < amount * data.price ||
+                        amount * data.price === 0
+                      )
+                        return notification.warning({
+                          message: "Insufficient MATIC in Wallet",
+                        });
+
+                      await mint();
+                      return;
+                    }
+
+                    setVisible(true);
+                  }}
                   style={{ width: "100%", height: 50, fontSize: 20 }}
                   className='app-button'
                 >
-                  Connect Wallet
+                  {blockchain.account ? "Mint" : "Connect Wallet"}
                 </Button>
               </Col>
             </Row>
