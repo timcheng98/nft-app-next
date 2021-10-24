@@ -19,8 +19,6 @@ const WalletModal = ({ setVisible, visible }) => {
     });
   }, [blockchain]);
 
-  console.log(blockchain);
-
   return (
     <Modal
       // forceRender

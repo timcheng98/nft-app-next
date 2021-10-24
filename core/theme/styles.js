@@ -28,7 +28,11 @@ const defaultStyles = {
     borderRadius: 30,
     background: '#fff',
     borderBottomWidth: 3,
-    padding: '25px 40px',
+    paddingTop: 25,
+    paddingBottom: 25,
+    paddingLeft: 40,
+    paddingRight: 40
+    // padding: '25px 40px',
 
   }
 }

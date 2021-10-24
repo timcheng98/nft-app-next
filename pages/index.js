@@ -3,9 +3,12 @@ import { Row, Col, Button } from "antd";
 import Image from "../components/Image";
 import Carousel from "react-multi-carousel";
 import FAQ from "../components/FAQ";
-import React from "react";
+import React, { useState, useEffect } from "react";
+import { fetchData } from "../redux/data/dataActions";
+import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
+import _ from "lodash";
 
 const responsive = {
   superLargeDesktop: {
@@ -27,6 +30,27 @@ const responsive = {
   },
 };
 const Home = () => {
+  const dispatch = useDispatch();
+  const [NFTS, setNFTS] = useState([]);
+
+  const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
+
+  const fetchMetatDataForNFTS = async () => {
+    // setNFTS(_.orderBy(data.allTokens, ['edition', 'desc']));
+    setNFTS(data.allTokens);
+  };
+
+  useEffect(() => {
+    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+      dispatch(fetchData(blockchain.account));
+    }
+  }, [blockchain.smartContract, dispatch]);
+
+  useEffect(() => {
+    fetchMetatDataForNFTS();
+  }, [data.allTokens]);
+
   return (
     <AppLayout fullWidth>
       <div className='home-section-card'>
@@ -108,7 +132,7 @@ const Home = () => {
       </Row>
       <Row justify='center'>
         <Col span={20}>
-          <CollectionCarousel />
+          <CollectionCarousel NFTS={NFTS} />
         </Col>
       </Row>
       <FAQ />
@@ -116,10 +140,16 @@ const Home = () => {
   );
 };
 
-const CollectionItem = ({ show }) => {
+const CollectionItem = ({ item }) => {
+  if (!item) return null;
+  let rarity = () => {
+    if (item <= 15) return 'Super Rare'
+    if (item <= 254) return 'Rare'
+    return 'Original'
+  }
   return (
     <Col xs={22} md={20}>
-      <Link href='/collection/123'>
+      <Link href={`/collection/${item}`}>
         <div
           className='card-hover'
           style={{
@@ -132,8 +162,12 @@ const CollectionItem = ({ show }) => {
             borderRadius: 15,
           }}
         >
-          <Image
-            src={show ? "wallstreetbet2.png" : "wallstreetbet.png"}
+          <img
+            style={{
+              width: "100%",
+              height: "100%",
+            }}
+            src={`https://wallstreetbets-nft.com/api/creature/images/${item}`}
             alt='wsb'
             className='collection'
           />
@@ -143,16 +177,18 @@ const CollectionItem = ({ show }) => {
               align='middle'
               style={{ marginBottom: 10 }}
             >
-              <Col style={{ fontSize: 12, fontWeight: 500 }}>Crypto WSB</Col>
+              <Col style={{ fontSize: 12, fontWeight: 500 }}>Crypto WallStreetBets</Col>
               <Col style={{ color: "rgb(181, 132, 56)", fontWeight: "500" }}>
-                Super Rare
+                {rarity()}
               </Col>
             </Row>
             <Row justify='space-between'>
               <Col style={{ color: "green", fontWeight: "600" }}>
-                Crypto WSB #0
+                Crypto WSB #{item}
               </Col>
-              <Col style={{ fontWeight: "700", color: "gray" }}>Rank 1</Col>
+              <Col style={{ fontWeight: "700", color: "gray" }}>
+                Rank {item}
+              </Col>
             </Row>
           </div>
         </div>
@@ -161,7 +197,7 @@ const CollectionItem = ({ show }) => {
   );
 };
 
-const CollectionCarousel = () => {
+const CollectionCarousel = ({ NFTS }) => {
   return (
     <Carousel
       swipeable
@@ -181,15 +217,9 @@ const CollectionCarousel = () => {
       // dotListClass='custom-dot-list-style'
       // itemClass='carousel-item-padding-40-px'
     >
-      <CollectionItem />
-      <CollectionItem show />
-      <CollectionItem />
-      <CollectionItem />
-      <CollectionItem show />
-      <CollectionItem />
-      <CollectionItem show />
-      <CollectionItem />
-      <CollectionItem />
+      {_.map(NFTS, (item) => {
+        return <CollectionItem item={item} />;
+      })}
     </Carousel>
   );
 };

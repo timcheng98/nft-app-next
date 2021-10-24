@@ -111,7 +111,7 @@ export const connect = () => {
           // console.log(web3);
 
           const balance = await web3.eth.getBalance(
-            "0xF0245F6251Bef9447A08766b9DA2B07b28aD80B0"
+            currentAccount
           );
 
           dispatch(

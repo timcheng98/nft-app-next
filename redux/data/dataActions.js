@@ -87,7 +87,6 @@ export const fetchData = (account) => {
 				.call();
 
 
-
 			let nfts = [];
 			if (total <= 9) {
 				for (let i = total; i >= 0; i -= 1) {
