@@ -80,6 +80,7 @@ a {
   border-radius: 30px;
 }
 
+
 .ant-notification-notice {
   border-radius: 25px;
   min-height: 60px;
@@ -194,4 +195,13 @@ a {
     font-size: 80px;
     /* transform: scale(1.5) translate(50%, -50%); */
   }
+}
+
+.app-select {
+  background-color: red;
+}
+
+.app-select .ant-select-selector {
+  border-radius: 15px !important;
+  background-color:rgb(238, 234, 244) !important;
 }

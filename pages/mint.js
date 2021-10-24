@@ -62,7 +62,6 @@ const Mint = () => {
       .then((receipt) => {
         console.log(receipt);
         setLoading(false);
-        // clearCanvas();
         dispatch(fetchData(blockchain.account));
         notification.success({
           message: "Successfully minting your NFT",
@@ -76,7 +75,7 @@ const Mint = () => {
         <Col span={24} style={defaultStyles.banner}>
           Mint a Crypto WallStreetBets NFT
         </Col>
-        <Col span={18} style={defaultStyles.subBody}>
+        <Col xs={22} md={18} style={defaultStyles.subBody}>
           Crypto WallStreetBets are 9630 art pieces with a one-of-a-kind digital
           collection of various NFTs that are stored on the Polygon Blockchain.
           Each one has been meticulously created, hand-picked, and perfectly
@@ -148,7 +147,7 @@ const Mint = () => {
 
               <Col span={24}>
                 <Input
-                  value={_.toInteger(amount)}
+                  value={blockchain.account ? _.toInteger(amount) : undefined}
                   // defaultValue={1}
                   max={20}
                   disabled={!blockchain.account}
@@ -219,15 +218,20 @@ const Mint = () => {
                             />
                           </div>
                         </Col>
-                        <Col>{`${data.price}`}</Col>
-                        <Col>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              fontSize: 12,
-                            }}
-                          >{`${data.price * 2}`}</span>
-                        </Col>
+
+                        <Col>{`${
+                          blockchain.account ? data.price : "N/A"
+                        }`}</Col>
+                        {blockchain.account && (
+                          <Col>
+                            <span
+                              style={{
+                                textDecoration: "line-through",
+                                fontSize: 12,
+                              }}
+                            >{`${data.price * 2}`}</span>
+                          </Col>
+                        )}
                       </Row>
                     </Col>
                   </Row>
@@ -245,15 +249,23 @@ const Mint = () => {
                             />
                           </div>
                         </Col>
-                        <Col>{`${(amount ? amount : 0) * data.price}`}</Col>
-                        <Col>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              fontSize: 12,
-                            }}
-                          >{`${(amount ? amount : 0) * data.price * 2}`}</span>
-                        </Col>
+                        <Col>{`${
+                          blockchain.account
+                            ? (amount ? amount : 0) * data.price
+                            : "N/A"
+                        }`}</Col>
+                        {blockchain.account && (
+                          <Col>
+                            <span
+                              style={{
+                                textDecoration: "line-through",
+                                fontSize: 12,
+                              }}
+                            >{`${
+                              (amount ? amount : 0) * data.price * 2
+                            }`}</span>
+                          </Col>
+                        )}
                       </Row>
                     </Col>
                   </Row>
@@ -271,7 +283,9 @@ const Mint = () => {
                             />
                           </div>
                         </Col>
-                        <Col>{`${blockchain.balance}`}</Col>
+                        <Col>{`${
+                          blockchain.account ? blockchain.balance : "N/A"
+                        }`}</Col>
                       </Row>
                     </Col>
                   </Row>

@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 const Web3 = require("web3");
-let abi = require("../../../redux/blockchain/abi.json");
+let abi = require("../../redux/blockchain/abi.json");
 const web3 = new Web3(
   "https://polygon-mainnet.infura.io/v3/1106a734eb1a46639b820d23e971c3a6"
 );
@@ -17,14 +17,28 @@ const handler = async (req, res) => {
 
   const totalSupply = await contract.methods.totalSupply().call();
   // console.log('totalSupply', totalSupply)
-  // const resp = await axios.get(
-  //   `http://wallstreetbets-nft.com/api/creature?total=${totalSupply}`
-  // );
+  const resp = await axios.get(
+    "http://wallstreetbets-nft.com/api/creature/112"
+  );
+  let nfts = [];
+  if (totalSupply <= 9) {
+    for (let i = totalSupply; i >= 0; i -= 1) {
+      nfts.push(_.toInteger(i));
+      // nfts.push(axios.get(`https://wallstreetbets-nft.com/api/creature/${i}`));
+    }
+  }
 
-  console.log("market api");
+  if (totalSupply > 9) {
+    let limit = totalSupply - 8;
+    for (let i = totalSupply - 1; i >= limit; i -= 1) {
+      nfts.push(_.toInteger(i));
+      // nfts.push(axios.get(`https://wallstreetbets-nft.com/api/creature/${i}`));
+    }
+  }
+  console.log("home api");
   res.json({
     status: 1,
-    data: totalSupply,
+    data: nfts,
   });
 };
 

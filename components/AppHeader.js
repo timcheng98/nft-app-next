@@ -19,7 +19,7 @@ const AppHeader = () => {
           style={{ minHeight: "inherit", padding: "10px 0px" }}
         >
           <Link passHref href='/'>
-            <Col xs={4} sm={4} md={2} lg={1} style={{ cursor: "pointer" }}>
+            <Col xs={3} sm={4} md={2} lg={1} style={{ cursor: "pointer" }}>
               <Image alt='icon' src='icon.gif' className='icon' />
             </Col>
           </Link>

@@ -1,5 +1,5 @@
 import AppLayout from "../components/AppLayout";
-import { Row, Col, Button } from "antd";
+import { Row, Col, Button, Divider } from "antd";
 import Image from "../components/Image";
 import Carousel from "react-multi-carousel";
 import FAQ from "../components/FAQ";
@@ -9,6 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
 import _ from "lodash";
+import axios from "axios";
+import defaultStyles from "../core/theme/styles";
 
 const responsive = {
   superLargeDesktop: {
@@ -29,52 +31,43 @@ const responsive = {
     items: 1,
   },
 };
-const Home = () => {
-  const dispatch = useDispatch();
-  const [NFTS, setNFTS] = useState([]);
-
-  const blockchain = useSelector((state) => state.blockchain);
-  const data = useSelector((state) => state.data);
-
-  const fetchMetatDataForNFTS = async () => {
-    // setNFTS(_.orderBy(data.allTokens, ['edition', 'desc']));
-    setNFTS(data.allTokens);
-  };
-
-  useEffect(() => {
-    if (blockchain.account !== "" && blockchain.smartContract !== null) {
-      dispatch(fetchData(blockchain.account));
-    }
-  }, [blockchain.smartContract, dispatch]);
-
-  useEffect(() => {
-    fetchMetatDataForNFTS();
-  }, [data.allTokens]);
+const Home = (props) => {
+  console.log(props);
+  const { collections } = props;
 
   return (
     <AppLayout fullWidth>
       <div className='home-section-card'>
         <Row
-          justify='space-between'
+          gutter={[0, 40]}
+          justify='center'
           align='middle'
-          style={{ padding: "0px 5%", minHeight: 300 }}
+          style={{ minHeight: 300 }}
         >
-          <Col xs={24} md={16}>
-            <Row>
-              <Col span={24}>
-                {" "}
-                <h1
+          <Col xs={22} md={14}>
+            <Row gutter={[0, 10]}>
+              <Col span={22}>
+                <span
                   style={{
                     color: "rgb(181, 132, 56)",
-                    fontSize: 60,
+                    fontSize: 48,
                     fontWeight: "600",
                   }}
                 >
                   Crypto WallStreetBets
-                </h1>
+                </span>
               </Col>
-              <Col span={24}>
-                <Row gutter={[30, 0]}>
+              <Col span={20} style={{}}>
+                <span style={defaultStyles.subHeader}>
+                  Crypto WallStreetBets is a tribute to the digital collectibles
+                  created by anonymous developers, and innovative algorithms.
+                  These 9630 pieces of artworks are inspired by the famous WSB
+                  events, recalling the inner artist in you.
+                </span>
+              </Col>
+              <Divider />
+              <Col span={22}>
+                <Row gutter={[20, 0]}>
                   <Col>
                     <Link passHref href='/mint'>
                       <Button
@@ -95,25 +88,34 @@ const Home = () => {
                         color: "rgb(181, 132, 56)",
                       }}
                     >
-                      Airdrop
+                      Market
                     </Button>
                   </Col>
                 </Row>
               </Col>
             </Row>
           </Col>
-          <Col xs={24} md={8}>
-            <div
-              style={{
-                borderRadius: 50,
-              }}
-            >
-              <Image
-                alt='icon'
-                src='wallstreetbet.png'
-                className='collection-icon'
-              />
-            </div>
+          <Col xs={22} md={8}>
+            <Row justify='center'>
+              {_.map(_.reverse(_.slice(collections, 0, 4)), (item) => {
+                return (
+                  <Col xs={12} md={12}>
+                    <img
+                      style={{
+                        // borderRadius: "50%",
+                        width: "100%",
+                        height: "100%",
+                        position: "relative",
+                      }}
+                      alt='icon'
+                      src={`https://wallstreetbets-nft.com/api/creature/images/${item}`}
+                      // src='wallstreetbet.png'
+                      className='collection-icon'
+                    />
+                  </Col>
+                );
+              })}
+            </Row>
           </Col>
         </Row>
       </div>
@@ -130,9 +132,9 @@ const Home = () => {
           </h1>
         </Col>
       </Row>
-      <Row justify='center'>
+      <Row justify='center' style={{ padding: "30px 0px" }}>
         <Col span={20}>
-          <CollectionCarousel NFTS={NFTS} />
+          <CollectionCarousel collections={collections} />
         </Col>
       </Row>
       <FAQ />
@@ -140,15 +142,22 @@ const Home = () => {
   );
 };
 
-const CollectionItem = ({ item }) => {
-  if (!item) return null;
+export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
+  // if (!item) return null;
   let rarity = () => {
-    if (item <= 15) return 'Super Rare'
-    if (item <= 254) return 'Rare'
-    return 'Original'
-  }
+    if (item <= 15) return "Super Rare";
+    if (item <= 254) return "Rare";
+    return "Original";
+  };
+  const getScore = () => {
+    let score = 500; // base (Background)
+    if (item <= 15) return 4 * 1500 * 2 + score;
+    if (item <= 254) return 4 * 1000 * 2 + score;
+    return 4 * 500 * 2 + score;
+  };
+
   return (
-    <Col xs={22} md={20}>
+    <Col xs={xs} md={md}>
       <Link href={`/collection/${item}`}>
         <div
           className='card-hover'
@@ -177,7 +186,9 @@ const CollectionItem = ({ item }) => {
               align='middle'
               style={{ marginBottom: 10 }}
             >
-              <Col style={{ fontSize: 12, fontWeight: 500 }}>Crypto WallStreetBets</Col>
+              <Col style={{ fontSize: 12, fontWeight: 500 }}>
+                Crypto WallStreetBets
+              </Col>
               <Col style={{ color: "rgb(181, 132, 56)", fontWeight: "500" }}>
                 {rarity()}
               </Col>
@@ -187,7 +198,7 @@ const CollectionItem = ({ item }) => {
                 Crypto WSB #{item}
               </Col>
               <Col style={{ fontWeight: "700", color: "gray" }}>
-                Rank {item}
+                Score {getScore()}
               </Col>
             </Row>
           </div>
@@ -197,7 +208,7 @@ const CollectionItem = ({ item }) => {
   );
 };
 
-const CollectionCarousel = ({ NFTS }) => {
+const CollectionCarousel = ({ collections }) => {
   return (
     <Carousel
       swipeable
@@ -217,8 +228,8 @@ const CollectionCarousel = ({ NFTS }) => {
       // dotListClass='custom-dot-list-style'
       // itemClass='carousel-item-padding-40-px'
     >
-      {_.map(NFTS, (item) => {
-        return <CollectionItem item={item} />;
+      {_.map(collections, (item) => {
+        return <CollectionItem key={item} item={item} />;
       })}
     </Carousel>
   );
@@ -263,5 +274,20 @@ const Background = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+  const resp = await axios.get(`http://localhost:3000/api/home`);
+
+  console.log(resp.data);
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      collections: resp.data.data,
+    },
+  };
+}
 
 export default Home;

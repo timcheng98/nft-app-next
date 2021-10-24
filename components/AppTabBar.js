@@ -6,10 +6,11 @@ import {
   FireFill,
   GlobalOutline,
   GiftOutline,
-  MoreOutline,
+  PieOutline
+
 } from "antd-mobile-icons";
 import defaultStyles from "../core/theme/styles";
-import Link from 'next/link'
+import Link from "next/link";
 
 const AppTabBar = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const AppTabBar = () => {
     if (router.pathname === "/collection") return setActiveKey("account");
     if (router.pathname === "/market") return setActiveKey("marekt");
     if (router.pathname === "/collection/[id]") return setActiveKey("marekt");
-    if (router.pathname === "/traits") return setActiveKey("more");
+    if (router.pathname === "/traits") return setActiveKey("traits");
   }, []);
 
   useEffect(() => {
@@ -31,6 +32,7 @@ const AppTabBar = () => {
     if (activeKey === "mint") return router.push("/mint");
     if (activeKey === "collection") return router.push("/account");
     if (activeKey === "market") return router.push("/marketplace");
+    if (activeKey === "rarity") return router.push("/traits");
   }, [activeKey, clicked]);
 
   const tabs = [
@@ -55,31 +57,14 @@ const AppTabBar = () => {
       icon: <GlobalOutline />,
     },
     {
-      key: "more",
-      title: <span style={defaultStyles.tabBarTitle}>More</span>,
-      icon: (active) => {
-        return (
-          <Popover
-            content={
-              <div>
-                <p>
-                  <span style={{ fontSize: 12 }}>More</span>
-                </p>
-                <p>
-                  <Link href="/traits">
-                    <span style={{ fontSize: 12, cursor: 'pointer' }}>Rarity</span>
-                  </Link>
-                </p>
-              </div>
-            }
-            placement='top'
-            mode='light'
-            trigger='click'
-          >
-            <MoreOutline />
-          </Popover>
-        );
-      },
+      key: "rarity",
+      title: <span style={defaultStyles.tabBarTitle}>Rarity</span>,
+      icon: <PieOutline />,
+    },
+    {
+      key: "news",
+      title: <span style={defaultStyles.tabBarTitle}>News</span>,
+      icon: <PieOutline />,
     },
   ];
 

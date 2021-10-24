@@ -2,7 +2,7 @@
 
 const axios = require("axios");
 const Web3 = require("web3");
-let abi = require("../../../redux/blockchain/abi.json");
+let abi = require("../../redux/blockchain/abi.json");
 const web3 = new Web3(
   "https://polygon-mainnet.infura.io/v3/1106a734eb1a46639b820d23e971c3a6"
 );
@@ -17,14 +17,14 @@ const handler = async (req, res) => {
 
   const totalSupply = await contract.methods.totalSupply().call();
   // console.log('totalSupply', totalSupply)
-  // const resp = await axios.get(
-  //   `http://wallstreetbets-nft.com/api/creature?total=${totalSupply}`
-  // );
+  const resp = await axios.get(
+    `http://wallstreetbets-nft.com/api/creature?total=${totalSupply}`
+  );
 
   console.log("market api");
   res.json({
     status: 1,
-    data: totalSupply,
+    data: _.map(resp.data.data, 'edition'),
   });
 };
 

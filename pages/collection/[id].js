@@ -10,14 +10,38 @@ import React from "react";
 import axios from "axios";
 import _ from "lodash";
 import { Popover } from "antd-mobile";
+import { useRouter } from "next/router";
 const Collection = (props) => {
-  console.log(props);
+  const router = useRouter();
   const { collection } = props;
 
-  let rarity = () => {
+  const rarity = () => {
     if (collection.edition <= 15) return "Super Rare";
     if (collection.edition <= 254) return "Rare";
     return "Original";
+  };
+
+  const getScore = () => {
+    let score = 500; // base (Background)
+    if (collection.edition <= 15) return 4 * 1500 * 2 + score;
+    if (collection.edition <= 254) return 4 * 1000 * 2 + score;
+    return 4 * 500 * 2 + score;
+  };
+
+  const getTrait = (item) => {
+    if (item.trait_type === "background") return _.round((1 / 15) * 100, 2);
+    if (item.trait_type === "face") return 100;
+    console.log(collection);
+    if (collection.edition <= 15) {
+      let total = (15 / 9630) * 100;
+      return _.round(total, 2);
+    }
+    if (collection.edition <= 254) {
+      let total = (240 / 9630) * 100;
+      return _.round(total / 2, 2);
+    }
+    let total = (9376 / 9630) * 100;
+    return _.round(total / 8, 2);
   };
 
   return (
@@ -27,6 +51,7 @@ const Collection = (props) => {
           <Col xs={22} md={16}>
             <Link passHref href='/'>
               <Button
+                onClick={() => router.back()}
                 className='app-button'
                 style={{ height: 50, width: 120 }}
                 icon={<LeftOutline />}
@@ -85,7 +110,7 @@ const Collection = (props) => {
                         justify='space-between'
                       >
                         <Col>Score</Col>
-                        <Col>9087</Col>
+                        <Col>{getScore()}</Col>
                       </Row>
                       <Row
                         style={defaultStyles.subHeader}
@@ -107,7 +132,8 @@ const Collection = (props) => {
                           >
                             <div
                               style={{
-                                padding: "0px 10px",
+                                // padding: "0px 10px"
+                                padding: 0,
                                 whiteSpace: "nowrap",
                                 overflow: "hidden",
                                 width: "100%",
@@ -176,10 +202,10 @@ const Collection = (props) => {
             <Row justify='space-around' align='middle' gutter={[0, 40]}>
               {_.map(collection.attributes, (item) => {
                 return (
-                  <Col xs={10} md={7}>
+                  <Col xs={10} md={7} key={item.trait_type}>
                     <Row justify='center'>
                       <Col
-                        xs={20}
+                        xs={24}
                         md={18}
                         style={{
                           ...defaultStyles.card,
@@ -187,7 +213,7 @@ const Collection = (props) => {
                           border: "1px solid rgb(21, 178, 229)",
                           background: "rgba(21, 178, 229, 0.06)",
                           textAlign: "center",
-                          borderRadius: 6,
+                          borderRadius: 15,
                         }}
                       >
                         <Row align='middle' justify='center' gutter={[0, 5]}>
@@ -229,7 +255,7 @@ const Collection = (props) => {
                             }}
                             span={24}
                           >
-                            (%12.61) have this trait
+                            {getTrait(item)} % have this trait
                           </Col>
                         </Row>
                       </Col>
@@ -260,9 +286,9 @@ export async function getStaticPaths() {
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
   // console.log([{ params: { id: 112 }}])
-  const paths = _.map(nfts.data, (item) => {
+  const paths = _.times(nfts.data, (item) => {
     return {
-      params: { id: `${item.edition}` },
+      params: { id: `${item}` },
     };
   });
 
@@ -271,14 +297,12 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  console.log("context", params);
   // Call an external API endpoint to get posts.
   // You can use any data fetching library
   const resp = await axios.get(
     `http://localhost:3000/api/collection/${params.id}`
   );
 
-  console.log(resp.data);
   // By returning { props: { posts } }, the Blog component
   // will receive `posts` as a prop at build time
   return {

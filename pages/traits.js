@@ -1,9 +1,12 @@
+import { Col } from "antd";
 import AppLayout from "../components/AppLayout";
 
 const Traits = () => {
   return (
     <AppLayout>
-      <div>123</div>
+      <Row>
+        <Col></Col>
+      </Row>
     </AppLayout>
   );
 };
