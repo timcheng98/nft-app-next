@@ -4,6 +4,7 @@ const initialState = {
   smartContract: null,
   web3: null,
   errorMsg: "",
+  balance: 0
 };
 
 const blockchainReducer = (state = initialState, action) => {
@@ -17,8 +18,9 @@ const blockchainReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        smartContract: action.payload.smartContract,
-        web3: action.payload.web3,
+        ...action.payload,
+        // smartContract: action.payload.smartContract,
+        // web3: action.payload.web3,
       };
     case "CONNECTION_SUCCESS":
       return {
@@ -37,7 +39,8 @@ const blockchainReducer = (state = initialState, action) => {
     case "UPDATE_ACCOUNT":
       return {
         ...state,
-        account: action.payload.account,
+        ...action.payload
+        // account: action.payload.account,
       };
     default:
       return state;

@@ -7,8 +7,10 @@ const rootReducer = combineReducers({
   blockchain: blockchainReducer,
   data: dataReducer,
 });
+import logger from 'redux-logger'
 
-const middleware = [thunk];
+
+const middleware = [thunk, logger];
 const composeEnhancers = compose(applyMiddleware(...middleware));
 
 const configureStore = () => {
