@@ -6,8 +6,9 @@ import {
   FireFill,
   GlobalOutline,
   GiftOutline,
-  PieOutline
-
+  PieOutline,
+  MoreOutline,
+  ContentOutline,
 } from "antd-mobile-icons";
 import defaultStyles from "../core/theme/styles";
 import Link from "next/link";
@@ -23,7 +24,8 @@ const AppTabBar = () => {
     if (router.pathname === "/collection") return setActiveKey("account");
     if (router.pathname === "/market") return setActiveKey("marekt");
     if (router.pathname === "/collection/[id]") return setActiveKey("marekt");
-    if (router.pathname === "/traits") return setActiveKey("traits");
+    if (router.pathname === "/traits") return setActiveKey("more");
+    if (router.pathname === "/news") return setActiveKey("news");
   }, []);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ const AppTabBar = () => {
     if (activeKey === "mint") return router.push("/mint");
     if (activeKey === "collection") return router.push("/account");
     if (activeKey === "market") return router.push("/marketplace");
-    if (activeKey === "rarity") return router.push("/traits");
+    // if (activeKey === "rarity") return router.push("/traits");
   }, [activeKey, clicked]);
 
   const tabs = [
@@ -57,21 +59,39 @@ const AppTabBar = () => {
       icon: <GlobalOutline />,
     },
     {
-      key: "rarity",
-      title: <span style={defaultStyles.tabBarTitle}>Rarity</span>,
-      icon: <PieOutline />,
-    },
-    {
-      key: "news",
-      title: <span style={defaultStyles.tabBarTitle}>News</span>,
-      icon: <PieOutline />,
+      key: "more",
+      title: <span style={defaultStyles.tabBarTitle}>More</span>,
+      icon: () => {
+        return (
+          <Popover
+            placement="top"
+            content={
+              <div style={{ width: 80 }}>
+                <Link href="/news">
+                  <h3 style={{...defaultStyles.tabBarTitle, cursor: "pointer"}}>
+                    <ContentOutline style={{ marginRight: 5 }} />{' '} News
+                  </h3>
+                </Link>
+                <Link href="/traits">
+                <h3 style={{...defaultStyles.tabBarTitle, cursor: "pointer"}}>
+                    <PieOutline  style={{ marginRight: 5 }} />{' '} Rarity
+                  </h3>
+                </Link>
+              </div>
+            }
+          >
+            <MoreOutline />
+          </Popover>
+        );
+      },
     },
   ];
 
   return (
-    <div style={{ position: "sticky", bottom: 0, background: "#fff", zIndex: 999 }}>
+    <div
+      style={{ position: "sticky", bottom: 0, background: "#fff", zIndex: 999 }}
+    >
       <TabBar
-      
         activeKey={activeKey}
         onChange={(value) => {
           setActiveKey(value);

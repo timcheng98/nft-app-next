@@ -118,10 +118,11 @@ const Mint = () => {
               <Col span={24}>
                 <div
                   style={{
-                    background: "rgba(0, 0, 0, 0.8)",
+                    background: "rgba(0, 0, 0, 0.9)",
                     borderRadius: 10,
                     width: "100%",
                     height: "100%",
+                  
                     zIndex: 99,
                     position: "absolute",
                     top: 0,
@@ -140,7 +141,7 @@ const Mint = () => {
                     fontSize: 60,
                   }}
                 />
-                <div style={{ width: "100%", zIndex: 1 }}>
+                <div style={{ width: "100%", zIndex: 1, }}>
                   <Image src='icon.gif' alt='?' className='collection' />
                 </div>
               </Col>

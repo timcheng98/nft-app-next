@@ -5,24 +5,28 @@ import Image from "./Image";
 import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
+import defaultStyles from "../core/theme/styles";
 
 const AppHeader = () => {
   const [visible, setVisible] = useState(false);
   const blockchain = useSelector((state) => state.blockchain);
 
   return (
-    <Row justify='center' style={{ padding: "0px", minHeight: 60 }}>
-      <Col xs={22} md={23}>
+    <Row justify='center' style={{ padding: "0px", minHeight: 60, zIndex: 90, backgroundColor: '#fff' }}>
+      <Col xs={22} md={23} style={{ backgroundColo: '#fff'}}>
         <Row
           justify='space-between'
           align='middle'
-          style={{ minHeight: "inherit", padding: "10px 0px" }}
+          style={{ minHeight: "inherit", padding: "10px 0px", backgroundColor: '#fff' }}
         >
           <Link passHref href='/'>
             <Col xs={3} sm={4} md={2} lg={1} style={{ cursor: "pointer" }}>
               <Image alt='icon' src='icon.gif' className='icon' />
+             
             </Col>
+           
           </Link>
+         <Col xs={0} md={8}>  <p style={{...defaultStyles.subHeader, fontSize: 24, textAlign: 'center', margin: 0 }}>Crypto WallStreetBets NFT</p></Col>
           <Col>
             <Button
               onClick={() => setVisible(true)}

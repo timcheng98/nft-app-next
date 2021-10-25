@@ -147,7 +147,9 @@ a {
   padding: 48px 0px;
   min-height: 600px;
 }
-
+.ant-collapse-content > .ant-collapse-content-box {
+  padding: 0px 15px;
+}
 .cZaRmu {
   z-index: -1;
   overflow: hidden;

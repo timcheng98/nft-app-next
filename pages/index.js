@@ -99,7 +99,7 @@ const Home = (props) => {
             <Row justify='center'>
               {_.map(_.reverse(_.slice(collections, 0, 4)), (item) => {
                 return (
-                  <Col xs={12} md={12}>
+                  <Col key={item} xs={12} md={12}>
                     <img
                       style={{
                         // borderRadius: "50%",
