@@ -73,7 +73,7 @@ const Collection = (props) => {
 												width: '100%',
 												height: '100%',
 											}}
-											src={`https://wallstreetbets-nft.com/api/creature/images/${collection.edition}`}
+											src={`https://api.wallstreetbets-nft.com/api/creature/images/${collection.edition}`}
 											alt='wsb'
 											className='collection'
 										/>

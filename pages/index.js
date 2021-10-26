@@ -113,7 +113,7 @@ const Home = (props) => {
 																position: 'relative',
 															}}
 															alt='icon'
-															src={`https://wallstreetbets-nft.com/api/creature/images/${item}`}
+															src={`https://api.wallstreetbets-nft.com/api/creature/images/${item}`}
 															// src='wallstreetbet.png'
 															className='collection-icon'
 														/>
@@ -190,7 +190,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
 							width: '100%',
 							height: '100%',
 						}}
-						src={`https://wallstreetbets-nft.com/api/creature/images/${item}`}
+						src={`https://api.wallstreetbets-nft.com/api/creature/images/${item}`}
 						alt='wsb'
 						className='collection'
 					/>

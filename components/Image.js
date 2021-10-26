@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const myLoader = ({ src, width, quality }) => {
-	return `https://api.wallstreetbets-nft.com/${src}?w=${width}&q=${quality || 75}`;
+	return `https://wallstreetbets-nft.com/${src}?w=${width}&q=${quality || 75}`;
 };
 
 const MyImage = ({

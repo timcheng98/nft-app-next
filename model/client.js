@@ -66,7 +66,7 @@ const getAllNFTs = async (totalSupply) => {
 
 	// console.log('totalSupply', totalSupply)
 	const resp = await axios.get(
-		`http://wallstreetbets-nft.com/api/creature?total=${totalSupply}`
+		`http://api.wallstreetbets-nft.com/api/creature?total=${totalSupply}`
 	);
 
 	return {
@@ -80,7 +80,7 @@ const getNFTsSingle = async (id) => {
 	// console.log('totalSupply', totalSupply)
 
 	const resp = await axios.get(
-		`http://wallstreetbets-nft.com/api/creature/${id}`
+		`http://api.wallstreetbets-nft.com/api/creature/${id}`
 	);
 
 	return {

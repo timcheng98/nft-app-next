@@ -17,7 +17,8 @@ const WalletModal = ({ setVisible, visible }) => {
     notification.error({
       message: blockchain.errorMsg,
     });
-  }, [blockchain]);
+    
+  }, [blockchain.errorMsg]);
 
   return (
     <Modal

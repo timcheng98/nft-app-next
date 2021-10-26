@@ -93,7 +93,6 @@ export const fetchData = (account) => {
       if (total <= 9) {
         for (let i = total; i >= 0; i -= 1) {
           nfts.push(_.toInteger(i));
-          // nfts.push(axios.get(`https://wallstreetbets-nft.com/api/creature/${i}`));
         }
       }
 
@@ -101,7 +100,6 @@ export const fetchData = (account) => {
         let limit = total - 8;
         for (let i = total - 1; i >= limit; i -= 1) {
           nfts.push(_.toInteger(i));
-          // nfts.push(axios.get(`https://wallstreetbets-nft.com/api/creature/${i}`));
         }
       }
 
