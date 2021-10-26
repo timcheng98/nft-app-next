@@ -102,7 +102,7 @@ const MintingPanel = ({ size = 'normal' }) => {
 						<Col span={24}>
 							<div
 								style={{
-									background: 'rgba(0, 0, 0, 0.9)',
+									background: 'rgba(0, 0, 0, 0.7)',
 									borderRadius: 10,
 									width: '100%',
 									height: '100%',

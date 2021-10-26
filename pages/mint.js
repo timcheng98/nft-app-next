@@ -85,7 +85,7 @@ const Mint = () => {
 				</Col>
 			</Row>
 			<Divider />
-			<div style={{ marginBottom: 40 }}>
+			<div style={{ marginBottom: 20 }}>
 				<Row justify='center'>
 					<Col xs={24} md={10}>
 						<MintingPanel />
