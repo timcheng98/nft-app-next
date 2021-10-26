@@ -37,7 +37,6 @@ const responsive = {
 	},
 };
 const Home = (props) => {
-	console.log(props);
 	const { latest_nfts } = props;
 
 	return (

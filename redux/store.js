@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
 import logger from 'redux-logger'
 
 
-const middleware = [thunk, logger];
+const middleware = [thunk];
 const composeEnhancers = compose(applyMiddleware(...middleware));
 
 const configureStore = () => {
