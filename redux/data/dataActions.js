@@ -41,12 +41,12 @@ export const fetchAccountData = () => {
         )
         .call();
 
-      const baseURI = await store
-        .getState()
-        .blockchain.smartContract.methods._baseTokenURI.call()
-        .call();
+      // const baseURI = await store
+      //   .getState()
+      //   .blockchain.smartContract.methods._baseTokenURI.call()
+      //   .call();
 
-      const nfts = [];
+      // const nfts = [];
       // _.map(totalNfts, async (item) => {
       // 	// const resp = await axios.get(`${baseURI}/${item + 1}`);
       // 	nfts.push(item);
