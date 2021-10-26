@@ -158,6 +158,8 @@ const Marketplace = ({ collections }) => {
 	);
 };
 
-export const getStaticProps = getCustomStaticProps;
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/marketplace'))
+};
 
 export default Marketplace;

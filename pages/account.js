@@ -13,6 +13,7 @@ import { fetchAccountData } from '../redux/data/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
 import WalletModal from '../components/WalletModal';
 import { CollectionItem } from '.';
+import { getCustomStaticProps } from '../model/client';
 
 const Account = () => {
 	const dispatch = useDispatch();
@@ -248,5 +249,11 @@ const Panel = () => {
 		</Row>
 	);
 };
+
+
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/account'))
+};
+
 
 export default Account;

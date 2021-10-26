@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 // pages/index.js
 import Script from 'next/script';
 import React from 'react';
+import { getCustomStaticProps } from '../model/client';
 
 export function Home() {
 	return (
@@ -47,3 +48,10 @@ export default function News() {
 		</AppLayout>
 	);
 }
+
+
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/news'))
+};
+
+

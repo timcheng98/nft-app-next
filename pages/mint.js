@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { fetchData } from '../redux/data/dataActions';
 import MintingPanel from '../components/MintingPanel';
+import { getCustomStaticProps } from '../model/client';
 
 const Mint = () => {
 	const dispatch = useDispatch();
@@ -94,5 +95,12 @@ const Mint = () => {
 		</AppLayout>
 	);
 };
+
+
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/mint'))
+};
+
+
 
 export default Mint;

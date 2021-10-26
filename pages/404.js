@@ -2,6 +2,8 @@ import AppLayout from '../components/AppLayout';
 import { Row, Col, Result, Button } from 'antd';
 import defaultStyles from '../core/theme/styles';
 import { useRouter } from 'next/router';
+import React from 'react'
+import { getCustomStaticProps } from '../model/client';
 // pages/404.js
 export default function Custom404() {
 	const router = useRouter();
@@ -32,3 +34,7 @@ export default function Custom404() {
 		</AppLayout>
 	);
 }
+
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/404'))
+};

@@ -287,6 +287,8 @@ const Background = () => {
 	);
 };
 
-export const getStaticProps = getCustomStaticProps;
+export const getStaticProps = async (context) => {
+	return (getCustomStaticProps(context, '/'))
+};
 
 export default Home;

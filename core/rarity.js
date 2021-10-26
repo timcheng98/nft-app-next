@@ -1,0 +1,312 @@
+import _ from 'lodash';
+
+export const rarity = {
+	background: {
+		name: 'Backgroud',
+		rarities: [
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Bitcoin',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Coin',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Diamond Shine',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Future',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Golden Shine',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Magic Circle',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Morden Honeycomb',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Psychedelic',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Sun Shine',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Blue',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Green',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Pink',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Red',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'White',
+				rate: _.round(642 / 9630, 2),
+			},
+			{
+				type: 'all',
+				count: 9630 / 15,
+				name: 'Yellow',
+				rate: _.round(642 / 9630, 2),
+			},
+		],
+	},
+	clothing: {
+		count: 9630 / 15,
+		name: 'Clothing',
+		rarities: [
+			{
+				type: 'Super Rare',
+				count: 15,
+				name: 'Black Suit',
+				rate: _.round(15 / 9630, 6),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Brown Jacket',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Nude',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Casual Suit',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Hoddie',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Stripe',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'White Polo',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'White Shirt',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+		],
+	},
+	glasses: {
+		name: 'Glasses',
+		rarities: [
+			{
+				type: 'Super Rare',
+				count: 15,
+				name: 'Black Sun Glasses',
+				rate: _.round(15 / 9630, 6),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Bitcoin Glasses',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Meme Pixel Sun Glasses',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Circle Glasses',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Hexagonal Glasses',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Pixel Glasses',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Sui Circle Sun Glasses',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Thick-Rimmed Glasses',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+		],
+	},
+	hair: {
+		name: 'Hair',
+		rarities: [
+			{
+				type: 'Super Rare',
+				count: 15,
+				name: 'Modern Undercut',
+				rate: _.round(15 / 9630, 6),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Bald',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Middle Part Hair',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Short Hair',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Disconnected Undercut',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Man Bun',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Medium Undercut',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Pompadour Undercut',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+		],
+	},
+	mouth: {
+		name: 'Mouth',
+		rarities: [
+			{
+				type: 'Super Rare',
+				count: 15,
+				name: 'Straight Face',
+				rate: _.round(15 / 9630, 6),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Bearded Face with Togue Out',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Rare',
+				count: 120,
+				name: 'Smoke a Cigar',
+				rate: _.round(240 / 9630 / 2, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Dark Blue Mask',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Laugh',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Scared',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Smile',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+			{
+				type: 'Original',
+				count: 9376 / 5,
+				name: 'Tongue Out',
+				rate: _.round(9376 / 9630 / 5, 2),
+			},
+		],
+	},
+};
