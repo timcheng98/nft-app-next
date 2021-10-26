@@ -84,7 +84,7 @@ const Account = () => {
 						// fontSize: 24,
 					}}
 				>
-					<Row gutter={[15, 25]}>
+					<Row justify='center' gutter={[15, 25]}>
 						{_.isEmpty(data.accountTokens) ? (
 							<Col
 								span={24}

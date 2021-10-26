@@ -39,7 +39,7 @@ const Marketplace = ({ collections }) => {
 					formed.
 				</Col>
 			</Row>
-				<Divider />
+			<Divider />
 			<Row align='middle' style={{ marginBottom: 40 }} gutter={[20, 0]}>
 				<Col xs={12} md={4}>
 					<span>Sort by</span>
@@ -128,10 +128,10 @@ const Marketplace = ({ collections }) => {
 					</Button>
 				</Col>
 			</Row>
-			<Row gutter={[20, 40]}>
+			<Row gutter={[20, 40]} justify='center'>
 				{_.map(nfts, (item) => {
 					return (
-						<Col key={item} xs={18} md={6} key={item}>
+						<Col key={item} xs={18} md={6}>
 							<CollectionItem xs={24} md={24} item={item} />
 						</Col>
 					);
@@ -159,7 +159,7 @@ const Marketplace = ({ collections }) => {
 };
 
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/marketplace'))
+	return getCustomStaticProps(context, '/marketplace');
 };
 
 export default Marketplace;

@@ -70,8 +70,8 @@ const Home = (props) => {
 								</span>
 							</Col>
 							<Divider />
-							<Col span={22}>
-								<Row gutter={[20, 0]}>
+							<Col xs={24} md={22}>
+								<Row gutter={[20, 20]}>
 									<Col>
 										<Link passHref href='/mint'>
 											<Button
@@ -83,17 +83,19 @@ const Home = (props) => {
 										</Link>
 									</Col>
 									<Col>
-										<Button
-											className='app-button'
-											style={{
-												height: 50,
-												width: 140,
-												background: 'none',
-												color: 'rgb(181, 132, 56)',
-											}}
-										>
-											Market
-										</Button>
+										<Link href="/marketplace">
+											<Button
+												className='app-button'
+												style={{
+													height: 50,
+													width: 140,
+													background: 'none',
+													color: 'rgb(181, 132, 56)',
+												}}
+											>
+												Market
+											</Button>
+										</Link>
 									</Col>
 								</Row>
 							</Col>
