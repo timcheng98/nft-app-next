@@ -114,6 +114,7 @@ export const connect = () => {
             currentAccount
           );
 
+
           dispatch(
             connectSuccess({
               account: currentAccount,

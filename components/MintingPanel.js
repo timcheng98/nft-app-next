@@ -68,6 +68,7 @@ const MintingPanel = ({ size = "normal"}) => {
 			});
 	};
 
+	console.log(blockchain.balance)
 	return (
 		<Row justify='center'>
 			<Col xs={24} md={size === 'small' ? 18 : 24}>
@@ -264,7 +265,7 @@ const MintingPanel = ({ size = "normal"}) => {
 												</div>
 											</Col>
 											<Col>{`${
-												blockchain.account ? blockchain.balance : 'N/A'
+												blockchain.balance ? blockchain.balance : 'N/A'
 											}`}</Col>
 										</Row>
 									</Col>

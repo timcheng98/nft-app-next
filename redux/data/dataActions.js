@@ -107,7 +107,7 @@ export const fetchData = (account) => {
 
       // console.log('total', total)
       // let result = await Promise.all(nfts);
-      console.log("test", { name, allTokens: nfts, total: total, price });
+      // console.log("test", { name, allTokens: nfts, total: total, price });
       dispatch(
         fetchDataSuccess({
           name,

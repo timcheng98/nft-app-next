@@ -23,7 +23,8 @@
     "redux": "^4.1.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
-    "web3": "^1.6.0"
+    "web3": "^1.6.0",
+    "web3modal": "^1.9.4"
   },
   "devDependencies": {
     "eslint": "^8.1.0",
