@@ -17,7 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { fetchData } from '../redux/data/dataActions';
 
-const MintingPanel = ({ size = "normal"}) => {
+const MintingPanel = ({ size = 'normal' }) => {
 	const dispatch = useDispatch();
 	const [visible, setVisible] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -68,7 +68,7 @@ const MintingPanel = ({ size = "normal"}) => {
 			});
 	};
 
-	console.log(blockchain.balance)
+	console.log(blockchain.balance);
 	return (
 		<Row justify='center'>
 			<Col xs={24} md={size === 'small' ? 18 : 24}>
@@ -196,6 +196,7 @@ const MintingPanel = ({ size = "normal"}) => {
 											<Col>
 												<div>
 													<img
+														draggable={false}
 														style={{ width: 20, height: 20 }}
 														src='/matic.png'
 														alt='matic'
@@ -225,6 +226,7 @@ const MintingPanel = ({ size = "normal"}) => {
 											<Col>
 												<div>
 													<img
+														draggable={false}
 														style={{ width: 20, height: 20 }}
 														src='/matic.png'
 														alt='matic'
@@ -257,6 +259,7 @@ const MintingPanel = ({ size = "normal"}) => {
 											<Col>
 												<div>
 													<img
+														draggable={false}
 														style={{ width: 20, height: 20 }}
 														src='/matic.png'
 														alt='matic'

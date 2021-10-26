@@ -34,6 +34,7 @@ const AppHeader = () => {
 					<Link passHref href='/'>
 						<Col xs={3} sm={4} md={8} style={{ cursor: 'pointer' }}>
 							<img
+								draggable={false}
 								alt='icon'
 								src='/icon.gif'
 								style={{ width: 80, height: '100%', objectFit: 'contain' }}
@@ -55,7 +56,7 @@ const AppHeader = () => {
 						</p>
 					</Col>
 					<Col md={8}>
-						<Row justify="end">
+						<Row justify='end'>
 							<Col>
 								<Button
 									onClick={() => setVisible(true)}

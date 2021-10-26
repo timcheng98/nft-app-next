@@ -105,6 +105,7 @@ const Home = (props) => {
 												<Row justify='center'>
 													<Col span={20}>
 														<img
+															draggable={false}
 															style={{
 																// borderRadius: "50%",
 																width: '100%',
@@ -180,10 +181,11 @@ export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
 						height: '100%',
 						width: '100%',
 						borderRadius: 15,
-						background: '#fff'
+						background: '#fff',
 					}}
 				>
 					<img
+						draggable={false}
 						style={{
 							width: '100%',
 							height: '100%',
@@ -288,7 +290,7 @@ const Background = () => {
 };
 
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/'))
+	return getCustomStaticProps(context, '/');
 };
 
 export default Home;

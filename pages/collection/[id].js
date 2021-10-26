@@ -68,6 +68,7 @@ const Collection = (props) => {
 								<Row justify='center' gutter={[0, 30]}>
 									<Col xs={24} lg={24}>
 										<img
+											draggable={false}
 											style={{
 												width: '100%',
 												height: '100%',
@@ -273,10 +274,10 @@ const Collection = (props) => {
 };
 
 export const getStaticPaths = async () => {
-  return getCustomStaticPaths()
+	return getCustomStaticPaths();
 };
 export const getStaticProps = async (context) => {
-  return (getCustomStaticProps(context, '/collection/[id]'))
+	return getCustomStaticProps(context, '/collection/[id]');
 };
 
 // export async function getStaticProps({ params }) {
