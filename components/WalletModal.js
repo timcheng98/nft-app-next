@@ -19,12 +19,14 @@ const WalletModal = ({ setVisible, visible }) => {
 	const blockchain = useSelector((state) => state.blockchain);
 	useEffect(() => {
 		if (!blockchain.errorMsg) return;
+		// let error = blockchain.errorMsg
+		dispatch(clearErrorMsg());
+		// console.log('WalletModal', blockchain)
 		notification.error({
 			message: blockchain.errorMsg,
 		});
 
-		dispatch(clearErrorMsg());
-	}, [blockchain.errorMsg, dispatch]);
+	}, [blockchain]);
 
 	return (
 		<Modal
