@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import WalletModal from '../components/WalletModal';
 import { CollectionItem } from '.';
 import { getCustomStaticProps } from '../model/client';
+import Header from '../components/Head';
 
 const Account = () => {
 	const dispatch = useDispatch();
@@ -21,7 +22,6 @@ const Account = () => {
 	const data = useSelector((state) => state.data);
 	const [visible, setVisible] = useState(false);
 
-	console.log(data);
 	useEffect(() => {
 		getAccountData();
 	}, []);
@@ -32,6 +32,11 @@ const Account = () => {
 
 	return (
 		<AppLayout>
+			<Header
+				title='Account | Crypto WallStreetBets NFT'
+				description='Crypto WallStreetBets NFT - Account information the Crypto WallStreetBets NFT and show the owner collections'
+			/>
+
 			<Row justify='center' style={{ marginTop: 30 }}>
 				<Col span={20}>
 					<Row>
@@ -250,10 +255,8 @@ const Panel = () => {
 	);
 };
 
-
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/account'))
+	return getCustomStaticProps(context, '/account');
 };
-
 
 export default Account;

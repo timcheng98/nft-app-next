@@ -68,7 +68,6 @@ const MintingPanel = ({ size = 'normal' }) => {
 			});
 	};
 
-	console.log(blockchain.balance);
 	return (
 		<Row justify='center'>
 			<Col xs={24} md={size === 'small' ? 18 : 24}>
@@ -195,10 +194,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<img
+													<Image
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='/matic.png'
+														src='matic.png'
 														alt='matic'
 														className='icon'
 													/>
@@ -225,10 +224,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<img
+													<Image
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='/matic.png'
+														src='matic.png'
 														alt='matic'
 														className='icon'
 													/>
@@ -258,10 +257,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<img
+													<Image
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='/matic.png'
+														src='matic.png'
 														alt='matic'
 														className='icon'
 													/>

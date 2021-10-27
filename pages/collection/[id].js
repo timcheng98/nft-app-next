@@ -12,6 +12,7 @@ import _ from 'lodash';
 import { Popover } from 'antd-mobile';
 import { useRouter } from 'next/router';
 import { getCustomStaticPaths, getCustomStaticProps } from '../../model/client';
+import Header from '../../components/Head';
 const Collection = (props) => {
 	const router = useRouter();
 	const { collection } = props;
@@ -32,7 +33,6 @@ const Collection = (props) => {
 	const getTrait = (item) => {
 		if (item.trait_type === 'background') return _.round((1 / 15) * 100, 2);
 		if (item.trait_type === 'face') return 100;
-		console.log(collection);
 		if (collection.edition <= 15) {
 			let total = (15 / 9630) * 100;
 			return _.round(total, 2);
@@ -47,6 +47,11 @@ const Collection = (props) => {
 
 	return (
 		<AppLayout fullWidth>
+			<Header
+				title={`WSB#${collection.edition} | Crypto WallStreetBets NFT`}
+				description='Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT'
+			/>
+
 			<div style={{ padding: '40px 0px', background: 'rgb(250, 249, 250)' }}>
 				<Row justify='center' gutter={[0, 40]} style={{}}>
 					<Col xs={22} md={16}>
@@ -67,14 +72,15 @@ const Collection = (props) => {
 							<Col xs={24} md={12}>
 								<Row justify='center' gutter={[0, 30]}>
 									<Col xs={24} lg={24}>
-										<img
+										<Image
 											draggable={false}
 											style={{
 												width: '100%',
 												height: '100%',
 											}}
-											src={`https://api.wallstreetbets-nft.com/api/creature/images/${collection.edition}`}
+											src={`${collection.edition}`}
 											alt='wsb'
+											external
 											className='collection'
 										/>
 									</Col>
@@ -85,6 +91,7 @@ const Collection = (props) => {
 											</Col>
 											<Col span={24} style={defaultStyles.header}>
 												<a
+													rel='noreferrer'
 													href={`https://polygonscan.com/token/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a?a=${collection.edition}`}
 													target='_blank'
 												>
@@ -158,6 +165,7 @@ const Collection = (props) => {
 									</Col>
 									<Col span={24} style={defaultStyles.header}>
 										<a
+											rel='noreferrer'
 											href={`https://polygonscan.com/token/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a?a=${collection.edition}`}
 											target='_blank'
 										>
@@ -169,6 +177,7 @@ const Collection = (props) => {
                   <Col span={24}>Highest Bid</Col> */}
 									<Col span={24}>
 										<a
+											rel='noreferrer'
 											target='_blank'
 											href={`https://opensea.io/assets/matic/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a/${collection.edition}`}
 										>

@@ -34,10 +34,10 @@ const AppHeader = () => {
 					<Link passHref href='/'>
 						<Col xs={3} sm={4} md={8} style={{ cursor: 'pointer' }}>
 							<div style={{ width: 60, height: 60 }}>
-								<img
+								<Image
 									draggable={false}
 									alt='icon'
-									src='/icon.gif'
+									src='icon.gif'
 									style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 									className='icon'
 								/>

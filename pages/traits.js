@@ -3,13 +3,18 @@ import AppLayout from '../components/AppLayout';
 import _ from 'lodash';
 import defaultStyles from '../core/theme/styles';
 import { getCustomStaticProps } from '../model/client';
-import React from 'react'
+import React from 'react';
+import Header from '../components/Head';
 const { Panel } = Collapse;
-
 
 const Traits = (props) => {
 	return (
 		<AppLayout>
+			<Header
+				title='Traits | Crypto WallStreetBets NFT'
+				description='Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT Traits'
+			/>
+
 			<Row style={{ marginTop: 40 }}>
 				<Col span={24} style={defaultStyles.banner}>
 					Traites Distribution
@@ -197,11 +202,8 @@ const Traits = (props) => {
 	);
 };
 
-
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/traits'))
+	return getCustomStaticProps(context, '/traits');
 };
-
-
 
 export default Traits;

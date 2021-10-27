@@ -1,6 +1,7 @@
 import AppLayout from '../components/AppLayout';
 import { Row, Col, Button, Divider } from 'antd';
 import Image from '../components/Image';
+import Head from '../components/Head';
 import Carousel from 'react-multi-carousel';
 import FAQ from '../components/FAQ';
 import React, { useState, useEffect } from 'react';
@@ -41,6 +42,7 @@ const Home = (props) => {
 
 	return (
 		<AppLayout fullWidth>
+			<Head title="Home | Crypto WallStreetBets NFT" description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections" />
 			<div className='home-section-card'>
 				<Row
 					gutter={[0, 40]}
@@ -106,7 +108,7 @@ const Home = (props) => {
 											<Col key={item} xs={0} sm={0} md={6}>
 												<Row justify='center'>
 													<Col span={20}>
-														<img
+														<Image
 															draggable={false}
 															style={{
 																// borderRadius: "50%",
@@ -115,7 +117,8 @@ const Home = (props) => {
 																position: 'relative',
 															}}
 															alt='icon'
-															src={`https://api.wallstreetbets-nft.com/api/creature/images/${item}`}
+															src={`${item}`}
+															external
 															// src='wallstreetbet.png'
 															className='collection-icon'
 														/>
@@ -186,14 +189,15 @@ export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
 						background: '#fff',
 					}}
 				>
-					<img
+					<Image
 						draggable={false}
 						style={{
 							width: '100%',
 							height: '100%',
 						}}
-						src={`https://api.wallstreetbets-nft.com/api/creature/images/${item}`}
+						src={`${item}`}
 						alt='wsb'
+						external
 						className='collection'
 					/>
 					<div style={{ padding: '15px 10px' }}>

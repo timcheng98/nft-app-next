@@ -9,6 +9,7 @@ import { DownCircleOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
 import { getCustomStaticProps } from '../model/client';
+import Header from '../components/Head';
 
 const { Option } = Select;
 const Marketplace = ({ collections }) => {
@@ -28,6 +29,11 @@ const Marketplace = ({ collections }) => {
 
 	return (
 		<AppLayout>
+			<Header
+				title='Marketplace | Crypto WallStreetBets NFT'
+				description='Crypto WallStreetBets NFT - Market information the Crypto WallStreetBets NFT and view all the minted collections'
+			/>
+
 			<Row style={{ margin: '40px 0px 0px 0px' }}>
 				<Col span={24} style={defaultStyles.banner}>
 					Marketplace
@@ -131,7 +137,7 @@ const Marketplace = ({ collections }) => {
 			<Row gutter={[20, 40]} justify='center'>
 				{_.map(nfts, (item) => {
 					return (
-						<Col key={item} xs={18} md={6}>
+						<Col key={item} xs={18} sm={12} md={8} lg={6}>
 							<CollectionItem xs={24} md={24} item={item} />
 						</Col>
 					);

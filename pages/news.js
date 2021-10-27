@@ -7,8 +7,9 @@ import { useRouter } from 'next/router';
 import Script from 'next/script';
 import React from 'react';
 import { getCustomStaticProps } from '../model/client';
+import Header from '../components/Head';
 
-export function Home() {
+export function TwitterScript() {
 	return (
 		<>
 			<Script src='https://platform.twitter.com/widgets.js' />
@@ -20,14 +21,19 @@ export default function News() {
 	const router = useRouter();
 	return (
 		<AppLayout>
-			<Home />
+			<Header
+				title='News | Crypto WallStreetBets NFT'
+				description='Crypto WallStreetBets NFT - Share information the Crypto WallStreetBets NFT and share the latest news of the NTF industry'
+			/>
+
+			<TwitterScript />
 			<Row align='middle' justify='center'>
 				<Col
-          span={24}
+					span={24}
 					style={{
 						...defaultStyles.banner,
 						margin: '20px 0px',
-            textAlign: 'center'
+						textAlign: 'center',
 					}}
 				>
 					Twitter News
@@ -49,9 +55,6 @@ export default function News() {
 	);
 }
 
-
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/news'))
+	return getCustomStaticProps(context, '/news');
 };
-
-

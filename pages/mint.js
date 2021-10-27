@@ -19,6 +19,7 @@ import _ from 'lodash';
 import { fetchData } from '../redux/data/dataActions';
 import MintingPanel from '../components/MintingPanel';
 import { getCustomStaticProps } from '../model/client';
+import Header from '../components/Head';
 
 const Mint = () => {
 	const dispatch = useDispatch();
@@ -73,6 +74,11 @@ const Mint = () => {
 
 	return (
 		<AppLayout>
+			<Header
+				title='Mint | Crypto WallStreetBets NFT'
+				description='Crypto WallStreetBets NFT - Mint the Crypto WallStreetBets NFT'
+			/>
+
 			<Row style={{ marginTop: 40 }}>
 				<Col span={24} style={defaultStyles.banner}>
 					Mint a Crypto WallStreetBets NFT
@@ -96,11 +102,8 @@ const Mint = () => {
 	);
 };
 
-
 export const getStaticProps = async (context) => {
-	return (getCustomStaticProps(context, '/mint'))
+	return getCustomStaticProps(context, '/mint');
 };
-
-
 
 export default Mint;
