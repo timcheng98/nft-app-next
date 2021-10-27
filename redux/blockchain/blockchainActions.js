@@ -27,7 +27,7 @@ const connectSuccess = (payload) => {
   };
 };
 
-const clearErrorMsg = (payload) => {
+export const clearErrorMsg = (payload) => {
   return {
     type: "CLEAR_ERROR_MSG",
     payload: payload,

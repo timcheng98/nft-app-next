@@ -14,7 +14,7 @@ const blockchainReducer = (state = initialState, action) => {
 				...initialState,
 				loading: true,
 			};
-		case 'clearErrorMsg':
+		case 'CLEAR_ERROR_MSG':
 			return {
 				...initialState,
 				errorMsg: '',
