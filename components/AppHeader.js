@@ -34,13 +34,16 @@ const AppHeader = () => {
 					<Link passHref href='/'>
 						<Col xs={3} sm={4} md={8} style={{ cursor: 'pointer' }}>
 							<div style={{ width: 60, height: 60 }}>
-								<Image
+								{/* <Image
 									draggable={false}
 									alt='icon'
-									src='icon.gif'
+									src='icon.webm'
 									style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 									className='icon'
-								/>
+								/> */}
+								<video width='100%' height='100%' autoPlay>
+									<source src='/icon.mp4' type='video/mp4' />
+								</video>
 							</div>
 						</Col>
 					</Link>

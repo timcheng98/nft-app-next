@@ -5,19 +5,26 @@ import Image from './Image';
 import { Toast } from 'antd-mobile';
 
 import React, { useEffect } from 'react';
-import { connect, disconnect } from '../redux/blockchain/blockchainActions';
+import {
+	connect,
+	disconnect,
+	clearErrorMsg,
+} from '../redux/blockchain/blockchainActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
 
 const WalletModal = ({ setVisible, visible }) => {
+	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
 	useEffect(() => {
 		if (!blockchain.errorMsg) return;
 		notification.error({
 			message: blockchain.errorMsg,
 		});
-	}, [blockchain.errorMsg]);
+
+		dispatch(clearErrorMsg());
+	}, [blockchain.errorMsg, dispatch]);
 
 	return (
 		<Modal
@@ -114,10 +121,10 @@ const AccountInfo = ({ setVisible }) => {
 							<Row align='middle' justify='end' gutter={[10, 0]}>
 								<Col>
 									<div>
-										<Image
+										<img
 											// width={50}
 											// height={50}
-											src='matic.png'
+											src='/matic.png'
 											style={{ width: 20, height: 20 }}
 											alt='matic'
 											className='icon'

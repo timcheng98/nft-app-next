@@ -27,6 +27,13 @@ const connectSuccess = (payload) => {
   };
 };
 
+const clearErrorMsg = (payload) => {
+  return {
+    type: "CLEAR_ERROR_MSG",
+    payload: payload,
+  };
+};
+
 const connectInit = (payload) => {
   return {
     type: "CONNECTION_INIT",

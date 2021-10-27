@@ -194,10 +194,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<Image
+													<img
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='matic.png'
+														src='/matic.png'
 														alt='matic'
 														className='icon'
 													/>
@@ -224,10 +224,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<Image
+													<img
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='matic.png'
+														src='/matic.png'
 														alt='matic'
 														className='icon'
 													/>
@@ -257,10 +257,10 @@ const MintingPanel = ({ size = 'normal' }) => {
 										<Row align='middle' justify='end' gutter={[10, 0]}>
 											<Col>
 												<div>
-													<Image
+													<img
 														draggable={false}
 														style={{ width: 20, height: 20 }}
-														src='matic.png'
+														src='/matic.png'
 														alt='matic'
 														className='icon'
 													/>
