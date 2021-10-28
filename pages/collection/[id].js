@@ -55,16 +55,14 @@ const Collection = (props) => {
 			<div style={{ padding: '40px 0px', background: 'rgb(250, 249, 250)' }}>
 				<Row justify='center' gutter={[0, 40]} style={{}}>
 					<Col xs={22} md={16}>
-						<Link passHref href='/'>
-							<Button
-								onClick={() => router.back()}
-								className='app-button'
-								style={{ height: 50, width: 120 }}
-								icon={<LeftOutline />}
-							>
-								Go Back
-							</Button>
-						</Link>
+						<Button
+							onClick={() => router.back()}
+							className='app-button'
+							style={{ height: 50, width: 120 }}
+							icon={<LeftOutline />}
+						>
+							Go Back
+						</Button>
 					</Col>
 
 					<Col xs={22} md={16}>
