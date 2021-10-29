@@ -7,12 +7,19 @@ const web3 = new Web3(
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
+const BlogPostModel = require('./news');
+
 const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
 const contract = new web3.eth.Contract(abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
+	// const blogPostModel = new BlogPostModel({
+	// 	title: 'title',
+	// });
 
+	// const post = await blogPostModel.save();
+	// console.log('post', post);
 	if (pathname === '/') {
 		const totalSupply = await contract.methods.totalSupply().call();
 		const latestNFTs = await getLatestNfts(totalSupply);
