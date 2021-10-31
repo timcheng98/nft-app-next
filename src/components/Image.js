@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const defaultLoader = ({ src, width, quality }) => {
-	return `http://localhost:3000/${src}?w=${width}&q=${quality || 50}`;
+	return `https://wallstreetbets-nft.com/${src}?w=${width}&q=${quality || 50}`;
 };
 
 const externalLoader = ({ src, width, quality }) => {
