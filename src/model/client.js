@@ -7,7 +7,6 @@ const web3 = new Web3(
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
-const postModel = require('./posts')
 // const BlogPostModel = require('./news');
 // import { connectToDatabase } from "../util/mongodb";
 
@@ -36,16 +35,6 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 	if (pathname === '/traits') {
 	}
 
-	if (pathname === '/news/index') {
-		const posts = await postModel.getPosts()
-		_.assign(clientProps, { posts });
-	}
-	if (pathname === '/news/[id]') {
-		const post = await postModel.getSinglePost(params.id)
-		console.log(post)
-		_.assign(clientProps, { post });
-	}
-
 	return {
 		props: {
 			...clientProps,
@@ -54,19 +43,6 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 	};
 };
 
-export async function getPostStaticPaths() {
-	const posts = await postModel.getPosts()
-	const paths = _.map(posts, (item) => {
-		return {
-			params: { id: _.toString(item.id) }
-		}
-	})
-
-	return {
-		paths,
-		fallback: false
-	}
-}
 
 export async function getCustomStaticPaths() {
 	const totalSupply = await contract.methods.totalSupply().call();

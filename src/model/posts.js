@@ -1,6 +1,7 @@
 const { firestore } = require("../util/firebase");
+const _ = require('lodash')
 
-exports.getPosts = async () => {
+export const getPosts = async () => {
   // let db = admin.ge
   // console.log(await firestore.collection('posts').get())
   // console.log('db', db)
@@ -20,7 +21,7 @@ exports.getPosts = async () => {
   return posts;
 };
 
-exports.getSinglePost = async (id) => {
+export const getSinglePost = async (id) => {
 
   const doc = await firestore.collection("posts").doc(id).get();
   let post = {
@@ -33,7 +34,7 @@ exports.getSinglePost = async (id) => {
   return post;
 };
 
-exports.createPost = async (id, dataObj) => {
+export const createPost = async (id, dataObj) => {
   const cityRef = firestore.collection('posts').doc(id);
   const res = await cityRef.set(dataObj, { merge: true });
   
@@ -41,5 +42,40 @@ exports.createPost = async (id, dataObj) => {
 };
 
 
+export const getCustomStaticProps = async ({ params }, pathname) => {
+	let clientProps = {};
+	// console.log(object)
+
+	if (pathname === '/news/index') {
+		const posts = await getPosts()
+		_.assign(clientProps, { posts });
+	}
+	if (pathname === '/news/[id]') {
+
+		const post = await getSinglePost(params.id)
+		console.log(post)
+		_.assign(clientProps, { post });
+	}
+
+	return {
+		props: {
+			...clientProps,
+		},
+		revalidate: 60 * 60, // 1 hour
+	};
+};
 
 
+export async function getPostStaticPaths() {
+	const posts = await getPosts()
+	const paths = _.map(posts, (item) => {
+		return {
+			params: { id: _.toString(item.id) }
+		}
+	})
+
+	return {
+		paths,
+		fallback: false
+	}
+}

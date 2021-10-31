@@ -2,7 +2,7 @@ import { Row, Col, Input, Button, Form } from 'antd';
 import axios from 'axios';
 import AppLayout from '../../../components/AppLayout';
 import defaultStyles from '../../../core/theme/styles';
-import { getCustomStaticProps, getPostStaticPaths } from '../../../model/client';
+import { getCustomStaticProps, getPostStaticPaths } from '../../../model/posts';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
@@ -33,11 +33,9 @@ const SingleNews = (props) => {
 	}, [session])
 
   const onFinish = async (values) => {
-    console.log(values)
-    console.log(props.post.id)
     await axios.post(`/api/post/${props.post.id}`, values)
 
-    router.push('/')
+    router.push('/admin/news')
   }
 
 	return (

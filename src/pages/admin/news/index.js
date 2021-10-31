@@ -2,7 +2,7 @@ import { Row, Col, Input, Button, Form, Table } from 'antd';
 import axios from 'axios';
 import AppLayout from '../../../components/AppLayout';
 import defaultStyles from '../../../core/theme/styles';
-import { getCustomStaticProps } from '../../../model/client';
+import { getCustomStaticProps } from '../../../model/posts';
 import { useEffect } from 'react';
 import { useRouter } from 'next/router'
 import _ from 'lodash'
@@ -65,9 +65,9 @@ const NewsList = (props) => {
 			dataIndex: 'content',
 			key: 'content',
 			render: (value) => {
-				return <div style={{ maxHeight: 300, overflow: 'scroll' }}>{ReactHtmlParser(value)}</div>
+				return <div style={{ maxHeight: 300, maxWidth: 600, overflowY: 'scroll', overflowX: 'hidden' }}>{ReactHtmlParser(value)}</div>
 			},
-			width: 300
+			// width: 600
 			},
 			{
 			title: 'Updated Time',
