@@ -61,7 +61,7 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		props: {
 			...clientProps,
 		},
-		revalidate: 60 * 60, // 1 hour
+		revalidate: 1, // 1 s
 	};
 };
 
