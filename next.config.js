@@ -6,7 +6,7 @@ const withTM = require('next-transpile-modules')([
 
 module.exports = withTM(withImages({
   extends: ["airbnb-base"],
-  useFileSystemPublicRoutes: false,
-  productionBrowserSourceMaps: true,
+  // useFileSystemPublicRoutes: false,
+  // productionBrowserSourceMaps: true,
   // 你项目中其他的 Next.js 配置
 }));

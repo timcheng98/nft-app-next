@@ -7,19 +7,18 @@ const web3 = new Web3(
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
-const BlogPostModel = require('./news');
+const postModel = require('./posts')
+// const BlogPostModel = require('./news');
+// import { connectToDatabase } from "../util/mongodb";
+
 
 const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
 const contract = new web3.eth.Contract(abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
-	// const blogPostModel = new BlogPostModel({
-	// 	title: 'title',
-	// });
+	// console.log(object)
 
-	// const post = await blogPostModel.save();
-	// console.log('post', post);
 	if (pathname === '/') {
 		const totalSupply = await contract.methods.totalSupply().call();
 		const latestNFTs = await getLatestNfts(totalSupply);
@@ -35,7 +34,16 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		_.assign(clientProps, collection);
 	}
 	if (pathname === '/traits') {
-		_.assign(clientProps, { rarity });
+	}
+
+	if (pathname === '/news/index') {
+		const posts = await postModel.getPosts()
+		_.assign(clientProps, { posts });
+	}
+	if (pathname === '/news/[id]') {
+		const post = await postModel.getSinglePost(params.id)
+		console.log(post)
+		_.assign(clientProps, { post });
 	}
 
 	return {
@@ -45,6 +53,20 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		revalidate: 60 * 60, // 1 hour
 	};
 };
+
+export async function getPostStaticPaths() {
+	const posts = await postModel.getPosts()
+	const paths = _.map(posts, (item) => {
+		return {
+			params: { id: _.toString(item.id) }
+		}
+	})
+
+	return {
+		paths,
+		fallback: false
+	}
+}
 
 export async function getCustomStaticPaths() {
 	const totalSupply = await contract.methods.totalSupply().call();

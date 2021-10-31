@@ -9,4 +9,4 @@ const BlogPostSchema = new Schema({
 	// date: Date,
 });
 
-module.exports = mongoose.models['BlogPost'] || mongoose.model("BlogPost", BlogPostSchema);
+module.exports = mongoose.model("BlogPost", BlogPostSchema);
