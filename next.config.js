@@ -8,7 +8,6 @@ module.exports = withTM(withImages({
   eslint: {
     ignoreDuringBuilds: true
   },
-  basePath: '/src',
   extends: ["airbnb-base"],
   // useFileSystemPublicRoutes: false,
   // productionBrowserSourceMaps: true,
