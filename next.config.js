@@ -5,6 +5,9 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 module.exports = withTM(withImages({
+  eslint: {
+    ignoreDuringBuilds: true
+  },
   extends: ["airbnb-base"],
   // useFileSystemPublicRoutes: false,
   // productionBrowserSourceMaps: true,
