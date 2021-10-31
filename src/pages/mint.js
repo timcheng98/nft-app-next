@@ -1,5 +1,5 @@
-import AppLayout from '../../components/AppLayout';
-import Image from '../../components/Image';
+import AppLayout from '../components/AppLayout';
+// import Image from '../components/Image';
 import { GiftOutline, QuestionCircleOutline } from 'antd-mobile-icons';
 import {
 	Row,
@@ -13,13 +13,13 @@ import {
 import defaultStyles from '../core/theme/styles';
 import { Popover } from 'antd-mobile';
 import React, { useState, useEffect } from 'react';
-import WalletModal from '../../components/WalletModal';
+// import WalletModal from '../components/WalletModal';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { fetchData } from '../redux/data/dataActions';
-import MintingPanel from '../../components/MintingPanel';
+import MintingPanel from '../components/MintingPanel';
 import { getCustomStaticProps } from '../model/client';
-import Header from '../../components/Head';
+import Header from '../components/Head';
 
 const Mint = () => {
 	const dispatch = useDispatch();
