@@ -125,7 +125,7 @@ const MintingPanel = ({ size = 'normal' }) => {
 								}}
 							/>
 							<div style={{ width: '100%', zIndex: 1 }}>
-								<Image src='icon.gif' alt='?' className='collection' />
+								<Image src='pixel_wsb.png' alt='?' className='collection' />
 							</div>
 						</Col>
 

@@ -37,7 +37,7 @@ const AppHeader = () => {
 								<Image
 									draggable={false}
 									alt='icon'
-									src='icon.gif'
+									src='logo_small.svg'
 									style={{ width: '100%', height: '100%', objectFit: 'cover' }}
 									className='icon'
 								/>
