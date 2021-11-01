@@ -35,8 +35,15 @@ export const getSinglePost = async (id) => {
 };
 
 export const createPost = async (id, dataObj) => {
-  const cityRef = firestore.collection('posts').doc(id);
-  const res = await cityRef.set(dataObj, { merge: true });
+	console.log(dataObj)
+	let ref
+	if (_.isEmpty(id)) {
+		ref = firestore.collection('posts').doc();
+	} else {
+		ref = firestore.collection('posts').doc(id);
+	}
+	delete dataObj.email
+  const res = await ref.set(dataObj, { merge: true });
   
   return res;
 };

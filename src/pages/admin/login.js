@@ -4,6 +4,7 @@ import AppLayout from '../../components/AppLayout';
 import defaultStyles from '../../core/theme/styles';
 import { getCustomStaticProps } from '../../model/client';
 import { signIn, useSession } from "next-auth/client";
+import {useRouter} from 'next/router';
 
 
 // import { useSession, getSession } from 'next-auth/client'
@@ -14,12 +15,14 @@ const Login = () => {
 
 	// if (typeof window !== 'undefined' && loading) return null
 
+	const router = useRouter()
 	const [session] = useSession();
 	console.log('session', session)
 	const [form] = Form.useForm();
 
 	const onFinish = async (values) => {
 		await axios.post('/api/login', values)
+		router.push('/admin/news')
 	};
 	return (
 		<AppLayout>
@@ -51,6 +54,8 @@ const Login = () => {
 							onClick={(e) => {
 							e.preventDefault()
 							signIn()
+							router.push('/admin/news')
+
 					 }}
 								// htmlType="submit"
 								style={{
