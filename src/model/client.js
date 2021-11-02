@@ -32,7 +32,9 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		const collection = await getNFTsSingle(params.id);
 		_.assign(clientProps, collection);
 	}
+
 	if (pathname === '/traits') {
+		_.assign(clientProps, { rarity })
 	}
 
 	return {

@@ -73,6 +73,15 @@ const NewsList = (props) => {
 			key: 'title',
 			},
 			{
+			title: 'Short Content',
+			dataIndex: 'short_content',
+			key: 'short_content',
+			render: (value) => {
+				return <div style={{ maxHeight: 300, maxWidth: 600, overflowY: 'scroll', overflowX: 'hidden' }}>{ReactHtmlParser(value)}</div>
+			},
+			// width: 600
+			},
+			{
 			title: 'Content',
 			dataIndex: 'content',
 			key: 'content',
@@ -122,7 +131,7 @@ const NewsList = (props) => {
 };
 
 export async function getStaticProps(context) {
-	const props = await getCustomStaticProps(context, '/news/index')
+	const props = await getCustomStaticProps(context, '/news/index', 1)
   return props
 }
 export default NewsList;

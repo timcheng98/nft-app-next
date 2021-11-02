@@ -7,18 +7,39 @@ const Header = ({ title = 'Crypto WallStreetBets NFT', description }) => {
 		<div>
 			<Head>
 				<title>{title}</title>
-				<link rel='icon' href='https://www.wallstreetbets-nft.com/favicon.ico' />
-				<link rel='apple-touch-icon' href='https://www.wallstreetbets-nft.com/apple-touch-icon.png' />
-				<link rel='manifest' href='https://www.wallstreetbets-nft.com/manifest.json' />
+				<link rel='icon' href='/favicon.ico' />
+				<link rel='apple-touch-icon' href='/apple-touch-icon.png' />
+				<link rel='manifest' href='/manifest.json' />
 				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				<meta name='description' content={description} />
 				<meta property='og:title' content={title} key='title' />
+				<meta property='og:image' content='/banner.png' key='image' />
+				<meta charset="UTF-8" /> 
+				<meta name="robots" content="noindex,nofollow" />
+				<meta property='og:type' content='article' />
+				<meta property='og:url' content='https://wallstreetbets-nft.com' />
+				<meta property='og:site_name' content='Crypto WallStreetBets NFT' />
 				<meta
-					property='og:image'
-					content='https://www.wallstreetbets-nft.com/banner.png'
-					key='image'
+					property='og:description'
+					content={description}
+					key='description'
 				/>
-				<meta property='og:description' content={description} key='description' />
+				<meta name='twitter:card' content='summary' />
+				<meta
+					name='twitter:title'
+					content={title}
+					key="twitter:title"
+				/>
+				<meta
+					name='twitter:description'
+					content={description}
+					key="twitter:description"
+				/>
+				<meta
+					name='twitter:image'
+					content='/banner.png'
+					key="twitter:image"
+				/>
 			</Head>
 		</div>
 	);

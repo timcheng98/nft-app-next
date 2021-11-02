@@ -35,7 +35,6 @@ export const getSinglePost = async (id) => {
 };
 
 export const createPost = async (id, dataObj) => {
-	console.log(dataObj)
 	let ref
 	if (_.isEmpty(id)) {
 		ref = firestore.collection('posts').doc();
@@ -49,7 +48,7 @@ export const createPost = async (id, dataObj) => {
 };
 
 
-export const getCustomStaticProps = async ({ params }, pathname) => {
+export const getCustomStaticProps = async ({ params }, pathname, revalidate = 60 * 60) => {
 	let clientProps = {};
 	// console.log(object)
 
@@ -68,7 +67,7 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		props: {
 			...clientProps,
 		},
-		revalidate: 1, // 1 s
+		revalidate, // 1 s
 	};
 };
 

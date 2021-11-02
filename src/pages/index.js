@@ -41,7 +41,7 @@ const Home = (props) => {
 
 	return (
 		<AppLayout fullWidth>
-			<Head title="Home | Crypto WallStreetBets NFT" description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections" />
+			<Head title="Crypto WallStreetBets NFT" description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections" />
 			<div className='home-section-card'>
 				<Row
 					gutter={[0, 40]}
