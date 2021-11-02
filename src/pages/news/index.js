@@ -1,5 +1,5 @@
 import AppLayout from '../../components/AppLayout';
-import { Row, Col, Result, Button } from 'antd';
+import { Row, Col, Result, Button, Typography } from 'antd';
 import defaultStyles from '../../core/theme/styles';
 import { useRouter } from 'next/router';
 
@@ -54,10 +54,26 @@ export default function News(props) {
 												{ReactHtmlParser(item.image)}
 											</Col>
 											<Col span={24}>
-												<h2 className='short-content'>{item.title}</h2>
+												<Typography.Paragraph
+													ellipsis={{
+														rows: 2,
+														symbol: '...',
+														expandable: false,
+													}}
+												>
+													<h2 className='short-content'>{item.title}</h2>
+												</Typography.Paragraph>
 											</Col>
 											<Col span={24} className='short-content'>
-												{ReactHtmlParser(item.short_content)}
+												<Typography.Paragraph
+													ellipsis={{
+														rows: 4,
+														symbol: '...',
+														expandable: false,
+													}}
+												>
+													{ReactHtmlParser(item.short_content)}
+												</Typography.Paragraph>
 											</Col>
 										</Row>
 									</Link>

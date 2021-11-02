@@ -29,25 +29,27 @@ a {
 	cursor: pointer;
 }
 
-.short-content {
+.short-content, .short-content span {
   transition: all 0.3s ease-in-out;
-	color: rgb(40, 13, 95);
+	color: rgb(40, 13, 95) !important;
 }
 
-.news:hover .short-content {
+.news:hover .short-content span, .news:hover .short-content {
 	cursor: pointer;
-	color: rgb(181, 132, 56);
+	color: rgb(181, 132, 56) !important;
   transition: all 0.3s ease-in-out;
   transform: scale(0.98);
 }
 
 .news-detail img {
   width: 100%;
-  border-radius: 15px;
+  border-radius: 20px;
+  object-fit: contain;
 }
 
 .news img {
   transition: all 0.3s ease-in-out;
+  width: 100%;
 }
 
 .news:hover img {

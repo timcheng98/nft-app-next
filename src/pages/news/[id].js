@@ -17,9 +17,9 @@ const SingleNews = (props) => {
 		<AppLayout>
 			<Header title={props.post.title} description={props.post.short_content} />
 			<Row justify='center' style={{ marginTop: 40 }}>
-				<Col xs={24} md={12}>
+				<Col xs={24} md={20}>
 					<Row className='news-detail'>
-						<Col style={{ textAlign: 'start' }} span={18}>
+						<Col style={{ textAlign: 'start' }} span={24}>
 							{ReactHtmlParser(props.post.image)}
 						</Col>
 						<Col style={{ textAlign: 'start' }} span={24}>
@@ -29,17 +29,14 @@ const SingleNews = (props) => {
 							style={{
 								borderBottom: '5px solid rgb(40, 13, 95)',
 								paddingBottom: 10,
-                marginBottom: 30
+								marginBottom: 30,
+                overflow: 'hidden'
 							}}
 							span={18}
 						>
 							{ReactHtmlParser(props.post.short_content)}
 						</Col>
-						<Col span={24}>
-							<Row justify='center'>
-								<Col span={24}>{ReactHtmlParser(props.post.content)}</Col>
-							</Row>
-						</Col>
+						<Col span={24}>{ReactHtmlParser(props.post.content)}</Col>
 					</Row>
 				</Col>
 			</Row>
