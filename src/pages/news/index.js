@@ -42,10 +42,12 @@ export default function News(props) {
 								<Col
 									className='news'
 									key={item.id}
-									span={7}
+									md={7}
+									xs={24}
 									style={{
 										borderBottom: '5px solid rgb(40, 13, 95)',
 										paddingBottom: 10,
+										marginBottom: 40
 									}}
 								>
 									<Link href={`/news/${item.id}`}>

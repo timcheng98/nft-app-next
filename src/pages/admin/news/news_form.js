@@ -2,11 +2,11 @@ import { Row, Col, Input, Button, Form, Radio } from 'antd';
 import axios from 'axios';
 import AppLayout from '../../../components/AppLayout';
 import defaultStyles from '../../../core/theme/styles';
-import { getCustomStaticProps, getPostStaticPaths } from '../../../model/posts';
+// import { getCustomStaticProps, getPostStaticPaths } from '../../../model/posts';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import dynamic from 'next/dynamic';
-import _ from 'lodash'
+import _ from 'lodash';
 const Tinymce = dynamic(() => import('../../../components/Tinymce'));
 
 import { useSession } from 'next-auth/client';
@@ -21,10 +21,25 @@ const SingleNews = (props) => {
 	);
 };
 
-export const NewsForm = ({ post = {}, goBack }) => {
+export const NewsForm = ({ goBack }) => {
 	const [session] = useSession();
 	const router = useRouter();
 	const [form] = Form.useForm();
+	const [post, setPost] = useState({})
+
+	useEffect(() => {
+		getData();
+	}, []);
+
+	const getData = async () => {
+		const resp = await axios.get(`/api/post?id=${router.query.id}`);
+		setPost(resp.data.data)
+		form.setFieldsValue({
+			...resp.data.data,
+		});
+	};
+
+	console.log(form.getFieldsValue());
 
 	useEffect(() => {
 		if (!session) return;
@@ -34,13 +49,13 @@ export const NewsForm = ({ post = {}, goBack }) => {
 		}
 	}, [session]);
 
-	useEffect(() => {
-		form.setFieldsValue({
-			title: '',
-			content: '',
-			...post,
-		});
-	}, [post]);
+	// useEffect(() => {
+	// 	form.setFieldsValue({
+	// 		title: '',
+	// 		content: '',
+	// 		...post,
+	// 	});
+	// }, [post]);
 
 	const onFinish = async (values) => {
 		await axios.post(`/api/post`, {
@@ -113,11 +128,11 @@ export const NewsForm = ({ post = {}, goBack }) => {
 };
 
 export async function getStaticProps(context) {
-	const props = await getCustomStaticProps(context, '/news/[id]', 1);
-	return props;
+	// const props = await getCustomStaticProps(context, '/news/[id]', 1);
+	// return props;
+	return {
+		props: {},
+	};
 }
 
-export async function getStaticPaths() {
-	return getPostStaticPaths();
-}
 export default SingleNews;
