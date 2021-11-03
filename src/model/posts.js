@@ -18,7 +18,7 @@ export const getPosts = async () => {
     })
   });
 
-  return posts;
+  return _.orderBy(posts, 'ctime', 'desc');
 };
 
 export const getSinglePost = async (id) => {
