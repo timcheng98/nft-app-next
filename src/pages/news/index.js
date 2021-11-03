@@ -58,15 +58,18 @@ export default function News(props) {
 											<Col span={24}>
 												<Typography.Paragraph
 													ellipsis={{
-														rows: 2,
+														rows: 3,
 														symbol: '...',
 														expandable: false,
 													}}
+													style={{
+														overflow: 'hidden'
+													}}
 												>
-													<h2 className='short-content'>{item.title}</h2>
+													<div><h4 className='short-content'>{item.title}</h4></div>
 												</Typography.Paragraph>
 											</Col>
-											<Col span={24} className='short-content'>
+											<Col span={24} >
 												<Typography.Paragraph
 													ellipsis={{
 														rows: 4,
@@ -74,7 +77,7 @@ export default function News(props) {
 														expandable: false,
 													}}
 												>
-													{ReactHtmlParser(item.short_content)}
+													<div className='short-content'>{ReactHtmlParser(item.short_content)}</div>
 												</Typography.Paragraph>
 											</Col>
 										</Row>
