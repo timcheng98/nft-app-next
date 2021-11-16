@@ -36,7 +36,7 @@ const WalletModal = ({ setVisible, visible }) => {
 			footer={null}
 			centered
 			maskStyle={{
-				background: 'rgba(69, 42, 122, 0.5)',
+				background: 'rgba(0, 0, 0, 0.5)',
 			}}
 			onCancel={() => setVisible(false)}
 			bodyStyle={{ minHeight: 350 }}
@@ -91,7 +91,7 @@ const AccountInfo = ({ setVisible }) => {
 								style={{
 									...defaultStyles.card,
 									background: 'rgba(255, 178, 55, 0.098)',
-									border: '1px solid rgb(255, 178, 55)',
+									// border: '1px solid #2b2b2b',
 									width: '100%',
 									padding: '0px 20px',
 									display: 'flex',
@@ -153,7 +153,7 @@ const AccountInfo = ({ setVisible }) => {
 								style={{
 									background: 'rgb(246, 246, 246)',
 									border: 'none',
-									color: 'rgb(40, 13, 95)',
+									color: '#2b2b2b',
 									fontSize: 16,
 									fontWeight: '600',
 									borderRadius: 15,
@@ -187,7 +187,7 @@ const AccountInfo = ({ setVisible }) => {
 						<Col
 							style={{
 								...defaultStyles.subHeader,
-								color: 'rgb(239, 199, 108)',
+								color: '#2b2b2b',
 							}}
 						>
 							Collection
@@ -196,7 +196,7 @@ const AccountInfo = ({ setVisible }) => {
 						<Col
 							style={{
 								...defaultStyles.subBody,
-								color: 'rgb(239, 199, 108)',
+								color: '#2b2b2b',
 							}}
 						>
 							<a
@@ -219,7 +219,7 @@ const AccountInfo = ({ setVisible }) => {
 								style={{
 									...defaultStyles.subHeader,
 									background: 'none',
-									color: 'rgb(239, 199, 108)',
+									color: '#2b2b2b',
 									height: 45,
 								}}
 								className='app-button'
@@ -304,7 +304,7 @@ const ConnectWallet = ({ setVisible }) => {
 								...defaultStyles.subBody,
 								color: '#fff',
 								height: 50,
-								background: 'rgb(122, 110, 170)',
+								background: '#2b2b2b',
 								width: '100%',
 								border: 'none',
 							}}

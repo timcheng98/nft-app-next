@@ -97,7 +97,7 @@ const WalletIcon = () => {
 		<svg
 			viewBox='0 0 24 24'
 			width='24px'
-			fill='rgb(181, 132, 56)'
+			fill='#fff'
 			xmlns='http://www.w3.org/2000/svg'
 			className='sc-bdfBQB fkooRD'
 		>

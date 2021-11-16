@@ -39,7 +39,7 @@ const FAQ = () => {
 			>
 				<h1
 					style={{
-						color: 'rgb(181, 132, 56)',
+						color: '#2b2b2b',
 						fontSize: 24,
 						fontWeight: '600',
 					}}

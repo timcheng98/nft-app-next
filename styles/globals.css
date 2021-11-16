@@ -24,7 +24,7 @@ a {
 .app-button {
   -webkit-box-align: center;
   align-items: center;
-  border: 1px solid rgb(239, 199, 108);
+  border: 2px solid #2b2b2b;
   border-radius: 16px;
   box-shadow: rgb(14 14 44 / 40%) 0px -1px 0px 0px inset;
   cursor: pointer;
@@ -41,23 +41,23 @@ a {
   transition: background-color 0.2s ease 0s, opacity 0.2s ease 0s;
   min-height: 38px;
   padding: 0px 16px;
-  background-color: rgb(239, 199, 108);
+  background-color: #2b2b2b;
   color: white;
   transition: opacity 0.5s ease-in-out;
 }
 
 .app-button:active, .app-button:focus {
-  border: 1px solid rgb(239, 199, 108);
-  background-color: rgb(239, 199, 108);
+  border: 2px solid #2b2b2b;
+  background-color: #2b2b2b;
   color: white;
 
 }
 
 .app-button:hover {
   opacity: 0.65;
-  background-color: rgb(239, 199, 108);
+  background-color: #2b2b2b;
   color: white;
-  border: 1px solid rgb(239, 199, 108);
+  border: 2px solid #2b2b2b;
   transition: opacity 0.5s ease-in-out;
 }
 
