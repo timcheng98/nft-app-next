@@ -1,6 +1,6 @@
 const axios = require('axios');
 const Web3 = require('web3');
-let abi = require('../redux/blockchain/abi.json');
+let smartContract = require('../redux/blockchain/abi.json');
 const web3 = new Web3(
 	'https://polygon-mainnet.infura.io/v3/1106a734eb1a46639b820d23e971c3a6'
 );
@@ -8,7 +8,7 @@ const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
 const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
-const contract = new web3.eth.Contract(abi, contractAddress);
+const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};

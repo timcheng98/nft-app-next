@@ -1,7 +1,7 @@
 // constants
 import Web3 from "web3";
-import SmartContract from "../../contracts/WallStreetBets.json";
-import abi from "./abi.json";
+// import SmartContract from "../../contracts/WallStreetBets.json";
+import SmartContract from "./abi.json";
 // log
 import _ from "lodash";
 import { fetchData } from "../data/dataActions";
@@ -108,7 +108,7 @@ export const connect = () => {
         if (networkId == 137) {
           // console.log('NetworkData.address', SmartContract.networks)
           const SmartContractObj = new web3.eth.Contract(
-            abi,
+            SmartContract.abi,
             // NetworkData.address,
             testAddress
           );
