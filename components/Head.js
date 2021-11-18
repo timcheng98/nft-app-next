@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import React from 'react';
 
-const Header = ({ title = 'Crypto WallStreetBets NFT', description }) => {
+const Header = ({ title = 'Squat Panda', description }) => {
 	return (
 		<div>
 			<Head>

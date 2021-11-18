@@ -30,8 +30,8 @@ const Marketplace = ({ collections }) => {
 	return (
 		<AppLayout>
 			<Header
-				title='Marketplace | Crypto WallStreetBets NFT'
-				description='Crypto WallStreetBets NFT - Market information the Crypto WallStreetBets NFT and view all the minted collections'
+				title='Marketplace | Squat Panda'
+				description='Squat Panda - Market information the Squat Panda and view all the minted collections'
 			/>
 
 			<Row style={{ margin: '40px 0px 0px 0px' }}>
@@ -39,7 +39,7 @@ const Marketplace = ({ collections }) => {
 					Marketplace
 				</Col>
 				<Col xs={22} md={18} style={defaultStyles.subBody}>
-					Crypto WallStreetBets are 9630 art pieces with a one-of-a-kind digital
+				Squat Panda are 9630 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.

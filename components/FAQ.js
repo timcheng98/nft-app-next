@@ -47,20 +47,20 @@ const FAQ = () => {
 					FAQs
 				</h1>
 				<Collapse>
-					<Panel title='1. What is Crypto WallStreetBets NFT?' key='1'>
+					<Panel title='1. What is Squat Panda?' key='1'>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
-							Crypto WallStreetBets are a curated boutique collection of only{' '}
+							Squat Panda are a curated boutique collection of only{' '}
 							<strong>9630</strong> hand drawn nft's.
 							<br />
 							<br />
-							This is an inclusive collection and all Crypto WallStreetBets were
+							This is an inclusive collection and all Squat Panda were
 							priced at <strong>100</strong> MATIC in the primary market to make
 							it affordable for everyone to collect! This project is inspired by
 							the Reddit's WallStreetBets.
 						</span>
 					</Panel>
 					<Panel
-						title='2. How did the Crypto WallStreetBets project get started?'
+						title='2. How did the Squat Panda project get started?'
 						key='2'
 					>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
@@ -70,19 +70,19 @@ const FAQ = () => {
 							<br />
 							<br />
 							There must have been an easier way to do this, but the creator of
-							the Crypto WallStreetBets was new to the NFT space and just jumped
+							the Squat Panda was new to the NFT space and just jumped
 							in using the apps he was familiar with to make the Crypto
 							WallStreetBets's.
 							<br />
 							<br />
-							The Crypto WallStreetBets were made to be affordable for everyone
+							The Squat Panda were made to be affordable for everyone
 							and thus were listed at <strong>100</strong> MATIC in the primary
 							market. Over the next couple of months all <strong>9630</strong>{' '}
-							Crypto WallStreetBets were individually created.
+							Squat Panda were individually created.
 							<br />
 							<br />
 							Then they started selling on the secondary market... and the rest
-							is history. The ethos of the Crypto WallStreetBets is to enjoy
+							is history. The ethos of the Squat Panda is to enjoy
 							life, keep things light and most of all - have fun.
 						</span>
 					</Panel>
@@ -101,7 +101,7 @@ const FAQ = () => {
 						</span>
 					</Panel>
 					<Panel
-						title='4. Where can I buy a Crypto WallStreetBets NFT?'
+						title='4. Where can I buy a Squat Panda NFT?'
 						key='4'
 					>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
@@ -116,7 +116,7 @@ const FAQ = () => {
 							>
 								Visit
 							</a>{' '}
-							The Crypto WallStreetBets Marketplace on OpenSea: Buy, sell, and
+							The Squat Panda Marketplace on OpenSea: Buy, sell, and
 							explore digital assets.
 							<br />
 							<br />
@@ -132,7 +132,7 @@ const FAQ = () => {
 							3. Store your NFT to a secured wallet
 						</span>
 					</Panel>
-					<Panel title='5. Will more Crypto WallStreetBets be minted?' key='5'>
+					<Panel title='5. Will more Squat Panda be minted?' key='5'>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
 							The Collection is limited to 9630 mints max.All have been minted,
 							the secondary market is the only way to obtain a Crypto

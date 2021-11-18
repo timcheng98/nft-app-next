@@ -11,7 +11,7 @@ export default function Custom404() {
 	return (
 		<AppLayout>
 			<Header
-				title='404 | Crypto WallStreetBets NFT'
+				title='404 | Squat Panda'
 				description='Page not found'
 			/>
 

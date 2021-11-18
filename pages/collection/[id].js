@@ -48,8 +48,8 @@ const Collection = (props) => {
 	return (
 		<AppLayout fullWidth>
 			<Header
-				title={`WSB#${collection.edition} | Crypto WallStreetBets NFT`}
-				description='Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT'
+				title={`WSB#${collection.edition} | Squat Panda`}
+				description='Squat Panda - Information the Squat Panda'
 			/>
 
 			<div style={{ padding: '40px 0px', background: 'rgb(250, 249, 250)' }}>
@@ -85,7 +85,7 @@ const Collection = (props) => {
 									<Col xs={24} md={0}>
 										<Row style={defaultStyles.subHeader} gutter={[0, 20]}>
 											<Col span={24} style={defaultStyles.subHeader}>
-												The Crypto WallStreetBets NFT
+												The Squat Panda
 											</Col>
 											<Col span={24} style={defaultStyles.header}>
 												<a
@@ -159,7 +159,7 @@ const Collection = (props) => {
 							<Col xs={0} md={11}>
 								<Row style={defaultStyles.subHeader} gutter={[0, 20]}>
 									<Col span={24} style={defaultStyles.subHeader}>
-										The Crypto WallStreetBets NFT
+										The Squat Panda
 									</Col>
 									<Col span={24} style={defaultStyles.header}>
 										<a

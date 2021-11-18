@@ -22,8 +22,8 @@ export default function News() {
 	return (
 		<AppLayout>
 			<Header
-				title='News | Crypto WallStreetBets NFT'
-				description='Crypto WallStreetBets NFT - Share information the Crypto WallStreetBets NFT and share the latest news of the NTF industry'
+				title='News | Squat Panda'
+				description='Squat Panda - Share information the Squat Panda and share the latest news of the NTF industry'
 			/>
 
 			<TwitterScript />

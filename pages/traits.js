@@ -11,8 +11,8 @@ const Traits = (props) => {
 	return (
 		<AppLayout>
 			<Header
-				title='Traits | Crypto WallStreetBets NFT'
-				description='Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT Traits'
+				title='Traits | Squat Panda'
+				description='Squat Panda - Information the Squat Panda Traits'
 			/>
 
 			<Row style={{ marginTop: 40 }}>
@@ -20,7 +20,7 @@ const Traits = (props) => {
 					Traites Distribution
 				</Col>
 				<Col xs={22} md={18} style={defaultStyles.subBody}>
-					Crypto WallStreetBets are 9630 art pieces with a one-of-a-kind digital
+				Squat Panda are 9630 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.

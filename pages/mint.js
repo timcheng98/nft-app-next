@@ -75,16 +75,16 @@ const Mint = () => {
 	return (
 		<AppLayout>
 			<Header
-				title='Mint | Crypto WallStreetBets NFT'
-				description='Crypto WallStreetBets NFT - Mint the Crypto WallStreetBets NFT'
+				title='Mint | Squat Panda'
+				description='Squat Panda - Mint the Squat Panda'
 			/>
 
 			<Row style={{ marginTop: 40 }}>
 				<Col span={24} style={defaultStyles.banner}>
-					Mint a Crypto WallStreetBets NFT
+					Mint a Squat Panda
 				</Col>
 				<Col xs={22} md={18} style={defaultStyles.subBody}>
-					Crypto WallStreetBets are 9630 art pieces with a one-of-a-kind digital
+				Squat Panda are 9630 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.

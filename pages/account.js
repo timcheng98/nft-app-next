@@ -33,8 +33,8 @@ const Account = () => {
 	return (
 		<AppLayout>
 			<Header
-				title='Account | Crypto WallStreetBets NFT'
-				description='Crypto WallStreetBets NFT - Account information the Crypto WallStreetBets NFT and show the owner collections'
+				title='Account | Squat Panda'
+				description='Squat Panda - Account information the Squat Panda and show the owner collections'
 			/>
 
 			<Row justify='center' style={{ marginTop: 30 }}>

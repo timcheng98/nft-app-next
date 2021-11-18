@@ -244,7 +244,7 @@ const MintingPanel = ({ size = "normal" }) => {
                         </div>
                       </Col>
 
-                      <Col>{`${blockchain.account ? data.price : "N/A"}`}</Col>
+                      <Col>{`${blockchain.account ? data.price : "50"}`}</Col>
                       {blockchain.account && (
                         <Col>
                           <span
@@ -276,7 +276,7 @@ const MintingPanel = ({ size = "normal" }) => {
                       <Col>{`${
                         blockchain.account
                           ? (amount ? amount : 0) * data.price
-                          : "N/A"
+                          : "50"
                       }`}</Col>
                       {blockchain.account && (
                         <Col>
@@ -307,7 +307,7 @@ const MintingPanel = ({ size = "normal" }) => {
                         </div>
                       </Col>
                       <Col>{`${
-                        blockchain.balance ? blockchain.balance : "N/A"
+                        blockchain.balance ? blockchain.balance : "0"
                       }`}</Col>
                     </Row>
                   </Col>

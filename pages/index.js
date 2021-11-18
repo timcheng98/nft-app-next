@@ -43,8 +43,8 @@ const Home = (props) => {
   return (
     <AppLayout fullWidth>
       <Head
-        title="Home | Crypto WallStreetBets NFT"
-        description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections"
+        title="Squat Panda"
+        description="Squat Panda - Information the Squat Panda and show the latest minted collections"
       />
       <div className="home-section-card">
         <Row
@@ -63,12 +63,12 @@ const Home = (props) => {
                     fontWeight: "600",
                   }}
                 >
-                  Crypto WallStreetBets
+                  Squat Panda
                 </span>
               </Col>
               <Col span={20} style={{}}>
                 <span style={defaultStyles.subHeader}>
-                  Crypto WallStreetBets is a tribute to the digital collectibles
+                  Squat Panda is a tribute to the digital collectibles
                   created by anonymous developers, and innovative algorithms.
                   These 9630 pieces of artworks are inspired by the famous WSB
                   events, recalling the inner artist in you.
@@ -122,17 +122,23 @@ const Home = (props) => {
                         style={{
                           ...defaultStyles.header,
                           textAlign: "center",
-						  borderTopRightRadius: 30,
-						  borderTopLeftRadius: 30,
-						  padding: '10px 30px',
-						  backgroundColor: '#f7f7f7'
-						//   borderBottom: '3px solid #2b2b2b'
+                          borderTopRightRadius: 30,
+                          borderTopLeftRadius: 30,
+                          padding: "0px 30px",
+                          height: 60,
+                          backgroundColor: "#f7f7f7",
+                          //   borderBottom: '3px solid #2b2b2b'
                         }}
                       >
-                        Airdrop
+                        <Row
+                          justify="center"
+                          style={{ height: 60 }}
+                          align="middle"
+                        >
+                          <Col>Airdrop</Col>
+                        </Row>
                       </Col>
 
-                    
                       <Col span={18}>
                         <Progress
                           strokeWidth={40}
@@ -155,11 +161,18 @@ const Home = (props) => {
                           5 / 1000
                         </span>
                       </Col>
-					  <Col span={18} style={{ paddingBottom: 10 }}>
+                      <Col span={18} style={{ paddingBottom: 10 }}>
                         <Link passHref href="/mint">
                           <Button
                             className="app-button"
-                            style={{ height: 50, fontWeight: 'bold', borderBottomWidth: 3, width: '100%', backgroundColor: '#fff', color: '#2b2b2b' }}
+                            style={{
+                              height: 50,
+                              fontWeight: "bold",
+                              borderBottomWidth: 3,
+                              width: "100%",
+                              backgroundColor: "#fff",
+                              color: "#2b2b2b",
+                            }}
                           >
                             Claim NFT
                           </Button>
@@ -247,7 +260,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
               style={{ marginBottom: 10 }}
             >
               <Col style={{ fontSize: 12, fontWeight: 500 }}>
-                Crypto WallStreetBets
+                Squat Panda
               </Col>
               <Col style={{ color: "#2b2b2b", fontWeight: "500" }}>
                 {rarity()}
