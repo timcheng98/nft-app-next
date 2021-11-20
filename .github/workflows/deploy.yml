@@ -15,8 +15,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
-            cd ..
-            cd var/www/html/squat-panda
+            cd /var/www/html/squat-panda
             npm i -g pm2
-            pm2 deploy ecosystem.config.js testing
+            pm2 deploy ecosystem.config.js testing update --force
             echo 'Deployment successful to digital ocean' 
