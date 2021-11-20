@@ -17,7 +17,7 @@ module.exports = {
       "ref"  : "origin/main-panda",
       "repo" : "git@github.com:timcheng98/nft-app-next.git",
       "path" : "/var/www/html/squat-panda",
-      "post-deploy": 'npm ci && npm run build && pm2 startOrRestart ecosystem.config.js --only nft-panda'
+      "post-deploy": 'npm ci && npm run build && pm2 startOrRestart ecosystem.config.js'
     }
   }
 }
