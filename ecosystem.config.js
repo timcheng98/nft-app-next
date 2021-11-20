@@ -1,8 +1,7 @@
 module.exports = {
   apps : [{
     name   : "panda",
-    script : "npm",
-    arg: 'start',
+    script : "npm --name 'squat-panda' -- start",
     env_production: {
        NODE_ENV: "production"
     },
