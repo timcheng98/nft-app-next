@@ -16,7 +16,7 @@ jobs:
       - name: Deploy
         run: |
           cd ..
-          cd /var/www/html/squat-panda/
+          cd var/www/html/squat-panda/
           npm i -g pm2
           pm2 deploy ecosystem.config.js testing
           echo 'Deployment successful to digital ocean' 
