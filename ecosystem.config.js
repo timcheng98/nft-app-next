@@ -1,7 +1,8 @@
 module.exports = {
   apps : [{
     name   : "nft-panda",
-    script : "npm --name 'squat-panda' -- start",
+    script : "npm",
+    args: "start",
     env_production: {
        NODE_ENV: "production"
     },
