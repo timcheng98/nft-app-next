@@ -15,7 +15,7 @@ module.exports = {
       "host" : ["165.22.251.49"],
       "ref"  : "origin/main-panda",
       "repo" : "git@github.com:timcheng98/nft-app-next.git",
-      "path" : "/var/www/html/nft-app-next",
+      "path" : "/var/www/html/sqaut-panda",
       "post-deploy": 'npm ci && npm run build && pm2 startOrRestart ecosystem.config.js --env development'
     }
   }
