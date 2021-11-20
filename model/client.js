@@ -7,29 +7,29 @@ const web3 = new Web3(
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
-const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
-const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
+// const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
+// const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
 
-	if (pathname === '/') {
-		const totalSupply = await contract.methods.totalSupply().call();
-		const latestNFTs = await getLatestNfts(totalSupply);
-		_.assign(clientProps, latestNFTs);
-	}
-	if (pathname === '/marketplace') {
-		const totalSupply = await contract.methods.totalSupply().call();
-		const collections = await getAllNFTs(totalSupply);
-		_.assign(clientProps, collections);
-	}
+	// if (pathname === '/') {
+	// 	const totalSupply = await contract.methods.totalSupply().call();
+	// 	const latestNFTs = await getLatestNfts(totalSupply);
+	// 	_.assign(clientProps, latestNFTs);
+	// }
+	// if (pathname === '/marketplace') {
+	// 	const totalSupply = await contract.methods.totalSupply().call();
+	// 	const collections = await getAllNFTs(totalSupply);
+	// 	_.assign(clientProps, collections);
+	// }
 	if (pathname === '/collection/[id]') {
 		const collection = await getNFTsSingle(params.id);
-		_.assign(clientProps, collection);
+		_.assign(clientProps, []);
 	}
-	if (pathname === '/traits') {
-		_.assign(clientProps, { rarity });
-	}
+	// if (pathname === '/traits') {
+	// 	_.assign(clientProps, { rarity });
+	// }
 
 	return {
 		props: {
@@ -40,15 +40,15 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 };
 
 export async function getCustomStaticPaths() {
-	const totalSupply = await contract.methods.totalSupply().call();
-	const paths = _.times(totalSupply, (item) => {
-		return {
-			params: { id: `${item}` },
-		};
-	});
+	// const totalSupply = await contract.methods.totalSupply().call();
+	// const paths = _.times(totalSupply, (item) => {
+	// 	return {
+	// 		params: { id: `${item}` },
+	// 	};
+	// });
 
 	// console.log("paths", paths);
-	return { paths, fallback: false };
+	return { paths: [], fallback: false };
 }
 
 export const getCustomServerSideProps = async (req, res) => {
