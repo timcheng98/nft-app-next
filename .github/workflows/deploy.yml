@@ -14,5 +14,6 @@ jobs:
           key: ${{secrets.SSH_KEY}} # Private or public key of the server
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
       - name: Deploy
-        run: pm2 deploy ecosystem.config.js testing
-        echo 'Deployment successful to digital ocean' 
+        run: |
+          pm2 deploy ecosystem.config.js testing
+          echo 'Deployment successful to digital ocean' 
