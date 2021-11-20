@@ -17,5 +17,6 @@ jobs:
           script: |
             cd ..
             cd var/www/html/squat-panda
-            git pull origin main-panda && npm ci && npm run build && pm2 startOrRestart ecosystem.config.js --env development
+            npm i -g pm2
+            pm2 deploy ecosystem.config.js testing
             echo 'Deployment successful to digital ocean' 
