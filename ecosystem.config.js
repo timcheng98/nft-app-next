@@ -1,6 +1,6 @@
 module.exports = {
   apps : [{
-    name   : "nft-panda",
+    name   : "nft-panda1",
     script : "npm",
     args: "start",
     env_production: {
@@ -17,7 +17,7 @@ module.exports = {
       "ref"  : "origin/main-panda",
       "repo" : "git@github.com:timcheng98/nft-app-next.git",
       "path" : "/var/www/html/squat-panda",
-      "post-deploy": 'pm2 startOrRestart ecosystem.config.js'
+      "post-deploy": 'pm2 startOrRestart ecosystem.config.js '
     }
   }
 }
