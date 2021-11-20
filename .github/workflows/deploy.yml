@@ -15,7 +15,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }} # User of the server you want to ssh into
      
           script: |
-            mkdir test 
-            cd test 
-            git clone git@github.com:Mulubwa17/ci-cd-to-digitalocean-with-github-actions.git 
+            cd ..
+            cd var/www/html/squat-panda
+            git pull origin main-panda && npm ci && npm run build && npm start ecosystem.config.js
             echo 'Deployment successful to digital ocean' 
