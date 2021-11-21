@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const defaultLoader = ({ src, width, quality }) => {
-	return `https://wallstreetbets-nft.com/${src}?w=${width}&q=${quality || 50}`;
+	return `https://squatpanda.online/${src}?w=${width}&q=${quality || 50}`;
 };
 
 const externalLoader = ({ src, width, quality }) => {
