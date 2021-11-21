@@ -1,7 +1,7 @@
 name: Build & Deploy
 on:
   push:
-    branches: [main-panda]
+    branches: [main-panda-testing]
 
 jobs:
   deploy:
