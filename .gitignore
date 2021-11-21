@@ -35,3 +35,4 @@ yarn-error.log*
 
 /config/local.js
 /config/production.js
+/src/util/serviceAccountKey.json

@@ -7,14 +7,13 @@ import FAQ from '../components/FAQ';
 import React, { useState, useEffect } from 'react';
 import {
 	getCustomStaticProps,
-	getCustomServerSideProps,
 } from '../model/client';
-import { fetchData } from '../redux/data/dataActions';
-import { useDispatch, useSelector } from 'react-redux';
+// import { fetchData } from '../redux/data/dataActions';
+// import { useDispatch, useSelector } from 'react-redux';
 
 import Link from 'next/link';
 import _ from 'lodash';
-import axios from 'axios';
+// import axios from 'axios';
 import defaultStyles from '../core/theme/styles';
 import MintingPanel from '../components/MintingPanel';
 
@@ -42,7 +41,7 @@ const Home = (props) => {
 
 	return (
 		<AppLayout fullWidth>
-			<Head title="Home | Crypto WallStreetBets NFT" description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections" />
+			<Head title="Crypto WallStreetBets NFT" description="Crypto WallStreetBets NFT - Information the Crypto WallStreetBets NFT and show the latest minted collections" />
 			<div className='home-section-card'>
 				<Row
 					gutter={[0, 40]}
@@ -50,7 +49,7 @@ const Home = (props) => {
 					align='middle'
 					style={{ minHeight: 300 }}
 				>
-					<Col xs={22} md={14}>
+					<Col xs={22} sm={22} md={9} lg={12}>
 						<Row gutter={[0, 10]}>
 							<Col span={22}>
 								<span
@@ -63,7 +62,7 @@ const Home = (props) => {
 									Crypto WallStreetBets
 								</span>
 							</Col>
-							<Col span={20} style={{}}>
+							<Col span={22} style={{}}>
 								<span style={defaultStyles.subHeader}>
 									Crypto WallStreetBets is a tribute to the digital collectibles
 									created by anonymous developers, and innovative algorithms.
@@ -101,7 +100,7 @@ const Home = (props) => {
 									</Col>
 								</Row>
 							</Col>
-							<Col xs={0} md={0} md={24} style={{ marginTop: 30 }}>
+							<Col xs={0} sm={0} md={22} style={{ marginTop: 30 }}>
 								<Row justify='center'>
 									{_.map(_.reverse(_.slice(latest_nfts, 0, 8)), (item) => {
 										return (
@@ -131,7 +130,7 @@ const Home = (props) => {
 							</Col>
 						</Row>
 					</Col>
-					<Col xs={22} md={8}>
+					<Col xs={22} sm={22} md={12} lg={9}>
 						<MintingPanel size='small' />
 					</Col>
 				</Row>

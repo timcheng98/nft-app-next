@@ -5,6 +5,7 @@ import '../styles/globals.css';
 import store from '../redux/store';
 import { Provider } from 'react-redux';
 import Script from "next/script";
+import { Provider as AuthProvider } from 'next-auth/client'
 
 function MyApp({ Component, pageProps }) {
 	return (
@@ -23,9 +24,11 @@ function MyApp({ Component, pageProps }) {
           gtag('config', 'G-M1CBP04W8Y');
         `}
 			</Script>
+			<AuthProvider session={pageProps.session}>
 			<Provider store={store}>
 				<Component {...pageProps} />
 			</Provider>
+			</AuthProvider>
 		</>
 	);
 }

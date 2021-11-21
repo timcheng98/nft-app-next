@@ -7,11 +7,16 @@ const web3 = new Web3(
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
+// const BlogPostModel = require('./news');
+// import { connectToDatabase } from "../util/mongodb";
+
+
 const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
 const contract = new web3.eth.Contract(abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
+	// console.log(object)
 
 	if (pathname === '/') {
 		const totalSupply = await contract.methods.totalSupply().call();
@@ -27,8 +32,9 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		const collection = await getNFTsSingle(params.id);
 		_.assign(clientProps, collection);
 	}
+
 	if (pathname === '/traits') {
-		_.assign(clientProps, { rarity });
+		_.assign(clientProps, { rarity })
 	}
 
 	return {
@@ -38,6 +44,7 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		revalidate: 60 * 60, // 1 hour
 	};
 };
+
 
 export async function getCustomStaticPaths() {
 	const totalSupply = await contract.methods.totalSupply().call();
