@@ -21,7 +21,7 @@ const AppHeader = () => {
         backgroundColor: "#fff",
       }}
     >
-      <Col xs={22} md={23} style={{ backgroundColo: "#fff" }}>
+      <Col xs={22} md={22} style={{ backgroundColo: "#fff" }}>
         <Row
           justify="space-between"
           align="middle"
@@ -37,7 +37,7 @@ const AppHeader = () => {
                 <Image
                   draggable={false}
                   alt="icon"
-                  src="icon.gif"
+                  src="logo.png"
                   style={{ width: "100%", height: "100%", objectFit: "cover" }}
                   className="icon"
                 />
@@ -54,7 +54,7 @@ const AppHeader = () => {
                 margin: 0,
               }}
             >
-              Squat PandaF
+              Squat Panda
             </p>
           </Col>
           <Col md={8}>

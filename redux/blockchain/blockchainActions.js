@@ -1,12 +1,15 @@
-// constants
 import Web3 from "web3";
-// import SmartContract from "../../contracts/WallStreetBets.json";
 import SmartContract from "./abi.json";
-// log
 import _ from "lodash";
 import { fetchData } from "../data/dataActions";
 
-const testAddress = "0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A";
+const ID = {
+  TEST_NET: 80001,
+  MAIN_NET: 137
+}
+const NETWORK_ID = ID.TEST_NET
+const CONTRACT_ADDRESS = "0x5355b496F09bE260779a4E7CA6BC631D30bbAd96";
+
 const connectRequest = () => {
   return {
     type: "CONNECTION_REQUEST",
@@ -105,12 +108,10 @@ export const connect = () => {
 
         const NetworkData = await SmartContract.networks[networkId];
 
-        if (networkId == 137) {
-          // console.log('NetworkData.address', SmartContract.networks)
+        if (networkId == NETWORK_ID) {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract.abi,
-            // NetworkData.address,
-            testAddress
+            CONTRACT_ADDRESS
           );
 
           // console.log(currentAccount);
@@ -146,7 +147,6 @@ export const connect = () => {
           // Add listeners end
         } else {
           // dispatch(connectFailed('Change network to Polygon.'));
-
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
             params: [{ chainId: "0x89" }], // chainId must be in hexadecimal numbers
@@ -177,7 +177,7 @@ export const init = () => {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract.abi,
             // NetworkData.address
-            testAddress
+            CONTRACT_ADDRESS
           );
           dispatch(
             connectInit({

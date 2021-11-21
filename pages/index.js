@@ -104,10 +104,10 @@ const Home = (props) => {
                   </Col>
                 </Row>
               </Col> */}
-              <Col xs={0} md={0} md={24}>
+              <Col xs={0} sm={0} md={24}>
                 <Row>
                   <Col
-                    span={8}
+                    span={10}
                     style={{
                       backgroundColor: "#fff",
                       borderRadius: 30,
@@ -184,8 +184,17 @@ const Home = (props) => {
               </Col>
             </Row>
           </Col>
-          <Col xs={22} md={8}>
-            <MintingPanel size="small" />
+          <Col xs={18} md={6}>
+            {/* <MintingPanel size="small" /> */}
+            <div style={{ width: '100%', aspectRatio: '1/1' }}>
+                <Image
+                  draggable={false}
+                  alt="icon"
+                  src="logo.png"
+                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  className="icon"
+                />
+              </div>
           </Col>
         </Row>
       </div>
