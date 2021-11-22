@@ -1,5 +1,5 @@
 import AppLayout from "../components/AppLayout";
-import { Row, Col, Button, Divider, Progress } from "antd";
+import { Row, Col, Button, Divider, Progress, Carousel as AntdCarousel } from "antd";
 import Image from "../components/Image";
 import Head from "../components/Head";
 import Carousel from "react-multi-carousel";
@@ -17,6 +17,7 @@ import _ from "lodash";
 import axios from "axios";
 import defaultStyles from "../core/theme/styles";
 import MintingPanel from "../components/MintingPanel";
+import AirdropPanel from "../components/AirdropPandel";
 
 const responsive = {
   superLargeDesktop: {
@@ -37,6 +38,25 @@ const responsive = {
     items: 1,
   },
 };
+const responsiveHeader = {
+  superLargeDesktop: {
+    // the naming can be any, depends on you.
+    breakpoint: { max: 4000, min: 3000 },
+    items: 1,
+  },
+  desktop: {
+    breakpoint: { max: 3000, min: 1024 },
+    items: 1,
+  },
+  tablet: {
+    breakpoint: { max: 1024, min: 464 },
+    items: 1,
+  },
+  mobile: {
+    breakpoint: { max: 464, min: 0 },
+    items: 1,
+  },
+};
 const Home = (props) => {
   const { latest_nfts } = props;
 
@@ -46,6 +66,33 @@ const Home = (props) => {
         title="Squat Panda"
         description="Squat Panda - Information the Squat Panda and show the latest minted collections"
       />
+      <Carousel
+      swipeable
+      draggable
+      showDots
+      responsive={responsiveHeader}
+      ssr={true} // means to render carousel on server-side.
+      infinite={true}
+      autoPlay
+      autoPlaySpeed={3000}
+      keyBoardControl
+      // customTransition='all .5'
+      transitionDuration={3000}
+      containerClass="carousel-container"
+      removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+    // deviceType={this.props.deviceType}
+    // dotListClass='custom-dot-list-style'
+    // itemClass='carousel-item-padding-40-px'
+    >
+      <div style={{ width: "100%", position: 'relative' }}>
+          <Image src="banner.png" width={3} height={1} alt="banner"/>
+        </div>
+      <div style={{ width: "100%", position: 'relative' }}>
+          <Image src="banner2.jpg" width={3} height={1} alt="banner" className="banner"/>
+        </div>
+    </Carousel>
+        
+      
       <div className="home-section-card">
         <Row
           gutter={[0, 40]}
@@ -104,97 +151,20 @@ const Home = (props) => {
                   </Col>
                 </Row>
               </Col> */}
-              <Col xs={0} sm={0} md={24}>
-                <Row>
-                  <Col
-                    span={10}
-                    style={{
-                      backgroundColor: "#fff",
-                      borderRadius: 30,
-                      padding: "0px 0px 20px 0px",
-                      border: "2px solid #f5f5f5",
-                      minHeight: 200,
-                    }}
-                  >
-                    <Row justify="center" gutter={[0, 30]}>
-                      <Col
-                        span={24}
-                        style={{
-                          ...defaultStyles.header,
-                          textAlign: "center",
-                          borderTopRightRadius: 30,
-                          borderTopLeftRadius: 30,
-                          padding: "0px 30px",
-                          height: 60,
-                          backgroundColor: "#f7f7f7",
-                          //   borderBottom: '3px solid #2b2b2b'
-                        }}
-                      >
-                        <Row
-                          justify="center"
-                          style={{ height: 60 }}
-                          align="middle"
-                        >
-                          <Col>Airdrop</Col>
-                        </Row>
-                      </Col>
-
-                      <Col span={18}>
-                        <Progress
-                          strokeWidth={40}
-                          strokeColor={"rgb(239, 199, 108)"}
-                          percent={40}
-                          showInfo={false}
-                          status="active"
-                        />
-                        <span
-                          style={{
-                            color: "#2b2b2b",
-                            position: "absolute",
-                            top: "50%",
-                            left: "50%",
-                            fontSize: 18,
-                            fontWeight: "bold",
-                            transform: "translate(-50%, -50%)",
-                          }}
-                        >
-                          5 / 1000
-                        </span>
-                      </Col>
-                      <Col span={18} style={{ paddingBottom: 10 }}>
-                        <Link passHref href="/mint">
-                          <Button
-                            className="app-button"
-                            style={{
-                              height: 50,
-                              fontWeight: "bold",
-                              borderBottomWidth: 3,
-                              width: "100%",
-                              backgroundColor: "#fff",
-                              color: "#2b2b2b",
-                            }}
-                          >
-                            Claim NFT
-                          </Button>
-                        </Link>
-                      </Col>
-                    </Row>
-                  </Col>
-                </Row>
-              </Col>
+              <Col xs={22} md={12}><AirdropPanel /></Col>
             </Row>
           </Col>
           <Col xs={18} md={6}>
             {/* <MintingPanel size="small" /> */}
             <div style={{ width: '100%', aspectRatio: '1/1' }}>
-                <Image
-                  draggable={false}
-                  alt="icon"
-                  src="logo.png"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  className="icon"
-                />
-              </div>
+              <Image
+                draggable={false}
+                alt="icon"
+                src="logo.png"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                className="icon"
+              />
+            </div>
           </Col>
         </Row>
       </div>
@@ -306,9 +276,9 @@ const CollectionCarousel = ({ collections }) => {
       transitionDuration={2000}
       containerClass="carousel-container"
       removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-      // deviceType={this.props.deviceType}
-      // dotListClass='custom-dot-list-style'
-      // itemClass='carousel-item-padding-40-px'
+    // deviceType={this.props.deviceType}
+    // dotListClass='custom-dot-list-style'
+    // itemClass='carousel-item-padding-40-px'
     >
       {_.map(collections, (item) => {
         return <CollectionItem key={item} item={item} />;

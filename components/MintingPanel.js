@@ -31,8 +31,8 @@ const MintingPanel = ({ size = "normal" }) => {
 
 
   useEffect(() => {
-    let target = 80;
-    let increment = 1;
+    let target = 500;
+    let increment = 5;
     interval.current = setInterval(() => {
       if (value.current >= target) return clearInterval(interval.current);
 	  value.current += increment
@@ -118,7 +118,7 @@ const MintingPanel = ({ size = "normal" }) => {
               <Progress
                 strokeWidth={40}
                 strokeColor={'rgb(239, 199, 108)'}
-                percent={percent}
+                percent={percent / 1000 * 100}
                 showInfo={false}
                 status="active"
               />
@@ -133,7 +133,7 @@ const MintingPanel = ({ size = "normal" }) => {
                   transform: "translate(-50%, -50%)",
                 }}
               >
-                5 / 1000
+                {percent} / 1000
               </span>
             </Col>
           </Row>

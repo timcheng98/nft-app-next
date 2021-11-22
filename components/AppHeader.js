@@ -33,13 +33,13 @@ const AppHeader = () => {
         >
           <Link passHref href="/">
             <Col xs={3} sm={4} md={8} style={{ cursor: "pointer" }}>
-              <div style={{ width: 60, height: 60 }}>
+              <div style={{ width: 80, height: 80, position: 'absolute', top: -20, zIndex: 1 }}>
                 <Image
                   draggable={false}
                   alt="icon"
                   src="logo.png"
-                  style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                  className="icon"
+                  // style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  className="panda-icon"
                 />
               </div>
             </Col>

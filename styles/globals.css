@@ -21,6 +21,16 @@ a {
   border-radius: 100%;
 }
 
+.panda-icon {
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.panda-icon:hover {
+  transform: scale(0.9);
+  transition: all 0.2s;
+}
+
 .app-button {
   -webkit-box-align: center;
   align-items: center;
@@ -138,6 +148,9 @@ a {
   opacity: 0.65;
   cursor: pointer;
   transition: all 0.3s ease-in-out;
+}
+.banner {
+  object-fit: cover;
 }
 
 .home-section-card {

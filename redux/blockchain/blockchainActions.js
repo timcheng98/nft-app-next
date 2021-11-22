@@ -153,7 +153,7 @@ export const connect = () => {
           });
         }
       } catch (err) {
-        dispatch(connectFailed("Something went wrong."));
+        // dispatch(connectFailed("Something went wrong."));
       }
     } else {
       dispatch(connectFailed("Install Metamask."));
@@ -189,7 +189,7 @@ export const init = () => {
           dispatch(connectFailed("Change network to Polygon."));
         }
       } catch (err) {
-        dispatch(connectFailed("Something went wrong."));
+        // dispatch(connectFailed("Something went wrong."));
       }
     } else {
       dispatch(connectFailed("Install Metamask."));
