@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const defaultLoader = ({ src, width, quality }) => {
-	return `https://squatpanda.online/${src}?w=${width}&q=${quality || 50}`;
+	return `${process.env.NEXT_PUBLIC_STATICE_SERVER_URL}/${src}?w=${width}&q=${quality || 50}`;
 };
 
 const externalLoader = ({ src, width, quality }) => {

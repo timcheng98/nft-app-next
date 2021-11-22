@@ -7,8 +7,8 @@ const ID = {
   TEST_NET: 80001,
   MAIN_NET: 137
 }
-const NETWORK_ID = ID.TEST_NET
-const CONTRACT_ADDRESS = "0x5355b496F09bE260779a4E7CA6BC631D30bbAd96";
+const NETWORK_ID = process.env.NEXT_PUBLIC_NETWORK_ID
+const CONTRACT_ADDRESS = process.env.NETX_PUBLIC_CONTRACT_ADDRESS;
 
 const connectRequest = () => {
   return {
