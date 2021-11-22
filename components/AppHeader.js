@@ -27,13 +27,13 @@ const AppHeader = () => {
           align="middle"
           style={{
             minHeight: "inherit",
-            padding: "10px 0px",
+            padding: "10x 0px",
             backgroundColor: "#fff",
           }}
         >
           <Link passHref href="/">
             <Col xs={3} sm={4} md={8} style={{ cursor: "pointer" }}>
-              <div style={{ width: 80, height: 80, position: 'absolute', top: -20, zIndex: 1 }}>
+              <div style={{ width: 70, height: '100%', padding: '5px' }}>
                 <Image
                   draggable={false}
                   alt="icon"
