@@ -15,6 +15,7 @@ import defaultStyles from "../core/theme/styles";
 import Link from "next/link";
 
 const AppTabBar = () => {
+
   const router = useRouter();
   const [activeKey, setActiveKey] = useState("home");
   const [clicked, setClicked] = useState(false);
@@ -56,7 +57,7 @@ const AppTabBar = () => {
         fontSize: 20,
         color: '#bd4f6c'
       }}>Mint</span>,
-      icon: <Button shape="circle" className="fire" icon={<FireFill style={{ fontSize: 32, }} />} />,
+      icon: <Button shape="circle" className="fire" icon={<FireFill className="fire-scale" style={{ fontSize: 32, }} />} />,
     },
     {
       key: "market",

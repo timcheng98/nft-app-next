@@ -19,6 +19,7 @@ const AppHeader = () => {
         minHeight: 60,
         zIndex: 9999,
         backgroundColor: "#fff",
+        boxShadow: 'rgba(0, 0, 0, 0.1) 0px 4px 12px'
       }}
     >
       <Col xs={22} md={22} style={{ backgroundColo: "#fff" }}>
@@ -56,8 +57,7 @@ const AppHeader = () => {
             >
               Squat Panda
             </p> */}
-            <div style={{ width: '70%', margin: 'auto', height: '100%', padding: '5px' }}>
-
+            <div className="logo" style={{ width: '100%', position: 'absolute', bottom: 13, zIndex: 99, margin: 'auto', height: '100%', padding: '5px' }}>
               <Image
                 draggable={false}
                 alt="icon"
