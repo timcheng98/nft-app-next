@@ -19,6 +19,7 @@ import defaultStyles from "../core/theme/styles";
 import MintingPanel from "../components/MintingPanel";
 import AirdropPanel from "../components/AirdropPanel";
 
+
 const responsive = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -57,6 +58,7 @@ const responsiveHeader = {
     items: 1,
   },
 };
+
 const Home = (props) => {
   const { latest_nfts } = props;
 
@@ -67,32 +69,31 @@ const Home = (props) => {
         description="Squat Panda - Information the Squat Panda and show the latest minted collections"
       />
       <Carousel
-      swipeable
-      draggable
-      showDots
-      responsive={responsiveHeader}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      autoPlay
-      autoPlaySpeed={3000}
-      keyBoardControl
-      // customTransition='all .5'
-      transitionDuration={3000}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-    // deviceType={this.props.deviceType}
-    // dotListClass='custom-dot-list-style'
-    // itemClass='carousel-item-padding-40-px'
-    >
-      <div style={{ width: "100%", position: 'relative' }}>
-          <Image src="banner.png" width={3} height={1} alt="banner"/>
+        swipeable
+        draggable={false}
+        showDots
+        responsive={responsiveHeader}
+        ssr={true} // means to render carousel on server-side.
+        infinite={true}
+        autoPlay
+        autoPlaySpeed={2500}
+        keyBoardControl
+        // customTransition='all .5'
+        transitionDuration={2000}
+        containerClass="carousel-container"
+        removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
+      // deviceType={this.props.deviceType}
+      // dotListClass='custom-dot-list-style'
+      // itemClass='carousel-item-padding-40-px'
+      >
+        <div style={{ width: "100%", position: 'relative' }}>
+          <Image src="banner.jpg" width={3} height={1} alt="banner" />
         </div>
-      <div style={{ width: "100%", position: 'relative' }}>
-          <Image src="banner2.jpg" width={3} height={1} alt="banner" className="banner"/>
+        <div style={{ width: "100%", position: 'relative' }}>
+          <Image src="banner2.jpg" width={3} height={1} alt="banner" className="banner" />
         </div>
-    </Carousel>
-        
-      
+      </Carousel>
+
       <div className="home-section-card">
         <Row
           gutter={[0, 40]}
@@ -101,16 +102,17 @@ const Home = (props) => {
           style={{ minHeight: 300 }}
         >
           <Col xs={22} md={14}>
-            <Row gutter={[0, 10]}>
-              <Col span={22}>
+            <Row gutter={[0, 20]}>
+              <Col span={22} style={{ margin: '40px 0px 20px 0px' }}>
                 <span
                   style={{
                     color: "#2b2b2b",
-                    fontSize: 48,
+                    fontSize: 60,
+                    lineHeight: 1.2,
                     fontWeight: "600",
                   }}
                 >
-                  Squat Panda
+                  Welcome to <br />Squat Panda
                 </span>
               </Col>
               <Col span={20} style={{}}>
@@ -151,7 +153,7 @@ const Home = (props) => {
                   </Col>
                 </Row>
               </Col> */}
-              <Col xs={22} md={12}><AirdropPanel /></Col>
+              <Col xs={24} md={12}><AirdropPanel /></Col>
             </Row>
           </Col>
           <Col xs={18} md={6}>
@@ -168,6 +170,9 @@ const Home = (props) => {
           </Col>
         </Row>
       </div>
+    <div>
+    <ParallaxImage/>
+    </div>
       <Row justify="center" style={{ marginTop: 40 }}>
         <Col span={20}>
           <h1

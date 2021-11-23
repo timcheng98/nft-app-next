@@ -44,9 +44,9 @@ const AppHeader = () => {
               </div>
             </Col>
           </Link>
-          <Col xs={0} md={8}>
+          <Col xs={0} md={5} lg={4}>
             {" "}
-            <p
+            {/* <p
               style={{
                 ...defaultStyles.subHeader,
                 fontSize: 24,
@@ -55,7 +55,19 @@ const AppHeader = () => {
               }}
             >
               Squat Panda
-            </p>
+            </p> */}
+            <div style={{ width: '70%', margin: 'auto', height: '100%', padding: '5px' }}>
+
+              <Image
+                draggable={false}
+                alt="icon"
+                src="brand-logo.png"
+                width={2.5}
+                height={1}
+                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                className="panda-icon"
+              />
+            </div>
           </Col>
           <Col md={8}>
             <Row justify="end">

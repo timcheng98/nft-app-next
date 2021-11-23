@@ -1,4 +1,5 @@
 import { Badge, TabBar, Popover, List } from "antd-mobile";
+import { Button } from 'antd'
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import {
@@ -44,14 +45,18 @@ const AppTabBar = () => {
       icon: <AppstoreOutline />,
     },
     {
-      key: "mint",
-      title: <span style={defaultStyles.tabBarTitle}>Mint</span>,
-      icon: <FireFill />,
-    },
-    {
       key: "collection",
       title: <span style={defaultStyles.tabBarTitle}>Collection</span>,
       icon: <GiftOutline />,
+    },
+    {
+      key: "mint",
+      title: <span style={{
+        ...defaultStyles.tabBarTitle,
+        fontSize: 20,
+        color: '#bd4f6c'
+      }}>Mint</span>,
+      icon: <Button shape="circle" className="fire" icon={<FireFill style={{ fontSize: 32, }} />} />,
     },
     {
       key: "market",
@@ -68,13 +73,13 @@ const AppTabBar = () => {
             content={
               <div style={{ width: 80 }}>
                 <Link href="/news">
-                  <h3 style={{...defaultStyles.tabBarTitle, cursor: "pointer"}}>
+                  <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
                     <ContentOutline style={{ marginRight: 5 }} />{' '} News
                   </h3>
                 </Link>
                 <Link href="/traits">
-                <h3 style={{...defaultStyles.tabBarTitle, cursor: "pointer"}}>
-                    <PieOutline  style={{ marginRight: 5 }} />{' '} Rarity
+                  <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
+                    <PieOutline style={{ marginRight: 5 }} />{' '} Rarity
                   </h3>
                 </Link>
               </div>

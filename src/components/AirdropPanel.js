@@ -29,9 +29,9 @@ const AirdropPanel = () => {
         style={{
           backgroundColor: "#fff",
           borderRadius: 30,
-          padding: "0px 0px 20px 0px",
+          // padding: "0px 0px 20px 0px",
           border: "2px solid #f5f5f5",
-          minHeight: 200,
+          minHeight: 250,
           boxShadow: '0px 3px 10px rgb(0 0 0 / 0.2)'
         }}
       >
@@ -43,7 +43,7 @@ const AirdropPanel = () => {
               textAlign: "center",
               borderTopRightRadius: 30,
               borderTopLeftRadius: 30,
-              padding: "0px 30px",
+              // padding: "0px 30px",
               height: 60,
               backgroundColor: "#f7f7f7",
               //   borderBottom: '3px solid #2b2b2b'
