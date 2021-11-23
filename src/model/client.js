@@ -12,6 +12,7 @@ const _ = require('lodash');
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
+	// console.log(object)
 
 	// if (pathname === '/') {
 	// 	const totalSupply = await contract.methods.totalSupply().call();
@@ -38,6 +39,7 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		revalidate: 60 * 60, // 1 hour
 	};
 };
+
 
 export async function getCustomStaticPaths() {
 	// const totalSupply = await contract.methods.totalSupply().call();

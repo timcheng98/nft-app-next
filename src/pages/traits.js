@@ -68,7 +68,7 @@ const Traits = (props) => {
 											span={8}
 											style={{
 												...defaultStyles.header,
-												textAlign: 'end',
+												textAlign: 'start',
 												fontSize: 16,
 											}}
 										>
@@ -78,7 +78,7 @@ const Traits = (props) => {
 											span={8}
 											style={{
 												...defaultStyles.header,
-												textAlign: 'end',
+												textAlign: 'start',
 												fontSize: 16,
 											}}
 										>
@@ -88,7 +88,7 @@ const Traits = (props) => {
 											span={8}
 											style={{
 												...defaultStyles.header,
-												textAlign: 'end',
+												textAlign: 'start',
 												fontSize: 16,
 											}}
 										>
