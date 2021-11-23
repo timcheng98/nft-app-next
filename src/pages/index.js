@@ -17,7 +17,7 @@ import _ from "lodash";
 import axios from "axios";
 import defaultStyles from "../core/theme/styles";
 import MintingPanel from "../components/MintingPanel";
-import AirdropPanel from "../components/AirdropPandel";
+import AirdropPanel from "../components/AirdropPanel";
 
 const responsive = {
   superLargeDesktop: {

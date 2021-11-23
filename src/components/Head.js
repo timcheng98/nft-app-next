@@ -2,23 +2,22 @@ import Head from 'next/head';
 
 import React from 'react';
 
-const Header = ({ title = 'Crypto WallStreetBets NFT', description }) => {
+const Header = ({ title = 'Squat Panda', description }) => {
 	return (
 		<div>
 			<Head>
 				<title>{title}</title>
-				<link rel='icon' href='/favicon.ico' />
-				<link rel='apple-touch-icon' href='/apple-touch-icon.png' />
-				<link rel='manifest' href='/manifest.json' />
+				<link rel='icon' href='https://www.squatpanda.online/favicon.ico' />
+				<link rel='apple-touch-icon' href='https://www.squatpanda.online/apple-touch-icon.png' />
+				<link rel='manifest' href='https://www.squatpanda.online/manifest.json' />
 				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				<meta name='description' content={description} />
 				<meta property='og:title' content={title} key='title' />
-				<meta property='og:image' content='/banner.png' key='image' />
-				<meta charset="UTF-8" /> 
+				<meta charSet="UTF-8" /> 
 				<meta name="robots" content="noindex,nofollow" />
 				<meta property='og:type' content='article' />
-				<meta property='og:url' content='https://wallstreetbets-nft.com' />
-				<meta property='og:site_name' content='Crypto WallStreetBets NFT' />
+				<meta property='og:url' content='https://squatpanda.online' />
+				<meta property='og:site_name' content='Squat Panda NFT' />
 				<meta
 					property='og:description'
 					content={description}
@@ -37,7 +36,7 @@ const Header = ({ title = 'Crypto WallStreetBets NFT', description }) => {
 				/>
 				<meta
 					name='twitter:image'
-					content='/banner.png'
+					content='https://www.squatpanda.online/banner.png'
 					key="twitter:image"
 				/>
 			</Head>

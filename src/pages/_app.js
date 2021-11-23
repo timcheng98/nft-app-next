@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
 		<>
 			<Script
 				strategy='lazyOnload'
-				src={`https://www.googletagmanager.com/gtag/js?id=G-M1CBP04W8Y`}
+				src={`https://www.googletagmanager.com/gtag/js?id=G-G-KCS5NDV94X`}
 			/>
 
 			<Script strategy='lazyOnload'>
@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }) {
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
-          gtag('config', 'G-M1CBP04W8Y');
+          gtag('config', 'G-G-KCS5NDV94X');
         `}
 			</Script>
 			<AuthProvider session={pageProps.session}>

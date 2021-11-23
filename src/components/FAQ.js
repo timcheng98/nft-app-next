@@ -56,7 +56,7 @@ const FAQ = () => {
 							This is an inclusive collection and all Squat Panda were
 							priced at <strong>100</strong> MATIC in the primary market to make
 							it affordable for everyone to collect! This project is inspired by
-							the Reddit's WallStreetBets.
+							the Reddit's Squat Panda.
 						</span>
 					</Panel>
 					<Panel
@@ -65,14 +65,14 @@ const FAQ = () => {
 					>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
 							During many weeks of late nights and long weekends each Crypto
-							WallStreetBets was made individually in a vector based app,
+							Squat Panda was made individually in a vector based app,
 							exported and uploaded to OpenSea.
 							<br />
 							<br />
 							There must have been an easier way to do this, but the creator of
 							the Squat Panda was new to the NFT space and just jumped
 							in using the apps he was familiar with to make the Crypto
-							WallStreetBets's.
+							Squat Panda's.
 							<br />
 							<br />
 							The Squat Panda were made to be affordable for everyone
@@ -111,7 +111,7 @@ const FAQ = () => {
 							<a
 								rel='noreferrer'
 								style={{ color: '#1E90FF' }}
-								href='https://opensea.io/collection/crypto-wallstreetbets-nft'
+								href='https://opensea.io/collection/crypto-Squat Panda-nft'
 								target='_blank'
 							>
 								Visit
@@ -136,7 +136,7 @@ const FAQ = () => {
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
 							The Collection is limited to 9630 mints max.All have been minted,
 							the secondary market is the only way to obtain a Crypto
-							WallStreetBets for your collection.
+							Squat Panda for your collection.
 						</span>
 					</Panel>
 					<Panel title='6. How do I get a NFT wallet?' key='6'>

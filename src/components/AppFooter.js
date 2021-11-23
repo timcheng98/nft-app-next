@@ -15,7 +15,7 @@ const AppFooter = () => {
 					<Col xs={4} md={2} style={{ textAlign: 'center' }}>
 						<a
 							rel='noreferrer'
-							href='https://twitter.com/NFT_WSB'
+							href='https://twitter.com/SquatPanda'
 							target='_blank'
 						>
 							<TwitterOutlined style={{ fontSize: 32 }} />
