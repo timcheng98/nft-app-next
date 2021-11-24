@@ -18,6 +18,8 @@ import axios from "axios";
 import defaultStyles from "../core/theme/styles";
 import MintingPanel from "../components/MintingPanel";
 import AirdropPanel from "../components/AirdropPanel";
+import Partners from "../components/Partners";
+import Team from "../components/Team";
 
 
 const responsive = {
@@ -119,7 +121,7 @@ const Home = (props) => {
                 <span style={defaultStyles.subHeader}>
                   Squat Panda is a tribute to the digital collectibles
                   created by anonymous developers, and innovative algorithms.
-                  These 9630 pieces of artworks are inspired by the famous WSB
+                  These 10,000 pieces of artworks are inspired by the famous WSB
                   events, recalling the inner artist in you.
                 </span>
               </Col>
@@ -189,51 +191,9 @@ const Home = (props) => {
         </Col>
       </Row>
       <FAQ />
-      <Row style={{ backgroundColor: 'rgb(109, 40, 217)' }}>
-      <Col span={24}>
-        <h1
-            style={{
-              color: "#fff",
-              fontSize: 48,
-              fontWeight: "600",
-              textAlign: 'center'
-            }}
-          >
-            The Team
-          </h1>
-        </Col>
-      </Row>
-      <Row>
-      <Col span={24}>
-        <h1
-            style={{
-              color: "#2b2b2b",
-              fontSize: 48,
-              fontWeight: "600",
-              textAlign: 'center'
-            }}
-          >
-            Our Partners
-          </h1>
-        </Col>
-      </Row>
-      <Row justify="center" style={{ margin: 10 }}>
-        <Col span={6} style={{ background: 'rgb(230, 245, 255)', border: '1px solid #e5e5e5', borderBottomWidth: 5, margin: '20px 20px', borderRadius: 30, padding: 30, height: 120 }}>
-          <img style={{ objectFit: 'contain', width: '100%', height: '100%'}}  src="opensea.png" alt="opensea" />
-        </Col>
-        <Col span={6} style={{ background: 'rgb(230, 245, 255)', border: '1px solid #e5e5e5', borderBottomWidth: 5, margin: '20px 20px', borderRadius: 30, padding: 30, height: 120 }}>
-          <img style={{ objectFit: 'contain', width: '100%', height: '100%'}}  src="polygon-logo.svg" alt="polygon network" />
-        </Col>
-
-      </Row>
-      <Row justify="center" style={{ margin: 10}}>
-      <Col span={6} style={{ background: 'rgb(230, 245, 255)', border: '1px solid #e5e5e5', borderBottomWidth: 5, margin: '20px 20px', borderRadius: 30, padding: 30, height: 120 }}>
-          <img style={{ objectFit: 'contain', width: '100%', height: '100%'}}  src="IPFS_logo.png" alt="ipfs" />
-        </Col>
-        <Col span={6} style={{ background: 'rgb(230, 245, 255)', border: '1px solid #e5e5e5', borderBottomWidth: 5, margin: '20px 20px', borderRadius: 30, padding: 30, height: 120 }}>
-          <img style={{ objectFit: 'contain', width: '100%', height: '100%'}}  src="wwf.png" alt="wwf" />
-        </Col>
-      </Row>
+        <Team />
+      
+      <Partners />
     </AppLayout>
   );
 };
