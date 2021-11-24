@@ -20,6 +20,7 @@ import MintingPanel from "../components/MintingPanel";
 import AirdropPanel from "../components/AirdropPanel";
 import Partners from "../components/Partners";
 import Team from "../components/Team";
+import RoadMap from "../components/RoadMap";
 
 
 const responsive = {
@@ -190,8 +191,9 @@ const Home = (props) => {
           <CollectionCarousel collections={latest_nfts} />
         </Col>
       </Row>
+      <RoadMap />
       <FAQ />
-        <Team />
+      <Team />
       
       <Partners />
     </AppLayout>
