@@ -7,31 +7,31 @@ export const getPosts = async () => {
   // console.log('db', db)
   // await db.collection('posts').doc('ttitle').set(save_to_database[key][prod])
 
-  const snapshot = await firestore.collection("posts").get();
-  let posts = []
-  snapshot.docs.forEach((doc) => {
-    return posts.push({
-      id: doc.id,
-      ...doc.data(),
-      ctime: doc.createTime.seconds,
-      utime: doc.updateTime.seconds,
-    })
-  });
+  // const snapshot = await firestore.collection("posts").get();
+  // let posts = []
+  // snapshot.docs.forEach((doc) => {
+  //   return posts.push({
+  //     id: doc.id,
+  //     ...doc.data(),
+  //     ctime: doc.createTime.seconds,
+  //     utime: doc.updateTime.seconds,
+  //   })
+  // });
 
-  return _.orderBy(posts, 'ctime', 'desc');
+  return _.orderBy([], 'ctime', 'desc');
 };
 
 export const getSinglePost = async (id) => {
 
-  const doc = await firestore.collection("posts").doc(id).get();
-  let post = {
-    id,
-   ...doc.data(),
-      ctime: doc.createTime.seconds,
-      utime: doc.updateTime.seconds,
-  }
+  // const doc = await firestore.collection("posts").doc(id).get();
+  // let post = {
+  //   id,
+  //  ...doc.data(),
+  //     ctime: doc.createTime.seconds,
+  //     utime: doc.updateTime.seconds,
+  // }
 
-  return post;
+  return [];
 };
 
 export const createPost = async (id, dataObj) => {
@@ -53,14 +53,13 @@ export const getCustomStaticProps = async ({ params }, pathname, revalidate = 60
 	// console.log(object)
 
 	if (pathname === '/news/index') {
-		const posts = await getPosts()
-		_.assign(clientProps, { posts });
+		// const posts = await getPosts()
+		_.assign(clientProps, { posts: [] });
 	}
 	if (pathname === '/news/[id]') {
 
-		const post = await getSinglePost(params.id)
-		console.log(post)
-		_.assign(clientProps, { post });
+		// const post = await getSinglePost(params.id)
+		_.assign(clientProps, { post: {} });
 	}
 
 	return {
@@ -73,8 +72,8 @@ export const getCustomStaticProps = async ({ params }, pathname, revalidate = 60
 
 
 export async function getPostStaticPaths() {
-	const posts = await getPosts()
-	const paths = _.map(posts, (item) => {
+	// const posts = await getPosts()
+	const paths = _.map([], (item) => {
 		return {
 			params: { id: _.toString(item.id) }
 		}
