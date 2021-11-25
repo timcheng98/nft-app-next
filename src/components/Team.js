@@ -25,7 +25,7 @@ const Team = () => {
 						</h1>
 					</Col>
 				</Row>
-				<Row justify='center' gutter={[24, 24]}>
+				<Row justify='center' gutter={[0, 24]}>
 					<Col xs={22} md={14}>
 						<Row justify='space-between'>
 							<Col xs={24} md={10}>
@@ -111,7 +111,7 @@ const Team = () => {
 						</Row>
 					</Col>
 				</Row>
-				<Row justify='center' gutter={[24, 24]} style={{ marginTop: 24 }}>
+				<Row justify='center' gutter={[0, 24]} style={{ marginTop: 24 }}>
 					<Col xs={22} md={14}>
 						<Row justify='space-between'>
 							<Col xs={24} md={10}>

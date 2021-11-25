@@ -5,7 +5,7 @@ import { Row, Col, Affix } from 'antd';
 
 const AppLayout = ({ children, fullWidth = false }) => {
 	return (
-		<div style={{ backgroundColor: 'rgb(250, 249, 250)' }}>
+		<div style={{ backgroundColor: '#fff' }}>
 			<Affix style={{ backgroundColor: '#fff', zIndex: 9999 }}>
 				<AppHeader />
 			</Affix>

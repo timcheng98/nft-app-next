@@ -96,7 +96,7 @@ const MintingPanel = ({ size = "normal" }) => {
         >
           <Row justify="space-between">
             <Col span={4} style={defaultStyles.header}>
-              Mint
+              Airdrop
             </Col>
             <Col xs={13} md={size === "small" ? 12 : 7}>
               <Button
@@ -169,7 +169,10 @@ const MintingPanel = ({ size = "normal" }) => {
               </div>
             </Col>
 
-            <Col span={24}>
+            <Col
+            style={{                  display: 'none'
+          }}
+            span={24}>
               <Input
                 value={blockchain.account ? _.toInteger(amount) : undefined}
                 // defaultValue={1}
@@ -216,6 +219,7 @@ const MintingPanel = ({ size = "normal" }) => {
                 style={{
                   ...defaultStyles.card,
                   padding: "20px 20px",
+                  display: 'none'
                 }}
               >
                 <Row justify="center">
@@ -336,7 +340,7 @@ const MintingPanel = ({ size = "normal" }) => {
                 style={{ width: "100%", height: 50, fontSize: 20 }}
                 className="app-button"
               >
-                {blockchain.account ? "Mint" : "Connect Wallet"}
+                {blockchain.account ? "Claim" : "Connect Wallet"}
               </Button>
             </Col>
           </Row>

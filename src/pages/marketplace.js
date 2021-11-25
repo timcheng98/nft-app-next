@@ -39,7 +39,7 @@ const Marketplace = ({ collections }) => {
 					Marketplace
 				</Col>
 				<Col xs={22} md={18} style={defaultStyles.subBody}>
-				Squat Panda are 9630 art pieces with a one-of-a-kind digital
+				Squat Panda are 10,000 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.

@@ -50,7 +50,7 @@ const FAQ = () => {
 					<Panel title='1. What is Squat Panda?' key='1'>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
 							Squat Panda are a curated boutique collection of only{' '}
-							<strong>9630</strong> hand drawn nft's.
+							<strong>10,000</strong> hand drawn nft's.
 							<br />
 							<br />
 							This is an inclusive collection and all Squat Panda were
@@ -77,7 +77,7 @@ const FAQ = () => {
 							<br />
 							The Squat Panda were made to be affordable for everyone
 							and thus were listed at <strong>100</strong> MATIC in the primary
-							market. Over the next couple of months all <strong>9630</strong>{' '}
+							market. Over the next couple of months all <strong>10,000</strong>{' '}
 							Squat Panda were individually created.
 							<br />
 							<br />
@@ -134,7 +134,7 @@ const FAQ = () => {
 					</Panel>
 					<Panel title='5. Will more Squat Panda be minted?' key='5'>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
-							The Collection is limited to 9630 mints max.All have been minted,
+							The Collection is limited to 10,000 mints max.All have been minted,
 							the secondary market is the only way to obtain a Crypto
 							Squat Panda for your collection.
 						</span>

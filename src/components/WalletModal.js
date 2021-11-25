@@ -11,7 +11,7 @@ import {
 	clearErrorMsg,
 } from '../redux/blockchain/blockchainActions';
 import { useDispatch, useSelector } from 'react-redux';
-
+import Link from 'next/link'
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
 
 const WalletModal = ({ setVisible, visible }) => {
@@ -184,15 +184,18 @@ const AccountInfo = ({ setVisible }) => {
 						align='middle'
 						style={{ marginBottom: 20 }}
 					>
+						<Link href="/account">
 						<Col
 							style={{
 								...defaultStyles.subHeader,
 								color: '#2b2b2b',
+								cursor: 'pointer'
 							}}
 						>
 							Collection
 							<HeartOutline style={{ marginLeft: 5 }} />
 						</Col>
+						</Link>
 						<Col
 							style={{
 								...defaultStyles.subBody,

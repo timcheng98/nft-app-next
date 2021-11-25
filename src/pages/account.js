@@ -185,7 +185,7 @@ const Panel = () => {
 													className='app-button'
 													style={{ height: 50 }}
 												>
-													Mint
+													Airdrop
 												</Button>
 											</Link>
 										</Col>
@@ -196,9 +196,25 @@ const Panel = () => {
 						<Col span={11}>
 							<div style={defaultStyles.card}>
 								<p style={defaultStyles.subHeader}>Your NFTs</p>
-								<Row justify='space-between'>
+								<Row justify='space-around' gutter={[0, 20]}>
 									<Col
-										span={7}
+										span={10}
+										style={{
+											background: 'rgb(246, 246, 246)',
+											border: 'none',
+											color: 'rgb(40, 13, 95)',
+											fontSize: 14,
+											fontWeight: '600',
+											borderRadius: 15,
+											// height: 50,
+											textAlign: 'center',
+											padding: '10px 20px',
+										}}
+									>
+										Legendary <br />0
+									</Col>
+									<Col
+										span={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -214,7 +230,7 @@ const Panel = () => {
 										Super Rare <br />0
 									</Col>
 									<Col
-										span={7}
+										span={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -230,7 +246,7 @@ const Panel = () => {
 										Rare <br />0
 									</Col>
 									<Col
-										span={7}
+										span={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',

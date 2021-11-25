@@ -194,7 +194,6 @@ const Home = (props) => {
       <RoadMap />
       <FAQ />
       <Team />
-      
       <Partners />
     </AppLayout>
   );

@@ -10,6 +10,8 @@ import {
 	InputNumber,
 	notification,
 } from 'antd';
+import Image from "../components/Image";
+
 import defaultStyles from '../core/theme/styles';
 import { Popover } from 'antd-mobile';
 import React, { useState, useEffect } from 'react';
@@ -73,27 +75,35 @@ const Mint = () => {
 	};
 
 	return (
-		<AppLayout>
+		<AppLayout fullWidth>
 			<Header
 				title='Mint | Squat Panda'
 				description='Squat Panda - Mint the Squat Panda'
 			/>
 
-			<Row style={{ marginTop: 40 }}>
-				<Col span={24} style={defaultStyles.banner}>
-					Mint a Squat Panda
+			<Row justify="center" style={{ paddingTop: 40 }}>
+			<Col span={22}>
+			<Row>
+			<Col span={24} style={defaultStyles.banner}>
+					Claim a Squat Panda
 				</Col>
-				<Col xs={22} md={18} style={defaultStyles.subBody}>
-				Squat Panda are 9630 art pieces with a one-of-a-kind digital
+				<Col xs={22} md={14} style={defaultStyles.subBody}>
+				Squat Panda are 10,000 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.
 				</Col>
+				</Row>
+			</Col>
 			</Row>
 			<Divider />
-			<div style={{ marginBottom: 20 }}>
+			<div style={{ width: "100%", position: 'relative' }}>
+          <Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
+        </div>
+			<div style={{ marginBottom: 20  }}>
+		
 				<Row justify='center'>
-					<Col xs={24} md={10}>
+					<Col xs={24} md={8}>
 						<MintingPanel />
 					</Col>
 				</Row>
