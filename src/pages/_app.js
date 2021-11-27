@@ -2,7 +2,7 @@ import 'antd-mobile/es/global';
 import 'antd/dist/antd.css';
 import 'react-multi-carousel/lib/styles.css';
 import '../styles/globals.css';
-import store from '../redux/store';
+import store, { wrapper } from '../redux/store';
 import { Provider } from 'react-redux';
 import Script from "next/script";
 import { Provider as AuthProvider } from 'next-auth/client'

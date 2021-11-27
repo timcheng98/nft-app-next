@@ -1,7 +1,7 @@
 import axios from 'axios';
 import AppLayout from '../components/AppLayout';
 
-import { Row, Col, Button, Select, Divider } from 'antd';
+import { Row, Col, Button, Select, Divider, Grid } from 'antd';
 import defaultStyles from '../core/theme/styles';
 import _ from 'lodash';
 import { CollectionItem } from '../components/CollectionList';
@@ -11,6 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
 
+const { useBreakpoint } = Grid;
 const { Option } = Select;
 const Marketplace = ({ collections }) => {
 	const [loading, setLoading] = useState(false);
@@ -39,7 +40,7 @@ const Marketplace = ({ collections }) => {
 					Marketplace
 				</Col>
 				<Col xs={22} md={18} style={defaultStyles.subBody}>
-				Squat Panda are 10,000 art pieces with a one-of-a-kind digital
+					Squat Panda are 10,000 art pieces with a one-of-a-kind digital
 					collection of various NFTs that are stored on the Polygon Blockchain.
 					Each one has been meticulously created, hand-picked, and perfectly
 					formed.
@@ -121,7 +122,7 @@ const Marketplace = ({ collections }) => {
 				<Col xs={24} md={2}>
 					<Button
 						block
-						style={{ marginTop: 24 }}
+						style={{ marginTop: 24, minHeight: 44, fontSize: 18 }}
 						onClick={() => {
 							setRarities(null);
 							setSortBy(null);
@@ -134,7 +135,7 @@ const Marketplace = ({ collections }) => {
 					</Button>
 				</Col>
 			</Row>
-			<Row gutter={[20, 40]} justify='start'>
+			<Row gutter={[20, 40]} justify={useBreakpoint().xs ? 'center' : 'start'}>
 				{_.map(nfts, (item) => {
 					return (
 						<Col key={item} xs={18} sm={12} md={8} lg={6}>
@@ -143,23 +144,25 @@ const Marketplace = ({ collections }) => {
 					);
 				})}
 			</Row>
-			<Row justify='center' style={{ margin: '30px 0px' }}>
-				<Col xs={8} md={3}>
-					<Button
-						loading={loading}
-						disabled={loading}
-						onClick={() => loadMore()}
-						icon={<DownCircleOutlined style={{ marginTop: 5, fontSize: 20 }} />}
-						block
-						style={{
-							height: 50,
-						}}
-						className='app-button'
-					>
-						More
-					</Button>
-				</Col>
-			</Row>
+			{_.size(nfts) > 20 &&
+				<Row justify='center' style={{ margin: '30px 0px' }}>
+					<Col xs={8} md={3}>
+						<Button
+							loading={loading}
+							disabled={loading}
+							onClick={() => loadMore()}
+							icon={<DownCircleOutlined style={{ marginTop: 5, fontSize: 20 }} />}
+							block
+							style={{
+								height: 50,
+							}}
+							className='app-button'
+						>
+							More
+						</Button>
+					</Col>
+				</Row>
+			}
 		</AppLayout>
 	);
 };

@@ -22,6 +22,7 @@ import Partners from "../components/Partners";
 import Team from "../components/Team";
 import RoadMap from "../components/RoadMap";
 import CollectionList from "../components/CollectionList";
+import { init } from "../redux/blockchain/blockchainActions";
 
 
 
@@ -46,6 +47,20 @@ const responsiveHeader = {
 };
 
 const Home = (props) => {
+  const blockchain = useSelector((state) => state.blockchain);
+  const data = useSelector((state) => state.data);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!blockchain.smartContract) return;
+    dispatch(fetchData());
+  }, [blockchain.smartContract, dispatch]);
+
+
+	useEffect(() => {
+		dispatch(init())
+	}, [])
+
   const { latest_nfts } = props;
 
   return (
@@ -93,7 +108,7 @@ const Home = (props) => {
                 <span
                   style={{
                     color: "#2b2b2b",
-                    fontSize: 60,
+                    fontSize: 'calc(48px + 0.5vw)',
                     lineHeight: 1.2,
                     fontWeight: "600",
                   }}
@@ -184,8 +199,8 @@ const Home = (props) => {
       <div style={{ padding: '40px 0px'}}>
       <RoadMap />
       </div>
-      <FAQ />
       <Team />
+      <FAQ />
       <Partners />
     </AppLayout>
   );

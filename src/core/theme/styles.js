@@ -30,8 +30,8 @@ const defaultStyles = {
     borderBottomWidth: 3,
     paddingTop: 25,
     paddingBottom: 25,
-    paddingLeft: 40,
-    paddingRight: 40
+    paddingLeft: 25,
+    paddingRight: 25
     // padding: '25px 40px',
 
   }

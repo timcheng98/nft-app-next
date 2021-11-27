@@ -12,7 +12,7 @@ import { connect, disconnect } from '../redux/blockchain/blockchainActions';
 import { fetchAccountData } from '../redux/data/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
 import WalletModal from '../components/WalletModal';
-import { CollectionItem } from '.';
+import { CollectionItem } from '../components/CollectionList';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
 
@@ -31,19 +31,25 @@ const Account = () => {
 	};
 
 	return (
-		<AppLayout>
+		<AppLayout color="rgb(141, 102, 209)">
 			<Header
 				title='Account | Squat Panda'
 				description='Squat Panda - Account information the Squat Panda and show the owner collections'
 			/>
 
 			<Row justify='center' style={{ marginTop: 30 }}>
-				<Col span={20}>
+				<Col xs={22} md={20}>
 					<Row>
-						<Col span={24} style={defaultStyles.banner}>
+						<Col span={24} style={{
+							...defaultStyles.banner,
+							color: '#fff'
+						}}>
 							Collection
 						</Col>
-						<Col span={24} style={defaultStyles.subHeader}>
+						<Col span={24} style={{
+							...defaultStyles.subHeader,
+							color: '#fff'
+						}}>
 							Your profile's information and collection.
 						</Col>
 						<Divider />
@@ -73,6 +79,7 @@ const Account = () => {
 						...defaultStyles.header,
 						textAlign: 'center',
 						margin: '40px 0px',
+						color: '#fff'
 						// fontSize: 24,
 					}}
 				>
@@ -96,6 +103,7 @@ const Account = () => {
 								style={{
 									...defaultStyles.subHeader,
 									textAlign: 'center',
+									color: '#fff',
 									// marginTop: 40,
 									fontSize: 24,
 								}}
@@ -126,8 +134,8 @@ const Panel = () => {
 		<Row align='middle'>
 			<Col span={24}>
 				<div style={defaultStyles.card}>
-					<Row justify='space-between' align='middle'>
-						<Col span={11}>
+					<Row justify='space-between' align='middle' gutter={[0, 20]}>
+						<Col xs={24} md={11}>
 							<Row gutter={[0, 15]}>
 								<Col span={24} className='account-address'>
 									<Input
@@ -161,8 +169,8 @@ const Panel = () => {
 									/>
 								</Col>
 								<Col span={24}>
-									<Row align='middle' justify='space-between'>
-										<Col span={16}>
+									<Row align='middle' justify='space-between' gutter={[0, 20]}>
+										<Col xs={24} md={16}>
 											<div
 												style={{
 													background: 'rgb(246, 246, 246)',
@@ -178,7 +186,7 @@ const Panel = () => {
 												All withdrawable: {blockchain.balance} MATIC
 											</div>
 										</Col>
-										<Col span={7}>
+										<Col xs={24} md={7}>
 											<Link href='/mint'>
 												<Button
 													block
@@ -193,12 +201,13 @@ const Panel = () => {
 								</Col>
 							</Row>
 						</Col>
-						<Col span={11}>
+						<Col xs={24} md={11}>
 							<div style={defaultStyles.card}>
 								<p style={defaultStyles.subHeader}>Your NFTs</p>
-								<Row justify='space-around' gutter={[0, 20]}>
+								<Row justify='space-around' align="middle" gutter={[0, 20]}>
 									<Col
-										span={10}
+										xs={24}
+										md={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -206,15 +215,19 @@ const Panel = () => {
 											fontSize: 14,
 											fontWeight: '600',
 											borderRadius: 15,
-											// height: 50,
+											minHeight: 60,
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
 											textAlign: 'center',
-											padding: '10px 20px',
+											// padding: '10px 20px',
 										}}
 									>
 										Legendary <br />0
 									</Col>
 									<Col
-										span={10}
+											xs={24}
+										md={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -222,15 +235,19 @@ const Panel = () => {
 											fontSize: 14,
 											fontWeight: '600',
 											borderRadius: 15,
-											// height: 50,
+											minHeight: 60,
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
 											textAlign: 'center',
-											padding: '10px 20px',
+											// padding: '10px 20px',
 										}}
 									>
 										Super Rare <br />0
 									</Col>
 									<Col
-										span={10}
+											xs={24}
+										md={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -238,15 +255,19 @@ const Panel = () => {
 											fontSize: 14,
 											fontWeight: '600',
 											borderRadius: 15,
-											// height: 50,
+											minHeight: 60,
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
 											textAlign: 'center',
-											padding: '10px 20px',
+											// padding: '10px 20px',
 										}}
 									>
 										Rare <br />0
 									</Col>
 									<Col
-										span={10}
+											xs={24}
+										md={10}
 										style={{
 											background: 'rgb(246, 246, 246)',
 											border: 'none',
@@ -254,9 +275,12 @@ const Panel = () => {
 											fontSize: 14,
 											fontWeight: '600',
 											borderRadius: 15,
-											// height: 50,
+											minHeight: 60,
+											display: 'flex',
+											alignItems: 'center',
+											justifyContent: 'center',
 											textAlign: 'center',
-											padding: '10px 20px',
+											// padding: '10px 20px',
 										}}
 									>
 										Original <br />0

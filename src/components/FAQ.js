@@ -21,7 +21,7 @@ const FAQ = () => {
 		<Row
 			justify='center'
 			style={{
-				marginTop: 40,
+				// marginTop: 40,
 				padding: '20px 0px',
 				background: 'rgb(230, 253, 255)',
 			}}

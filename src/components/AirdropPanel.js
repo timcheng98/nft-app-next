@@ -4,24 +4,37 @@ import defaultStyles from '../core/theme/styles';
 import Image from '../components/Image'
 import Link from "next/link";
 import _ from "lodash"; 
+import { useDispatch, useSelector } from "react-redux";
 
 const AirdropPanel = () => {
   const [percent, setPercent] = useState(0);
+  const data = useSelector((state) => state.data);
 
   let interval = useRef();
   let value = useRef(0)
+  let stop = useRef(false)
 
   useEffect(() => {
-    let target = 500;
-    let increment = 5;
+    if (!data || data.airdrop < 1) return;
+    let target = data.airdrop;
+    let increment = 1;
     interval.current = setInterval(() => {
-      if (value.current >= target) return clearInterval(interval.current);
-	  value.current += increment
-      setPercent((prev) => prev + increment);
+      if (stop.current) return;
+      if (value.current >= target)  {
+        clearInterval(interval.current);
+        stop.current = true
+        return
+      }
+	    value.current += increment
+      setPercent((prev) => {
+        if (prev + increment > target) return target;
+        return prev + increment
+      });
     }, 10);
 
     return () =>  clearInterval(interval.current);
-  }, []);
+  }, [data]);
+
   return (
     <Row style={{
       backgroundColor: "#fff",

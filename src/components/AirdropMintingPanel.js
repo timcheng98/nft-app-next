@@ -32,7 +32,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 
 
   useEffect(() => {
-    if (!data) return;
+    if (!data || data.airdrop < 1) return;
     let target = data.airdrop;
     let increment = 1;
     interval.current = setInterval(() => {
@@ -47,7 +47,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
         if (prev + increment > target) return target;
         return prev + increment
       });
-    }, 100);
+    }, 10);
 
     return () =>  clearInterval(interval.current);
   }, [data]);

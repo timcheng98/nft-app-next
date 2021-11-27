@@ -61,8 +61,8 @@ const updateAccountRequest = (payload) => {
 export const disconnect = () => {
   return async (dispatch) => {
     // dispatch(disconnectRequest());
-    dispatch(updateAccountRequest({account: 0, balance: 0}))
-
+    dispatch(updateAccountRequest({account: null, balance: 0}))
+    localStorage.setItem('account', null)
     // if (window.ethereum && window.ethereum.isMetaMask) {
     //   let web3 = new Web3(window.ethereum);
 
@@ -76,12 +76,11 @@ export const disconnect = () => {
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
-
     if (window.ethereum && window.ethereum.isMetaMask) {
       let web3 = new Web3(window.ethereum);
 
       try {
-        let currentAccount = null;
+        let currentAccount = localStorage.getItem('account') || null;
 
         window.ethereum
           .request({ method: "eth_requestAccounts" })
@@ -90,8 +89,10 @@ export const connect = () => {
               dispatch(connectFailed("Please connect to MetaMask."));
             } else if (accounts[0] !== currentAccount) {
               currentAccount = accounts[0];
+              localStorage.setItem('account', currentAccount)
             }
           })
+          
           .catch((err) => {
             if (err.code === 4001) {
               // EIP-1193 userRejectedRequest error
@@ -121,7 +122,6 @@ export const connect = () => {
           const balance = await web3.eth.getBalance(
             currentAccount
           );
-
 
           dispatch(
             connectSuccess({

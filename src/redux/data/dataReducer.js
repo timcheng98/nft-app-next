@@ -6,7 +6,9 @@ const initialState = {
   accountTokens: [],
   error: false,
   errorMsg: "",
-  total: 0
+  total: 0,
+  airdrop: 0,
+  total_airdrop: 0
 };
 
 const dataReducer = (state = initialState, action) => {
