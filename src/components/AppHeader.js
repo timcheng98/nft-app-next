@@ -57,17 +57,18 @@ const AppHeader = () => {
             >
               Squat Panda
             </p> */}
-            <div className="logo" style={{ width: '100%', position: 'absolute', bottom: 13, zIndex: 99, margin: 'auto', height: '100%', padding: '5px' }}>
-              <Image
-                draggable={false}
-                alt="icon"
-                src="brand-logo.png"
-                width={2.5}
-                height={1}
-                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                className="panda-icon"
-              />
-            </div>
+            <Link href="/">
+              <div className="logo" style={{ width: '100%', position: 'absolute', bottom: 13, zIndex: 99, margin: 'auto', height: '100%', padding: '5px', cursor: 'pointer' }}>
+                <Image
+                  draggable={false}
+                  alt="icon"
+                  src="brand-logo.png"
+                  width={2.5}
+                  height={1}
+                  // style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  className="panda-icon"
+                />
+              </div></Link>
           </Col>
           <Col md={8}>
             <Row justify="end">

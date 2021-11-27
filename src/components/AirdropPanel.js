@@ -1,7 +1,7 @@
 import { Row, Col, Progress, Button } from 'antd';
 import React, { useEffect, useState, useRef } from 'react';
 import defaultStyles from '../core/theme/styles';
-
+import Image from '../components/Image'
 import Link from "next/link";
 import _ from "lodash"; 
 
@@ -23,17 +23,16 @@ const AirdropPanel = () => {
     return () =>  clearInterval(interval.current);
   }, []);
   return (
-    <Row>
+    <Row style={{
+      backgroundColor: "#fff",
+      borderRadius: 30,
+      // padding: "0px 0px 20px 0px",
+      border: "2px solid #f5f5f5",
+      minHeight: 250,
+      boxShadow: '0px 3px 10px rgb(0 0 0 / 0.2)'
+    }}>
       <Col
         span={24}
-        style={{
-          backgroundColor: "#fff",
-          borderRadius: 30,
-          // padding: "0px 0px 20px 0px",
-          border: "2px solid #f5f5f5",
-          minHeight: 250,
-          boxShadow: '0px 3px 10px rgb(0 0 0 / 0.2)'
-        }}
       >
         <Row justify="center" gutter={[0, 30]}>
           <Col
@@ -57,7 +56,6 @@ const AirdropPanel = () => {
               <Col>Airdrop</Col>
             </Row>
           </Col>
-
           <Col span={18}>
             <Progress
               strokeWidth={40}
@@ -93,12 +91,20 @@ const AirdropPanel = () => {
                   color: "#2b2b2b",
                 }}
               >
-                Claim NFT
+                <Row gutter={[14, 0]} align="middle">
+                  <Col span={12}>Claim NFT</Col>
+                </Row>
               </Button>
             </Link>
           </Col>
         </Row>
       </Col>
+          {/* <Col span={10}>
+            <div style={{ width: '100%', height: '100%'}}>
+
+            <Image src="blindbox.jpg" alt="?" className="collection" />
+            </div>
+          </Col> */}
     </Row>
   )
 }

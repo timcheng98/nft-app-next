@@ -14,6 +14,7 @@ import { useRouter } from 'next/router';
 import { getCustomStaticPaths, getCustomStaticProps } from '../../model/client';
 import Header from '../../components/Head';
 const Collection = (props) => {
+	console.log(props)
 	const router = useRouter();
 	const { collection } = props;
 

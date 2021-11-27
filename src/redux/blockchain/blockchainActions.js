@@ -108,10 +108,10 @@ export const connect = () => {
 
         const NetworkData = await SmartContract.networks[networkId];
 
-        if (networkId == NETWORK_ID) {
+        if (networkId == 80001) {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract.abi,
-            CONTRACT_ADDRESS
+            '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
           );
 
           // console.log(currentAccount);
@@ -167,27 +167,16 @@ export const init = () => {
       let web3 = new Web3(window.ethereum);
 
       try {
-        const networkId = await window.ethereum.request({
-          method: "net_version",
-        });
-
-        const NetworkData = await SmartContract.networks[networkId];
-
-        if (networkId == 137) {
-          const SmartContractObj = new web3.eth.Contract(
-            SmartContract.abi,
-            // NetworkData.address
-            CONTRACT_ADDRESS
-          );
-          dispatch(
-            connectInit({
-              smartContract: SmartContractObj,
-              web3: web3,
-            })
-          );
-        } else {
-          dispatch(connectFailed("Change network to Polygon."));
-        }
+        const SmartContractObj = new web3.eth.Contract(
+          SmartContract.abi,
+          '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
+        );
+        dispatch(
+          connectInit({
+            smartContract: SmartContractObj,
+            web3: web3,
+          })
+        );
       } catch (err) {
         // dispatch(connectFailed("Something went wrong."));
       }

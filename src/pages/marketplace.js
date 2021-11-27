@@ -4,7 +4,7 @@ import AppLayout from '../components/AppLayout';
 import { Row, Col, Button, Select, Divider } from 'antd';
 import defaultStyles from '../core/theme/styles';
 import _ from 'lodash';
-import { CollectionItem } from './index';
+import { CollectionItem } from '../components/CollectionList';
 import { DownCircleOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
@@ -134,7 +134,7 @@ const Marketplace = ({ collections }) => {
 					</Button>
 				</Col>
 			</Row>
-			<Row gutter={[20, 40]} justify='center'>
+			<Row gutter={[20, 40]} justify='start'>
 				{_.map(nfts, (item) => {
 					return (
 						<Col key={item} xs={18} sm={12} md={8} lg={6}>

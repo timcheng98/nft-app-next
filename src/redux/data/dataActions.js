@@ -66,28 +66,39 @@ export const fetchAccountData = () => {
 
 export const fetchData = (account) => {
   return async (dispatch) => {
-    dispatch(fetchDataRequest());
+    // dispatch(fetchDataRequest());
     try {
       let web3 = new Web3(window.ethereum);
-
       let name = await store
         .getState()
         .blockchain.smartContract.methods.name()
         .call();
+      
       let price = await store
         .getState()
-        .blockchain.smartContract.methods.getPrice()
+        .blockchain.smartContract.methods.cost()
         .call();
+        const amountToSend = web3.utils.fromWei(
+          _.toString(price),
+        ); // Convert to wei value
 
       const total = await store
         .getState()
         .blockchain.smartContract.methods.totalSupply()
         .call();
 
-      const baseURI = await store
+      const airdrop = await store
         .getState()
-        .blockchain.smartContract.methods._baseTokenURI.call()
+        .blockchain.smartContract.methods.aidrop_amount()
         .call();
+      const total_airdrop = await store
+        .getState()
+        .blockchain.smartContract.methods.AIRDROP_AMOUNT()
+        .call();
+
+        const baseURI = await store
+        .getState()
+        .blockchain.smartContract.methods.baseURI().call()
 
       let nfts = [];
       if (total <= 9) {
@@ -103,15 +114,14 @@ export const fetchData = (account) => {
         }
       }
 
-      // console.log('total', total)
-      // let result = await Promise.all(nfts);
-      // console.log("test", { name, allTokens: nfts, total: total, price });
       dispatch(
         fetchDataSuccess({
           name,
           allTokens: nfts,
-          total: total,
-          price: _.toInteger(web3.utils.fromWei(price)),
+          total: _.toInteger(total),
+          price: _.toInteger(amountToSend),
+          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop),
+          total_airdrop: _.toInteger(total_airdrop)
         })
       );
     } catch (err) {

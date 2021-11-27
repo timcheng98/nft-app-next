@@ -2,31 +2,33 @@ const axios = require('axios');
 const Web3 = require('web3');
 let smartContract = require('../redux/blockchain/abi.json');
 const web3 = new Web3(
-	'https://polygon-mainnet.infura.io/v3/1106a734eb1a46639b820d23e971c3a6'
+	'https://polygon-mumbai.infura.io/v3/ed023da44d844719979806e32e0d8cd1'
 );
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
 
-// const contractAddress = '0xd44642A1693faBdB9fa9a0C61Ee4ABd2a916302A';
-// const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
+const contractAddress = '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96';
+const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname) => {
 	let clientProps = {};
 	// console.log(object)
 
-	// if (pathname === '/') {
-	// 	const totalSupply = await contract.methods.totalSupply().call();
-	// 	const latestNFTs = await getLatestNfts(totalSupply);
-	// 	_.assign(clientProps, latestNFTs);
-	// }
-	// if (pathname === '/marketplace') {
-	// 	const totalSupply = await contract.methods.totalSupply().call();
-	// 	const collections = await getAllNFTs(totalSupply);
-	// 	_.assign(clientProps, collections);
-	// }
+	if (pathname === '/') {
+		// console.log('contract', contract.methods.totalSupply().call)
+		const totalSupply = await contract.methods.totalSupply().call();
+		const latestNFTs = await getLatestNfts(totalSupply);
+		_.assign(clientProps, latestNFTs);
+	}
+	if (pathname === '/marketplace') {
+		const totalSupply = await contract.methods.totalSupply().call();
+		const collections = await getAllNFTs(totalSupply);
+		console.log('collections', collections)
+		_.assign(clientProps, collections);
+	}
 	if (pathname === '/collection/[id]') {
 		const collection = await getNFTsSingle(params.id);
-		_.assign(clientProps, []);
+		_.assign(clientProps, collection);
 	}
 	// if (pathname === '/traits') {
 	// 	_.assign(clientProps, { rarity });
@@ -42,15 +44,14 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 
 
 export async function getCustomStaticPaths() {
-	// const totalSupply = await contract.methods.totalSupply().call();
-	// const paths = _.times(totalSupply, (item) => {
-	// 	return {
-	// 		params: { id: `${item}` },
-	// 	};
-	// });
+	let totalSupply = await contract.methods.totalSupply().call();
+	const paths = _.times(_.toInteger(totalSupply) + 1, (item) => {
+		return {
+			params: { id: `${item}` },
+		};
+	});
 
-	// console.log("paths", paths);
-	return { paths: [], fallback: false };
+	return { paths, fallback: false };
 }
 
 export const getCustomServerSideProps = async (req, res) => {
@@ -66,9 +67,10 @@ export const getCustomServerSideProps = async (req, res) => {
 const getAllNFTs = async (totalSupply) => {
 	// const resp = await axios.get('https://api.opensea.io/api/v1/asset/matic/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a/1/')
 
+	console.log('totalSupply', totalSupply)
 	// console.log('totalSupply', totalSupply)
 	const resp = await axios.get(
-		`http://api.wallstreetbets-nft.com/api/creature?total=${totalSupply}`
+		`http://api.squatpanda.online/api/creature?total=${totalSupply}`
 	);
 
 	return {
@@ -82,7 +84,7 @@ const getNFTsSingle = async (id) => {
 	// console.log('totalSupply', totalSupply)
 
 	const resp = await axios.get(
-		`http://api.wallstreetbets-nft.com/api/creature/${id}`
+		`http://api.squatpanda.online/api/creature/${id}`
 	);
 
 	return {

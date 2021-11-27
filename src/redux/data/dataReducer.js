@@ -20,10 +20,11 @@ const dataReducer = (state = initialState, action) => {
       return {
         ...initialState,
         loading: false,
-        name: action.payload.name,
-        allTokens: action.payload.allTokens,
-        price: action.payload.price,
-        total: action.payload.total
+        ...action.payload,
+        // name: action.payload.name,
+        // allTokens: action.payload.allTokens,
+        // price: action.payload.price,
+        // total: action.payload.total
       };
     case "CHECK_DATA_FAILED":
       return {

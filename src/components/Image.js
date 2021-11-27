@@ -6,7 +6,7 @@ const defaultLoader = ({ src, width, quality }) => {
 };
 
 const externalLoader = ({ src, width, quality }) => {
-	return `https://api.wallstreetbets-nft.com/api/creature/images/${src}?w=${width}&q=${
+	return `https://api.squatpanda.online/api/creature/images/${src}?w=${width}&q=${
 		quality || 50
 	}`;
 };

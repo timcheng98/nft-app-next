@@ -1,11 +1,11 @@
 import { Row, Col } from 'antd';
-import { TwitterOutlined, MediumOutlined } from '@ant-design/icons';
+import { TwitterOutlined, InstagramFilled } from '@ant-design/icons';
 import Image from './Image';
 import React from 'react'
 
 const AppFooter = () => {
 	return (
-		<Row justify='center'>
+		<Row justify='center' style={{ marginBottom: 30 }}>
 			<Col span={22}>
 				<Row
 					justify='center'
@@ -18,23 +18,23 @@ const AppFooter = () => {
 							href='https://twitter.com/SquatPanda'
 							target='_blank'
 						>
-							<TwitterOutlined style={{ fontSize: 32 }} />
+							<TwitterOutlined style={{ fontSize: 32, color: '#1DA1F2' }} />
 						</a>
 					</Col>
 					<Col xs={4} md={2} style={{ textAlign: 'center' }}>
 						<a
 							rel='noreferrer'
-							href='https://medium.com/@crypto.wallstreetbets'
+							href='https://medium.com/@nft.squatpanda'
 							target='_blank'
 						>
-							<MediumOutlined style={{ fontSize: 32 }} />
+							<InstagramFilled style={{ fontSize: 32,  color: '#1DA1F2' }} />
 						</a>
 					</Col>
 					<Col xs={4} md={2} style={{ textAlign: 'center' }}>
 						<a
 							rel='noreferrer'
 							href='https://discord.com/invite/p5eNZYa3NY'
-							style={{ textAlign: 'center' }}
+							style={{ textAlign: 'center',  color: '#1DA1F2' }}
 							target='_blank'
 						>
 							<div

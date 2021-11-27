@@ -21,27 +21,10 @@ import AirdropPanel from "../components/AirdropPanel";
 import Partners from "../components/Partners";
 import Team from "../components/Team";
 import RoadMap from "../components/RoadMap";
+import CollectionList from "../components/CollectionList";
 
 
-const responsive = {
-  superLargeDesktop: {
-    // the naming can be any, depends on you.
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1024 },
-    items: 4,
-  },
-  tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 464, min: 0 },
-    items: 1,
-  },
-};
+
 const responsiveHeader = {
   superLargeDesktop: {
     // the naming can be any, depends on you.
@@ -104,9 +87,9 @@ const Home = (props) => {
           align="middle"
           style={{ minHeight: 300 }}
         >
-          <Col xs={22} md={14}>
-            <Row gutter={[0, 20]}>
-              <Col span={22} style={{ margin: '40px 0px 20px 0px' }}>
+          <Col xs={22} md={20}>
+            <Row gutter={[0, 40]} align="middle" style={{ padding: '0px 0px 40px 0px' }}>
+              <Col xs={22} md={12} >
                 <span
                   style={{
                     color: "#2b2b2b",
@@ -118,7 +101,7 @@ const Home = (props) => {
                   Welcome to <br />Squat Panda
                 </span>
               </Col>
-              <Col span={20} style={{}}>
+              <Col xs={22} md={12}>
                 <span style={defaultStyles.subHeader}>
                   Squat Panda is a tribute to the digital collectibles
                   created by anonymous developers, and innovative algorithms.
@@ -126,7 +109,6 @@ const Home = (props) => {
                   events, recalling the inner artist in you.
                 </span>
               </Col>
-              <Divider />
               {/* <Col xs={24} md={22}>
                 <Row gutter={[20, 20]}>
                   <Col>
@@ -156,24 +138,32 @@ const Home = (props) => {
                   </Col>
                 </Row>
               </Col> */}
-              <Col xs={24} md={12}><AirdropPanel /></Col>
             </Row>
           </Col>
-          <Col xs={18} md={6}>
+          
+        </Row>
+
+        <Row justify="center">
+        <Col span={18}>
+        <Row justify="space-around" align="middle" gutter={[20, 40]}>
+        <Col xs={12} md={5}>
             {/* <MintingPanel size="small" /> */}
-            <div style={{ width: '100%', aspectRatio: '1/1' }}>
+            <div style={{ width: '100%', height: '100%'  }}>
               <Image
                 draggable={false}
                 alt="icon"
-                src="logo.png"
-                style={{ width: "100%", height: "100%", objectFit: "cover" }}
-                className="icon"
+                src="squat-animation.gif"
+                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
               />
             </div>
           </Col>
+          <Col xs={24} md={10}><AirdropPanel /></Col>
+
+        </Row>
+        </Col>
         </Row>
       </div>
-      <Row justify="center" style={{ marginTop: 40 }}>
+      <Row justify="center" style={{ paddingTop: 40 }}>
         <Col span={20}>
           <h1
             style={{
@@ -186,12 +176,14 @@ const Home = (props) => {
           </h1>
         </Col>
       </Row>
-      <Row justify="center" style={{ padding: "30px 0px" }}>
+      <Row justify="center" style={{ padding: "30px 0px", paddingBottom: 30 }}>
         <Col span={20}>
-          <CollectionCarousel collections={latest_nfts} />
+          <CollectionList collections={latest_nfts} />
         </Col>
       </Row>
+      <div style={{ padding: '40px 0px'}}>
       <RoadMap />
+      </div>
       <FAQ />
       <Team />
       <Partners />
@@ -199,141 +191,6 @@ const Home = (props) => {
   );
 };
 
-export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
-  // if (!item) return null;
-  let rarity = () => {
-    if (item <= 15) return "Super Rare";
-    if (item <= 254) return "Rare";
-    return "Original";
-  };
-  const getScore = () => {
-    let score = 500; // base (Background)
-    if (item <= 15) return 4 * 1500 * 2 + score;
-    if (item <= 254) return 4 * 1000 * 2 + score;
-    return 4 * 500 * 2 + score;
-  };
-
-  return (
-    <Col xs={xs} md={md}>
-      <Link href={`/collection/${item}`}>
-        <div
-          className="card-hover"
-          style={{
-            cursor: "pointer",
-            transition: "opacity 0.3s ease-in-out",
-            border: "1px solid #e5e5e5",
-            borderBottomWidth: 3,
-            height: "100%",
-            width: "100%",
-            borderRadius: 15,
-            background: "#fff",
-          }}
-        >
-          <Image
-            draggable={false}
-            style={{
-              width: "100%",
-              height: "100%",
-            }}
-            src={`${item}`}
-            alt="wsb"
-            external
-            className="collection"
-          />
-          <div style={{ padding: "15px 10px" }}>
-            <Row
-              justify="space-between"
-              align="middle"
-              style={{ marginBottom: 10 }}
-            >
-              <Col style={{ fontSize: 12, fontWeight: 500 }}>
-                Squat Panda
-              </Col>
-              <Col style={{ color: "#2b2b2b", fontWeight: "500" }}>
-                {rarity()}
-              </Col>
-            </Row>
-            <Row justify="space-between">
-              <Col style={{ color: "#2b2b2b", fontWeight: "600" }}>
-                Crypto WSB #{item}
-              </Col>
-              <Col style={{ fontWeight: "700", color: "gray" }}>
-                Score {getScore()}
-              </Col>
-            </Row>
-          </div>
-        </div>
-      </Link>
-    </Col>
-  );
-};
-
-const CollectionCarousel = ({ collections }) => {
-  return (
-    <Carousel
-      swipeable
-      draggable
-      showDots={false}
-      responsive={responsive}
-      ssr={true} // means to render carousel on server-side.
-      infinite={true}
-      autoPlay
-      autoPlaySpeed={3000}
-      keyBoardControl
-      // customTransition='all .5'
-      transitionDuration={2000}
-      containerClass="carousel-container"
-      removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
-    // deviceType={this.props.deviceType}
-    // dotListClass='custom-dot-list-style'
-    // itemClass='carousel-item-padding-40-px'
-    >
-      {_.map(collections, (item) => {
-        return <CollectionItem key={item} item={item} />;
-      })}
-    </Carousel>
-  );
-};
-
-const Background = () => {
-  return (
-    <div className="sc-dwqccx cZaRmu">
-      <div className="sc-gUUBao fnnsya">
-        <svg
-          viewBox={`0 0 800 1200`}
-          width="100%"
-          height="100%"
-          color="text"
-          xmlns="http://www.w3.org/2000/svg"
-          className="sc-bdfBQB nUAxB"
-        >
-          <path
-            d="M804 167.023C520.5 167.023 267.5 290.522 0 304.5V339H1660V0.5C1358.83 0.5 1104 167.023 804 167.023Z"
-            fill="url(#paint0_linear_light)"
-          ></path>
-          <defs>
-            <linearGradient
-              id="paint0_linear_light"
-              x1="830"
-              y1="84"
-              x2="830"
-              y2="339"
-              gradientUnits="userSpaceOnUse"
-            >
-              <stop stopColor="white" stopOpacity="0.48"></stop>
-              <stop
-                offset="0.566389"
-                stopColor="white"
-                stopOpacity="0.35"
-              ></stop>
-              <stop offset="1" stopColor="white"></stop>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-    </div>
-  );
-};
 
 export const getStaticProps = async (context) => {
   return getCustomStaticProps(context, "/");

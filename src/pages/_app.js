@@ -8,6 +8,7 @@ import Script from "next/script";
 import { Provider as AuthProvider } from 'next-auth/client'
 
 function MyApp({ Component, pageProps }) {
+
 	return (
 		<>
 			<Script

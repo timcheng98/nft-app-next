@@ -20,10 +20,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import { fetchData } from '../redux/data/dataActions';
 import MintingPanel from '../components/MintingPanel';
+import AirdropMintingPanel from '../components/AirdropMintingPanel';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
+import { init } from '../redux/blockchain/blockchainActions';
 
 const Mint = () => {
+
 	const dispatch = useDispatch();
 	const [visible, setVisible] = useState(false);
 	const [loading, setLoading] = useState(false);
@@ -32,13 +35,17 @@ const Mint = () => {
 	const data = useSelector((state) => state.data);
 
 	useEffect(() => {
-		setLoading(true);
-		if (blockchain.account !== '' && blockchain.smartContract !== null) {
-			dispatch(fetchData(blockchain.account));
-			setLoading(false);
-		}
-		setLoading(false);
-	}, [blockchain.smartContract, dispatch]);
+		dispatch(init())
+	}, [])
+
+	// useEffect(() => {
+	// 	setLoading(true);
+	// 	if (blockchain.account !== '' && blockchain.smartContract !== null) {
+	// 		dispatch(fetchData(blockchain.account));
+	// 		setLoading(false);
+	// 	}
+	// 	setLoading(false);
+	// }, [blockchain.smartContract, dispatch]);
 
 	const mint = async (count) => {
 		if (!blockchain.account) {
@@ -80,8 +87,10 @@ const Mint = () => {
 				title='Mint | Squat Panda'
 				description='Squat Panda - Mint the Squat Panda'
 			/>
-
-			<Row justify="center" style={{ paddingTop: 40 }}>
+<div style={{ width: "100%", position: 'relative' }}>
+          <Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
+        </div>
+			<Row justify="center" style={{ marginTop: 40 }} >
 			<Col span={22}>
 			<Row>
 			<Col span={24} style={defaultStyles.banner}>
@@ -96,18 +105,14 @@ const Mint = () => {
 				</Row>
 			</Col>
 			</Row>
-			<Divider />
-			<div style={{ width: "100%", position: 'relative' }}>
-          <Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
-        </div>
-			<div style={{ marginBottom: 20  }}>
 		
-				<Row justify='center'>
-					<Col xs={24} md={8}>
-						<MintingPanel />
+			
+		
+				<Row justify='center' style={{ marginBottom: 20 }}>
+				<Col xs={22} md={8}>
+						<AirdropMintingPanel />
 					</Col>
 				</Row>
-			</div>
 		</AppLayout>
 	);
 };
