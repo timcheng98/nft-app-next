@@ -5,18 +5,25 @@ const initialState = {
 	web3: null,
 	errorMsg: '',
 	balance: 0,
+	modalVisible: false,
+	aidrop_claimed: false
 };
 
 const blockchainReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case 'SET_MODAL_VISIBLE':
+			return {
+				...state,
+				modalVisible: action.payload,
+			};
 		case 'CONNECTION_REQUEST':
 			return {
-				...initialState,
+				...state,
 				loading: true,
 			};
 		case 'CLEAR_ERROR_MSG':
 			return {
-				...initialState,
+				...state,
 				errorMsg: '',
 			};
 		case 'CONNECTION_INIT':
@@ -39,7 +46,7 @@ const blockchainReducer = (state = initialState, action) => {
 			};
 		case 'CONNECTION_FAILED':
 			return {
-				...initialState,
+				...state,
 				loading: false,
 				errorMsg: action.payload,
 			};

@@ -15,12 +15,12 @@ const dataReducer = (state = initialState, action) => {
   switch (action.type) {
     case "CHECK_DATA_REQUEST":
       return {
-        ...initialState,
+        ...state,
         loading: true,
       };
     case "CHECK_DATA_SUCCESS":
       return {
-        ...initialState,
+        ...state,
         loading: false,
         ...action.payload,
         // name: action.payload.name,
@@ -30,17 +30,17 @@ const dataReducer = (state = initialState, action) => {
       };
     case "CHECK_DATA_FAILED":
       return {
-        ...initialState,
+        ...state,
         loading: false,
         error: true,
         errorMsg: action.payload,
       };
     case "CHECK_ACCOUNT_DATA_SUCCESS":
       return {
-        ...initialState,
+        ...state,
         loading: false,
-        name: action.payload.name,
-        accountTokens: action.payload.accountTokens,
+        ...action.payload
+        // accountTokens: action.payload.accountTokens,
       };
     default:
       return state;

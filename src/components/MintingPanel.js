@@ -346,7 +346,7 @@ const MintingPanel = ({ size = "normal" }) => {
           </Row>
         </div>
       </Col>
-      <WalletModal visible={visible} setVisible={setVisible} />
+      {/* <WalletModal visible={visible} setVisible={setVisible} /> */}
     </Row>
   );
 };

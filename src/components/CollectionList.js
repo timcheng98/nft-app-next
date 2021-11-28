@@ -26,12 +26,12 @@ const responsive = {
   },
 };
 
-export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
+export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) => {
   // if (!item) return null;
   let rarity = () => {
     if (item <= 15) return "Super Rare";
     if (item <= 254) return "Rare";
-    return "Original";
+    return "Normal";
   };
   const getScore = () => {
     let score = 500; // base (Background)
@@ -54,6 +54,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20 }) => {
             width: "100%",
             borderRadius: 15,
             background: "#fff",
+            ...containerStyle,
           }}
         >
           <Image

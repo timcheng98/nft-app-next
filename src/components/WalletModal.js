@@ -9,49 +9,52 @@ import {
 	connect,
 	disconnect,
 	clearErrorMsg,
+	setModalVisible,
 } from '../redux/blockchain/blockchainActions';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link'
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
+import { useRouter } from "next/router";
 
-const WalletModal = ({ setVisible, visible }) => {
+const WalletModal = () => {
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
+
 	useEffect(() => {
 		if (!blockchain.errorMsg) return;
-		// let error = blockchain.errorMsg
-		dispatch(clearErrorMsg());
-		// console.log('WalletModal', blockchain)
 		notification.error({
 			message: blockchain.errorMsg,
 		});
+		dispatch(clearErrorMsg());
 
 	}, [blockchain]);
 
 	return (
 		<Modal
 			// forceRender
-			visible={visible}
+			destroyOnClose
+			visible={blockchain.modalVisible}
 			closable={false}
 			footer={null}
 			centered
 			maskStyle={{
 				background: 'rgba(0, 0, 0, 0.5)',
 			}}
-			onCancel={() => setVisible(false)}
+			onCancel={() => dispatch(setModalVisible(false))}
 			bodyStyle={{ minHeight: 350 }}
 			className={blockchain.account ? 'app-modal-account' : 'app-modal'}
 		>
 			{blockchain.account ? (
-				<AccountInfo setVisible={setVisible} />
+				<AccountInfo />
 			) : (
-				<ConnectWallet setVisible={setVisible} />
+				<ConnectWallet />
 			)}
 		</Modal>
 	);
 };
 
-const AccountInfo = ({ setVisible }) => {
+const AccountInfo = () => {
+	const router = useRouter()
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
 
@@ -72,7 +75,7 @@ const AccountInfo = ({ setVisible }) => {
 				<Col style={defaultStyles.subHeader}>Your Wallet</Col>
 				<Col>
 					<CloseOutline
-						onClick={() => setVisible(false)}
+						onClick={() => dispatch(setModalVisible(false))}
 						style={defaultStyles.subHeader}
 					/>
 				</Col>
@@ -184,7 +187,13 @@ const AccountInfo = ({ setVisible }) => {
 						align='middle'
 						style={{ marginBottom: 20 }}
 					>
-						<Link href="/account">
+						<Button
+						type="text"
+						onClick={() => {
+							dispatch(setModalVisible(false));
+							router.push('/account')
+						}}
+						>
 						<Col
 							style={{
 								...defaultStyles.subHeader,
@@ -195,7 +204,7 @@ const AccountInfo = ({ setVisible }) => {
 							Collection
 							<HeartOutline style={{ marginLeft: 5 }} />
 						</Col>
-						</Link>
+						</Button>
 						<Col
 							style={{
 								...defaultStyles.subBody,
@@ -216,7 +225,7 @@ const AccountInfo = ({ setVisible }) => {
 							<Button
 								onClick={() => {
 									dispatch(disconnect());
-									setVisible(false);
+									dispatch(setModalVisible(false))
 								}}
 								block
 								style={{
@@ -238,7 +247,7 @@ const AccountInfo = ({ setVisible }) => {
 	);
 };
 
-const ConnectWallet = ({ setVisible }) => {
+const ConnectWallet = () => {
 	const dispatch = useDispatch();
 
 	const blockchain = useSelector((state) => state.blockchain);
@@ -260,7 +269,7 @@ const ConnectWallet = ({ setVisible }) => {
 				<Col style={defaultStyles.subHeader}>Connect Wallet</Col>
 				<Col>
 					<CloseOutline
-						onClick={() => setVisible(false)}
+						onClick={() => dispatch(setModalVisible(false))}
 						style={defaultStyles.subHeader}
 					/>
 				</Col>
@@ -277,6 +286,7 @@ const ConnectWallet = ({ setVisible }) => {
 						onClick={() => {
 							if (!blockchain.account) {
 								dispatch(connect());
+								dispatch(setModalVisible(false))
 							}
 						}}
 					>

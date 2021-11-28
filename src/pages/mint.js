@@ -105,9 +105,6 @@ const Mint = () => {
 				</Row>
 			</Col>
 			</Row>
-		
-			
-		
 				<Row justify='center' style={{ marginBottom: 20 }}>
 				<Col xs={22} md={8}>
 						<AirdropMintingPanel />

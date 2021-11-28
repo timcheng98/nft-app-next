@@ -114,9 +114,10 @@ const Marketplace = ({ collections }) => {
 						placeholder='Rarities'
 						style={{ width: '100%', borderRadius: 30 }}
 					>
+						<Option value={0}>Legendary</Option>
 						<Option value={1}>Super Rare</Option>
 						<Option value={2}>Rare</Option>
-						<Option value={3}>Original</Option>
+						<Option value={3}>Normal</Option>
 					</Select>
 				</Col>
 				<Col xs={24} md={2}>
@@ -139,7 +140,7 @@ const Marketplace = ({ collections }) => {
 				{_.map(nfts, (item) => {
 					return (
 						<Col key={item} xs={18} sm={12} md={8} lg={6}>
-							<CollectionItem xs={24} md={24} item={item} />
+							<CollectionItem xs={24} md={22} item={item} />
 						</Col>
 					);
 				})}

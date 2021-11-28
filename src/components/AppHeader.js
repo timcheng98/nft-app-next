@@ -1,14 +1,13 @@
 import { Row, Col, Button } from "antd";
 import React, { useState } from "react";
-import WalletModal from "./WalletModal";
 import Image from "./Image";
 import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
-import defaultStyles from "../core/theme/styles";
+import { setModalVisible } from "../redux/blockchain/blockchainActions";
 
 const AppHeader = () => {
-  const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch()
   const blockchain = useSelector((state) => state.blockchain);
 
   return (
@@ -74,7 +73,7 @@ const AppHeader = () => {
             <Row justify="end">
               <Col>
                 <Button
-                  onClick={() => setVisible(true)}
+                  onClick={() => dispatch(setModalVisible(true))}
                   icon={<WalletIcon />}
                   className="app-button"
                 >
@@ -98,7 +97,6 @@ const AppHeader = () => {
             </Row>
           </Col>
         </Row>
-        <WalletModal visible={visible} setVisible={setVisible} />
       </Col>
     </Row>
   );

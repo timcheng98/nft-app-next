@@ -8,10 +8,9 @@ import _ from 'lodash';
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
-import { connect, disconnect } from '../redux/blockchain/blockchainActions';
+import { setModalVisible } from '../redux/blockchain/blockchainActions';
 import { fetchAccountData } from '../redux/data/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
-import WalletModal from '../components/WalletModal';
 import { CollectionItem } from '../components/CollectionList';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
@@ -20,11 +19,11 @@ const Account = () => {
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
 	const data = useSelector((state) => state.data);
-	const [visible, setVisible] = useState(false);
-
+	
 	useEffect(() => {
-		getAccountData();
-	}, []);
+    if (!blockchain.smartContract) return;
+    getAccountData()
+  }, [blockchain.smartContract, dispatch]);
 
 	const getAccountData = () => {
 		dispatch(fetchAccountData());
@@ -60,7 +59,7 @@ const Account = () => {
 						<Row justify='center'>
 							<Col xs={24} md={12}>
 								<Button
-									onClick={() => setVisible(true)}
+									onClick={() => dispatch(setModalVisible(true))}
 									block
 									style={{ height: 60, fontSize: 20 }}
 									className='app-button'
@@ -114,7 +113,7 @@ const Account = () => {
 							_.map(data.accountTokens, (item) => {
 								return (
 									<Col xs={18} md={6} key={item}>
-										<CollectionItem xs={24} md={24} item={item} />
+										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={item} />
 									</Col>
 								);
 							})
@@ -122,13 +121,40 @@ const Account = () => {
 					</Row>
 				</Col>
 			</Row>
-			<WalletModal visible={visible} setVisible={setVisible} />
+			{/* <WalletModal visible={visible} setVisible={setVisible} /> */}
 		</AppLayout>
 	);
 };
 
 const Panel = () => {
 	const blockchain = useSelector((state) => state.blockchain);
+	const data = useSelector((state) => state.data);
+
+	const [type, setType] = useState({
+		legendary: 0,
+		super_rare: 0,
+		rare: 0,
+		normal: 0
+	})
+
+	useEffect(() => {
+		if (_.isEmpty(data.accountTokens)) return;
+		let type = {
+			legendary: 0,
+			super_rare: 0,
+			rare: 0,
+			normal: 0
+		}
+		_.map(data.accountTokens, (item) => {
+			if (item < 5) return type.legendary = type.legendary + 1
+			if (item < 15) return type.super_rare = type.super_rare + 1
+			if (item < 100) return type.rare = type.rare + 1
+			return type.normal = type.normal + 1
+		})
+		setType(type)
+	}, [data.accountTokens])
+
+	console.log('data', data)
 
 	return (
 		<Row align='middle'>
@@ -223,7 +249,7 @@ const Panel = () => {
 											// padding: '10px 20px',
 										}}
 									>
-										Legendary <br />0
+										Legendary <br />{type.legendary}
 									</Col>
 									<Col
 											xs={24}
@@ -243,7 +269,7 @@ const Panel = () => {
 											// padding: '10px 20px',
 										}}
 									>
-										Super Rare <br />0
+										Super Rare <br />{type.super_rare}
 									</Col>
 									<Col
 											xs={24}
@@ -263,7 +289,7 @@ const Panel = () => {
 											// padding: '10px 20px',
 										}}
 									>
-										Rare <br />0
+										Rare <br />{type.rare}
 									</Col>
 									<Col
 											xs={24}
@@ -283,7 +309,7 @@ const Panel = () => {
 											// padding: '10px 20px',
 										}}
 									>
-										Original <br />0
+										Normal <br />{type.normal}
 									</Col>
 								</Row>
 							</div>
@@ -296,7 +322,7 @@ const Panel = () => {
 };
 
 export const getStaticProps = async (context) => {
-	return getCustomStaticProps(context, '/account');
+	return getCustomStaticProps(context, '/account', 1);
 };
 
 export default Account;

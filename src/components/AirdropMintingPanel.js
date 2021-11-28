@@ -17,6 +17,7 @@ import WalletModal from "./WalletModal";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
 import { fetchData } from "../redux/data/dataActions";
+import { setModalVisible } from "../redux/blockchain/blockchainActions";
 
 const AirdropMintingPanel = ({ size = "normal" }) => {
   const [percent, setPercent] = useState(0);
@@ -81,6 +82,13 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 			});
 	};
 
+
+  const getName = () => {
+    if (blockchain.aidrop_claimed) return 'Claimed';
+    if (blockchain.account) return "Claim";
+    return "Connect Wallet";
+  }
+
   return (
     <Row justify="center" style={{ marginTop: 40 }}>
       <Col xs={24} md={size === "small" ? 18 : 24}>
@@ -138,31 +146,30 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
             <Col span={24}>
               <div style={{ width: "100%", zIndex: 1 }}>
               </div>
-                <Image src="blindbox.jpg" alt="?" className="collection" />
+                <Image src="blindbox.png" alt="?" className="collection" />
             </Col>
             <Col span={24}>
               <Button
-                disabled={loading}
+                disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {
                   if (blockchain.account) {
-                   
                     await claim();
                     return;
                   }
 
-                  setVisible(true);
+                  dispatch(setModalVisible(true))
                 }}
                 style={{ width: "100%", height: 50, fontSize: 20 }}
                 className="app-button"
               >
-                {blockchain.account ? "Claim" : "Connect Wallet"}
+                {getName()}
+                
               </Button>
             </Col>
           </Row>
         </div>
       </Col>
-      <WalletModal visible={visible} setVisible={setVisible} />
     </Row>
   );
 };

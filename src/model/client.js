@@ -10,12 +10,10 @@ const _ = require('lodash');
 const contractAddress = '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96';
 const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
 
-export const getCustomStaticProps = async ({ params }, pathname) => {
+export const getCustomStaticProps = async ({ params }, pathname, revalidate = 1) => {
 	let clientProps = {};
-	// console.log(object)
 
 	if (pathname === '/') {
-		// console.log('contract', contract.methods.totalSupply().call)
 		const totalSupply = await contract.methods.totalSupply().call();
 		const latestNFTs = await getLatestNfts(totalSupply);
 		_.assign(clientProps, latestNFTs);
@@ -23,7 +21,6 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 	if (pathname === '/marketplace') {
 		const totalSupply = await contract.methods.totalSupply().call();
 		const collections = await getAllNFTs(totalSupply);
-		console.log('collections', collections)
 		_.assign(clientProps, collections);
 	}
 	if (pathname === '/collection/[id]') {
@@ -38,7 +35,7 @@ export const getCustomStaticProps = async ({ params }, pathname) => {
 		props: {
 			...clientProps,
 		},
-		revalidate: 60 * 60, // 1 hour
+		revalidate
 	};
 };
 
@@ -67,10 +64,8 @@ export const getCustomServerSideProps = async (req, res) => {
 const getAllNFTs = async (totalSupply) => {
 	// const resp = await axios.get('https://api.opensea.io/api/v1/asset/matic/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a/1/')
 
-	console.log('totalSupply', totalSupply)
-	// console.log('totalSupply', totalSupply)
 	const resp = await axios.get(
-		`http://api.squatpanda.online/api/creature?total=${totalSupply}`
+		`http://api.squatpanda.online/api/creature?total=${_.toInteger(totalSupply) + 1}`
 	);
 
 	return {
@@ -81,7 +76,6 @@ const getAllNFTs = async (totalSupply) => {
 const getNFTsSingle = async (id) => {
 	// const resp = await axios.get('https://api.opensea.io/api/v1/asset/matic/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a/1/')
 
-	// console.log('totalSupply', totalSupply)
 
 	const resp = await axios.get(
 		`http://api.squatpanda.online/api/creature/${id}`
@@ -95,14 +89,14 @@ const getNFTsSingle = async (id) => {
 const getLatestNfts = async (totalSupply) => {
 	let nfts = [];
 	if (totalSupply <= 9) {
-		for (let i = totalSupply; i >= 0; i -= 1) {
+		for (let i = _.toInteger(totalSupply); i >= 0; i -= 1) {
 			nfts.push(_.toInteger(i));
 		}
 	}
 
 	if (totalSupply > 9) {
-		let limit = totalSupply - 8;
-		for (let i = totalSupply - 1; i >= limit; i -= 1) {
+		let limit = _.toInteger(totalSupply) - 8;
+		for (let i = _.toInteger(totalSupply) - 1; i >= limit; i -= 1) {
 			nfts.push(_.toInteger(i));
 		}
 	}

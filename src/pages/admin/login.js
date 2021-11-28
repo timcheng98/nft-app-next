@@ -17,7 +17,6 @@ const Login = () => {
 
 	const router = useRouter()
 	const [session] = useSession();
-	console.log('session', session)
 	const [form] = Form.useForm();
 
 	const onFinish = async (values) => {

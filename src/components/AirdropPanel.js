@@ -112,12 +112,6 @@ const AirdropPanel = () => {
           </Col>
         </Row>
       </Col>
-          {/* <Col span={10}>
-            <div style={{ width: '100%', height: '100%'}}>
-
-            <Image src="blindbox.jpg" alt="?" className="collection" />
-            </div>
-          </Col> */}
     </Row>
   )
 }

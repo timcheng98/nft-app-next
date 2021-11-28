@@ -16,6 +16,13 @@ const connectRequest = () => {
   };
 };
 
+export const setModalVisible = (data) => {
+  return {
+    type: "SET_MODAL_VISIBLE",
+    payload: data
+  };
+};
+
 const disconnectRequest = (payload) => {
   return {
     type: "DISCONNECTION_REQUEST",
@@ -60,16 +67,8 @@ const updateAccountRequest = (payload) => {
 
 export const disconnect = () => {
   return async (dispatch) => {
-    // dispatch(disconnectRequest());
     dispatch(updateAccountRequest({account: null, balance: 0}))
     localStorage.setItem('account', null)
-    // if (window.ethereum && window.ethereum.isMetaMask) {
-    //   let web3 = new Web3(window.ethereum);
-
-    //   window.ethereum.on("disconnect", () => {
-		// 		console.log('123')
-		// 	});
-    // }
   };
 };
 
@@ -84,12 +83,27 @@ export const connect = () => {
 
         window.ethereum
           .request({ method: "eth_requestAccounts" })
-          .then((accounts) => {
+          .then(async (accounts) => {
             if (accounts.length === 0) {
               dispatch(connectFailed("Please connect to MetaMask."));
             } else if (accounts[0] !== currentAccount) {
               currentAccount = accounts[0];
               localStorage.setItem('account', currentAccount)
+              const SmartContractObj = new web3.eth.Contract(
+                SmartContract.abi,
+                '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
+              );
+              const balance = await web3.eth.getBalance(
+                currentAccount
+              );
+              dispatch(
+                connectSuccess({
+                  account: currentAccount,
+                  smartContract: SmartContractObj,
+                  web3: web3,
+                  balance: _.round(web3.utils.fromWei(balance), 3),
+                })
+              );
             }
           })
           
@@ -97,7 +111,9 @@ export const connect = () => {
             if (err.code === 4001) {
               // EIP-1193 userRejectedRequest error
               // If this happens, the user rejected the connection request.
+
               dispatch(connectFailed("Please connect to MetaMask."));
+              localStorage.setItem('account', null)
             } else {
               console.error(err);
             }
@@ -108,7 +124,6 @@ export const connect = () => {
         });
 
         const NetworkData = await SmartContract.networks[networkId];
-
         if (networkId == 80001) {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract.abi,
@@ -123,8 +138,11 @@ export const connect = () => {
             currentAccount
           );
 
+          let aidrop_claimed = await SmartContractObj.methods.airdroppedList(currentAccount)
+          .call();
           dispatch(
             connectSuccess({
+              aidrop_claimed,
               account: currentAccount,
               smartContract: SmartContractObj,
               web3: web3,
@@ -135,6 +153,7 @@ export const connect = () => {
           // Add listeners start
           window.ethereum.on("accountsChanged", (accounts) => {
             if (accounts.length === 0) {
+              localStorage.setItem('account', null)
               dispatch(connectFailed("Please connect to MetaMask."));
             } else if (accounts[0] !== currentAccount) {
               currentAccount = accounts[0];
@@ -149,13 +168,16 @@ export const connect = () => {
           // dispatch(connectFailed('Change network to Polygon.'));
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
-            params: [{ chainId: "0x89" }], // chainId must be in hexadecimal numbers
+            // params: [{ chainId: "0x89" }], // chainId must be in hexadecimal numbers - 137
+            params: [{ chainId: "13881" }], // chainId must be in hexadecimal numbers - 80001
           });
         }
       } catch (err) {
+        localStorage.setItem('account', null)
         // dispatch(connectFailed("Something went wrong."));
       }
     } else {
+      localStorage.setItem('account', null)
       dispatch(connectFailed("Install Metamask."));
     }
   };

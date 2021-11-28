@@ -41,6 +41,7 @@ export const fetchAccountData = () => {
         )
         .call();
 
+
       // const baseURI = await store
       //   .getState()
       //   .blockchain.smartContract.methods._baseTokenURI.call()
@@ -54,7 +55,7 @@ export const fetchAccountData = () => {
 
       dispatch(
         fetchAccountDataSuccess({
-          accountTokens: totalNfts,
+          accountTokens: _.map(totalNfts, (item) => (_.toInteger(item))),
         })
       );
     } catch (err) {

@@ -47,20 +47,6 @@ const responsiveHeader = {
 };
 
 const Home = (props) => {
-  const blockchain = useSelector((state) => state.blockchain);
-  const data = useSelector((state) => state.data);
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (!blockchain.smartContract) return;
-    dispatch(fetchData());
-  }, [blockchain.smartContract, dispatch]);
-
-
-	useEffect(() => {
-		dispatch(init())
-	}, [])
-
   const { latest_nfts } = props;
 
   return (
@@ -208,7 +194,7 @@ const Home = (props) => {
 
 
 export const getStaticProps = async (context) => {
-  return getCustomStaticProps(context, "/");
+  return getCustomStaticProps(context, "/", 1);
 };
 
 export default Home;

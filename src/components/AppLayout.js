@@ -6,6 +6,7 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { connect, init } from '../redux/blockchain/blockchainActions';
 import { fetchData } from '../redux/data/dataActions';
+import WalletModal from './WalletModal';
 
 const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
 	const dispatch = useDispatch()
@@ -23,6 +24,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
     if (!state.blockchain.smartContract) return;
     dispatch(fetchData());
   }, [state.blockchain.smartContract, dispatch]);
+	
 
 	return (
 		<div style={{ backgroundColor: color }}>
@@ -38,6 +40,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
 
 			<AppFooter />
 			<AppTabBar />
+			<WalletModal />
 		</div>
 	);
 };

@@ -21,7 +21,7 @@ const Collection = (props) => {
 	const rarity = () => {
 		if (collection.edition <= 15) return 'Super Rare';
 		if (collection.edition <= 254) return 'Rare';
-		return 'Original';
+		return 'Normal';
 	};
 
 	const getScore = () => {
