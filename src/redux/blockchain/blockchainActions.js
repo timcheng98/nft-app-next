@@ -72,7 +72,9 @@ export const disconnect = () => {
   };
 };
 
-export const connect = () => {
+export const connect = ({
+  showError = true
+}) => {
   return async (dispatch) => {
     dispatch(connectRequest());
     if (window.ethereum && window.ethereum.isMetaMask) {
@@ -174,11 +176,15 @@ export const connect = () => {
         }
       } catch (err) {
         localStorage.setItem('account', null)
-        // dispatch(connectFailed("Something went wrong."));
+        if (showError) {
+          dispatch(connectFailed("Something went wrong."));
+        }
       }
     } else {
       localStorage.setItem('account', null)
-      dispatch(connectFailed("Install Metamask."));
+      if (showError) {
+        dispatch(connectFailed("Install Metamask."));
+      }
     }
   };
 };
@@ -203,7 +209,7 @@ export const init = () => {
         // dispatch(connectFailed("Something went wrong."));
       }
     } else {
-      dispatch(connectFailed("Install Metamask."));
+      // dispatch(connectFailed("Install Metamask."));
     }
   };
 };

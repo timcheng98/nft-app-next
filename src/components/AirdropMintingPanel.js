@@ -30,6 +30,12 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
   let interval = useRef();
   let value = useRef(0)
   let stop = useRef(false)
+  let buttonRef = useRef()
+
+  // useEffect(() => {
+  //   if (blockchain.aidrop_claimed) return;
+  //   buttonRef.current.scrollIntoView({behavior: "smooth", inline: "end"});
+  // }, [blockchain])
 
 
   useEffect(() => {
@@ -150,6 +156,8 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
             </Col>
             <Col span={24}>
               <Button
+                ref={buttonRef}
+                autoFocus
                 disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {

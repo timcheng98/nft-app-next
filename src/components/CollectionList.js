@@ -52,7 +52,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
             borderBottomWidth: 3,
             height: "100%",
             width: "100%",
-            borderRadius: 15,
+            borderRadius: 18,
             background: "#fff",
             ...containerStyle,
           }}

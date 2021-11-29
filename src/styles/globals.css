@@ -31,6 +31,10 @@ a {
   transition: all 0.2s;
 }
 
+.banner-container {
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
 .app-button {
   -webkit-box-align: center;
   align-items: center;
@@ -181,7 +185,9 @@ a {
 }
 
 .collection {
-  border-radius: 10px;
+  border-radius: 18px;
+  border-bottom-right-radius: 0px;
+  border-bottom-left-radius: 0px;
 }
 
 .collection-icon {
@@ -197,7 +203,19 @@ a {
 
 .card-hover:hover {
   opacity: 0.85;
-  transition: opacity 0.3s ease-in-out;
+  transform: scale(0.99);
+  -webkit-transform: scale(0.99);
+  transition: all 0.3s ease-in-out !important;
+  -webkit-transition: all 0.3s ease-in-out !important;
+}
+
+
+.card-hover {
+  opacity: 0.85;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  transition: all 0.3s ease-in-out !important;
+  -webkit-transition: all 0.3s ease-in-out !important;
 }
 
 .adm-list-item-content-main span {
@@ -290,3 +308,81 @@ background-image: linear-gradient(326deg, #bd4f6c 0%, #d7816a 74%);
   }
 }
 
+
+
+.chevron {
+  position: absolute;
+  width: 28px;
+  height: 8px;
+  opacity: 0;
+  transform: scale3d(0.5, 0.5, 0.5);
+  animation: move 3s ease-out infinite;
+}
+
+.chevron:first-child {
+  animation: move 3s ease-out 1s infinite;
+}
+
+.chevron:nth-child(2) {
+  animation: move 3s ease-out 2s infinite;
+}
+
+.chevron:before,
+.chevron:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 51%;
+  background: #4b4b4b;
+}
+
+.chevron:before {
+  left: 0;
+  transform: skew(0deg, 30deg);
+}
+
+.chevron:after {
+  right: 0;
+  width: 50%;
+  transform: skew(0deg, -30deg);
+}
+
+@keyframes move {
+  25% {
+    opacity: 1;
+
+  }
+  33% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  67% {
+    opacity: 1;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(55px) scale3d(0.5, 0.5, 0.5);
+  }
+}
+
+.text {
+  display: block;
+  margin-top: 75px;
+  /* margin-left: -30px; */
+  font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+  font-size: 12px;
+  color: #2b2b2b;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-weight: 500;
+  opacity: .25;
+  animation: pulse 2s linear alternate infinite;
+}
+
+@keyframes pulse {
+  to {
+    opacity: 1;
+  }
+}

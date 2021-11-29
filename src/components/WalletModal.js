@@ -220,6 +220,28 @@ const AccountInfo = () => {
 							</a>
 						</Col>
 					</Row>
+					<Row style={{ marginBottom: 20 }}>
+						<Col span={24}>
+							<Button
+								onClick={() => {
+									router.push('/mint')
+									// dispatch(disconnect());
+									dispatch(setModalVisible(false))
+								}}
+								block
+								style={{
+									...defaultStyles.subHeader,
+									// background: 'none',
+									color: '#fff',
+									height: 45,
+								}}
+								className='app-button'
+								// icon={<LogoutOutlined />}
+							>
+								Mint
+							</Button>
+						</Col>
+					</Row>
 					<Row style={{ marginBottom: 30 }}>
 						<Col span={24}>
 							<Button

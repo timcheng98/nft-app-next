@@ -23,6 +23,9 @@ import Team from "../components/Team";
 import RoadMap from "../components/RoadMap";
 import CollectionList from "../components/CollectionList";
 import { init } from "../redux/blockchain/blockchainActions";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 
 
@@ -48,7 +51,17 @@ const responsiveHeader = {
 
 const Home = (props) => {
   const { latest_nfts } = props;
+	// wait until DOM has been rendered
 
+	useEffect(() => {
+			let tl = gsap.timeline();
+
+			tl.addLabel("start")
+			tl.from('.carousel-container', { opacity: 0, duration: 3 })
+			tl.from('.title', { opacity: 0, x: -300, duration: 0.5}, 0)
+			tl.from('.sub-title', { opacity: 0, x: 400, duration: 1}, 0)
+
+	}, []);
   return (
     <AppLayout fullWidth>
       <Head
@@ -76,8 +89,8 @@ const Home = (props) => {
       // dotListClass='custom-dot-list-style'
       // itemClass='carousel-item-padding-40-px'
       >
-        <div style={{ width: "100%", position: 'relative' }}>
-          <Image src="banner.jpg" width={3} height={1} alt="banner" />
+        <div style={{ width: "100%", position: 'relative' }} >
+          <Image src="banner.jpg" width={3} height={1} alt="banner" className="banner" />
         </div>
         <div style={{ width: "100%", position: 'relative' }}>
           <Image src="banner2.jpg" width={3} height={1} alt="banner" className="banner" />
@@ -94,7 +107,8 @@ const Home = (props) => {
           <Col xs={22} md={20}>
             <Row gutter={[0, 40]} align="middle" style={{ padding: '0px 0px 40px 0px' }}>
               <Col xs={22} md={12} >
-                <span
+                <div
+                  className="title"
                   style={{
                     color: "#2b2b2b",
                     fontSize: 'calc(48px + 0.5vw)',
@@ -103,15 +117,15 @@ const Home = (props) => {
                   }}
                 >
                   Welcome to <br />Squat Panda
-                </span>
+                </div>
               </Col>
               <Col xs={22} md={12}>
-                <span style={defaultStyles.subHeader}>
+                <div className="sub-title" style={defaultStyles.subHeader}>
                   Squat Panda is a tribute to the digital collectibles
                   created by anonymous developers, and innovative algorithms.
                   These 10,000 pieces of artworks are inspired by the famous WSB
                   events, recalling the inner artist in you.
-                </span>
+                </div>
               </Col>
               {/* <Col xs={24} md={22}>
                 <Row gutter={[20, 20]}>

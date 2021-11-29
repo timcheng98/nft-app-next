@@ -1,6 +1,6 @@
 import AppLayout from '../components/AppLayout';
 // import Image from '../components/Image';
-import { GiftOutline, QuestionCircleOutline } from 'antd-mobile-icons';
+import {CaretDownOutlined } from '@ant-design/icons';
 import {
 	Row,
 	Col,
@@ -87,10 +87,19 @@ const Mint = () => {
 				title='Mint | Squat Panda'
 				description='Squat Panda - Mint the Squat Panda'
 			/>
-<div style={{ width: "100%", position: 'relative' }}>
+<div style={{ width: "100%", position: 'relative' }} className="banner-container" >
           <Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
         </div>
-			<Row justify="center" style={{ marginTop: 40 }} >
+				<Row justify="center" style={{ margin: '40px 0px' }}>
+						<div className="chevron"></div>
+						<div className="chevron"></div>
+						<div className="chevron"></div>
+						<span className="text">Scroll down</span>
+				</Row>
+			<Row justify="center">
+			<Col span={24} style={{ textAlign: 'center', fontSize: 44 }}>
+
+					</Col>
 			<Col span={22}>
 			<Row>
 			<Col span={24} style={defaultStyles.banner}>
@@ -106,6 +115,7 @@ const Mint = () => {
 			</Col>
 			</Row>
 				<Row justify='center' style={{ marginBottom: 20 }}>
+				
 				<Col xs={22} md={8}>
 						<AirdropMintingPanel />
 					</Col>

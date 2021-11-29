@@ -6,6 +6,8 @@ import store, { wrapper } from '../redux/store';
 import { Provider } from 'react-redux';
 import Script from "next/script";
 import { Provider as AuthProvider } from 'next-auth/client'
+import { gsap } from "gsap";
+
 
 function MyApp({ Component, pageProps }) {
 

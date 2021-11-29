@@ -64,14 +64,14 @@ const FAQ = () => {
 						key='2'
 					>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
-							During many weeks of late nights and long weekends each Crypto
+							During many weeks of late nights and long weekends each
 							Squat Panda was made individually in a vector based app,
 							exported and uploaded to OpenSea.
 							<br />
 							<br />
 							There must have been an easier way to do this, but the creator of
 							the Squat Panda was new to the NFT space and just jumped
-							in using the apps he was familiar with to make the Crypto
+							in using the apps he was familiar with to make the
 							Squat Panda's.
 							<br />
 							<br />
@@ -111,7 +111,7 @@ const FAQ = () => {
 							<a
 								rel='noreferrer'
 								style={{ color: '#1E90FF' }}
-								href='https://opensea.io/collection/crypto-Squat Panda-nft'
+								href='https://opensea.io/collection/squat-panda'
 								target='_blank'
 							>
 								Visit
@@ -135,7 +135,7 @@ const FAQ = () => {
 					<Panel title='5. Will more Squat Panda be minted?' key='5'>
 						<span style={{ fontSize: 15, fontWeight: '400', color: 'gray' }}>
 							The Collection is limited to 10,000 mints max.All have been minted,
-							the secondary market is the only way to obtain a Crypto
+							the secondary market is the only way to obtain a 
 							Squat Panda for your collection.
 						</span>
 					</Panel>
