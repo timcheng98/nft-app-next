@@ -12,12 +12,15 @@ const Header = ({ title = 'Squat Panda', description }) => {
 				<link rel='manifest' href='https://www.squatpanda.online/manifest.json' />
 				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				<meta name='description' content={description} />
+				<meta property='title' content={title}/>
 				<meta property='og:title' content={title} key='title' />
 				<meta charSet="UTF-8" /> 
 				<meta name="robots" content="noindex,nofollow" />
 				<meta property='og:type' content='article' />
 				<meta property='og:url' content='https://squatpanda.online' />
+				<meta property='og:image' content='https://squatpanda.online/banner.jpg' />
 				<meta property='og:site_name' content='Squat Panda NFT' />
+				<link rel="shortcut icon" href="https://www.squatpanda.online/logo.png" />
 				<meta
 					property='og:description'
 					content={description}
@@ -36,7 +39,7 @@ const Header = ({ title = 'Squat Panda', description }) => {
 				/>
 				<meta
 					name='twitter:image'
-					content='https://www.squatpanda.online/banner.png'
+					content='https://www.squatpanda.online/banner.jpg'
 					key="twitter:image"
 				/>
 			</Head>

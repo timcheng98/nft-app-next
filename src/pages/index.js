@@ -53,7 +53,10 @@ const Home = (props) => {
     <AppLayout fullWidth>
       <Head
         title="Squat Panda"
-        description="Squat Panda - Information the Squat Panda and show the latest minted collections"
+        description="Squat Panda are 10,000 art pieces with a one-of-a-kind digital
+        collection of various NFTs that are stored on the Polygon Blockchain.
+        Each one has been meticulously created, hand-picked, and perfectly
+        formed."
       />
       <Carousel
         swipeable
