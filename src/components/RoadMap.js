@@ -41,9 +41,11 @@ const RoadMap = () => {
 		<Row justify='center' className="row" style={{ backgroundColor: '#fff' }}>
 			<Col span={20}>
 				<Row>
-					<Col xs={24} md={10} className="container">
-						<h1
-							className="section"
+					<Col xs={24} md={10} >
+<Row className="container">
+	<Col span={24} className="section">
+	<h1
+							
 							id="id"
 							style={{
 								color: 'rgb(109, 40, 217)',
@@ -55,7 +57,8 @@ const RoadMap = () => {
 						>
 							Roadmap
 						</h1>
-						<p></p>
+	</Col>
+</Row>
 					</Col>
 					<Col xs={24} md={14}>
 						<Row gutter={[0, 20]} className="container">
