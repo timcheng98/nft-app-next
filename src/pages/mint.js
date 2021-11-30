@@ -18,14 +18,14 @@ import React, { useState, useEffect } from 'react';
 // import WalletModal from '../components/WalletModal';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
-import { fetchData } from '../redux/data/dataActions';
+import { fetchData, fetchDataSuccess } from '../redux/data/dataActions';
 import MintingPanel from '../components/MintingPanel';
 import AirdropMintingPanel from '../components/AirdropMintingPanel';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
 import { init } from '../redux/blockchain/blockchainActions';
 
-const Mint = () => {
+const Mint = (props) => {
 
 	const dispatch = useDispatch();
 	const [visible, setVisible] = useState(false);
@@ -36,6 +36,15 @@ const Mint = () => {
 
 	useEffect(() => {
 		dispatch(init())
+		dispatch(
+      fetchDataSuccess({
+        name: props.name,
+        total: _.toInteger(props.total),
+        price: _.toInteger(props.amountToSend),
+        airdrop: _.toInteger(props.airdrop),
+        total_airdrop: _.toInteger(props.total_airdrop)
+      })
+    );
 	}, [])
 
 	// useEffect(() => {

@@ -17,9 +17,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
 
 	useEffect(() => {
 		if (!localStorage.getItem('account')) return;
-		dispatch(connect({
-			showError: false
-		}))
+		dispatch(connect(false))
 	}, [dispatch])
 
 	useEffect(() => {

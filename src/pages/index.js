@@ -9,7 +9,7 @@ import {
   getCustomStaticProps,
   getCustomServerSideProps,
 } from "../model/client";
-import { fetchData } from "../redux/data/dataActions";
+import { fetchData, fetchDataSuccess } from "../redux/data/dataActions";
 import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
@@ -50,17 +50,27 @@ const responsiveHeader = {
 };
 
 const Home = (props) => {
+  const dispatch  = useDispatch()
+
   const { latest_nfts } = props;
 	// wait until DOM has been rendered
 
 	useEffect(() => {
+    dispatch(
+      fetchDataSuccess({
+        name: props.name,
+        total: _.toInteger(props.total),
+        price: _.toInteger(props.amountToSend),
+        airdrop: _.toInteger(props.airdrop),
+        total_airdrop: _.toInteger(props.total_airdrop)
+      })
+    );
 			let tl = gsap.timeline();
 
 			tl.addLabel("start")
-			tl.from('.carousel-container', { opacity: 0, duration: 3 })
+			// tl.from('.carousel-container', { opacity: 0, duration: 3 })
 			tl.from('.title', { opacity: 0, x: -300, duration: 0.5}, 0)
 			tl.from('.sub-title', { opacity: 0, x: 400, duration: 1}, 0)
-
 	}, []);
   return (
     <AppLayout fullWidth>

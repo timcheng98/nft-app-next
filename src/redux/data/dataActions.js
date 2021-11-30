@@ -10,7 +10,7 @@ const fetchDataRequest = () => {
   };
 };
 
-const fetchDataSuccess = (payload) => {
+export const fetchDataSuccess = (payload) => {
   return {
     type: "CHECK_DATA_SUCCESS",
     payload: payload,
@@ -71,9 +71,9 @@ export const fetchData = (account) => {
     try {
       let web3 = new Web3(window.ethereum);
       let name = await store
-        .getState()
-        .blockchain.smartContract.methods.name()
-        .call();
+      .getState()
+      .blockchain.smartContract.methods.name()
+      .call();
       
       let price = await store
         .getState()

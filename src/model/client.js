@@ -6,12 +6,16 @@ const web3 = new Web3(
 );
 const { rarity } = require('../core/rarity');
 const _ = require('lodash');
+import store from "../redux/store";
+import { fetchDataSuccess } from "../redux/data/dataActions";
 
 const contractAddress = '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96';
 const contract = new web3.eth.Contract(smartContract.abi, contractAddress);
 
 export const getCustomStaticProps = async ({ params }, pathname, revalidate = 1) => {
 	let clientProps = {};
+	const data = await blockchaindata();
+	_.assign(clientProps, data);
 
 	if (pathname === '/') {
 		const totalSupply = await contract.methods.totalSupply().call();
@@ -38,6 +42,34 @@ export const getCustomStaticProps = async ({ params }, pathname, revalidate = 1)
 		revalidate
 	};
 };
+
+const blockchaindata = async () => {
+	let name = await contract.methods.name()
+	.call();
+
+let price = await contract.methods.cost()
+	.call();
+	const amountToSend = web3.utils.fromWei(
+		_.toString(price),
+	); // Convert to wei value
+
+const total = await contract.methods.totalSupply()
+	.call();
+
+const airdrop = await contract.methods.aidrop_amount()
+	.call();
+const total_airdrop = await contract.methods.AIRDROP_AMOUNT()
+	.call();
+
+	
+	return {
+		name,
+		total: _.toInteger(total),
+          price: _.toInteger(amountToSend),
+          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop),
+          total_airdrop: _.toInteger(total_airdrop)
+	}
+}
 
 
 export async function getCustomStaticPaths() {

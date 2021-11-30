@@ -1,15 +1,24 @@
 import { Row, Col, Button } from "antd";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import Image from "./Image";
 import { useDispatch, useSelector } from "react-redux";
 
 import Link from "next/link";
 import { setModalVisible } from "../redux/blockchain/blockchainActions";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 
 const AppHeader = () => {
   const dispatch = useDispatch()
   const blockchain = useSelector((state) => state.blockchain);
+	useEffect(() => {
+			let tl = gsap.timeline();
 
+			tl.addLabel("start")
+			tl.from('.logo', { opacity: 0, y: -200, duration: 1 })
+	}, []);
   return (
     <Row
       justify="center"

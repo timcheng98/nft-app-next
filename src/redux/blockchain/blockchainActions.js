@@ -72,9 +72,7 @@ export const disconnect = () => {
   };
 };
 
-export const connect = ({
-  showError = true
-}) => {
+export const connect = (showError = true) => {
   return async (dispatch) => {
     dispatch(connectRequest());
     if (window.ethereum && window.ethereum.isMetaMask) {
