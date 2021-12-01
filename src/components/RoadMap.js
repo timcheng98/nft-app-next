@@ -120,7 +120,7 @@ const RoadMap = () => {
 							</Col>
 							<Col className="section q4-8"
 								span={24} style={defaultStyles.subHeader}>
-								Donate 10% NFT revenue to World Wide Fund for Nature (WWF)
+								Donate 1% NFT revenue to World Wide Fund for Nature (WWF)
 							</Col>
 						</Row>
 						<Row gutter={[0, 20]} className="container">
@@ -143,7 +143,7 @@ const RoadMap = () => {
 								Design and sale of Squat Panda merchandise
 							</Col>
 							<Col className="section q4-3" span={24} style={defaultStyles.subHeader}>
-								Donate 10% sale revenue to animal charities worldwide
+								Donate 1% sale revenue to animal charities worldwide
 							</Col>
 							<Col className="section q4-4" span={24} style={defaultStyles.subHeader}>
 								Whitepaper - Finalization of the official Squat Panda
@@ -176,7 +176,7 @@ const RoadMap = () => {
 								$SPD ERC20 Token launch
 							</Col>
 							<Col className="section q2-3" span={24} style={defaultStyles.subHeader}>
-								Donate 10% token revenue to animal charities worldwide
+								Donate 1% token revenue to animal charities worldwide
 							</Col>
 							<Col className="section q2-4" span={24} style={defaultStyles.subHeader}>
 								Plan to list $SPD ERC20 Token on DeFi

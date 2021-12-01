@@ -1,5 +1,5 @@
 import AppLayout from "../components/AppLayout";
-import { Row, Col, Button, Divider, Progress, Carousel as AntdCarousel } from "antd";
+import { Row, Col, Button, Divider, Progress, Carousel as AntdCarousel, Grid } from "antd";
 import Image from "../components/Image";
 import Head from "../components/Head";
 import Carousel from "react-multi-carousel";
@@ -27,6 +27,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+const { useBreakpoint } = Grid
 
 
 const responsiveHeader = {
@@ -50,12 +51,13 @@ const responsiveHeader = {
 };
 
 const Home = (props) => {
-  const dispatch  = useDispatch()
+  const dispatch = useDispatch()
+  const data = useSelector(state => state.data)
 
   const { latest_nfts } = props;
-	// wait until DOM has been rendered
+  // wait until DOM has been rendered
 
-	useEffect(() => {
+  useEffect(() => {
     dispatch(
       fetchDataSuccess({
         name: props.name,
@@ -65,13 +67,13 @@ const Home = (props) => {
         total_airdrop: _.toInteger(props.total_airdrop)
       })
     );
-			let tl = gsap.timeline();
+    let tl = gsap.timeline();
 
-			tl.addLabel("start")
-			// tl.from('.carousel-container', { opacity: 0, duration: 3 })
-			tl.from('.title', { opacity: 0, x: -300, duration: 0.5}, 0)
-			tl.from('.sub-title', { opacity: 0, x: 400, duration: 1}, 0)
-	}, []);
+    tl.addLabel("start")
+    // tl.from('.carousel-container', { opacity: 0, duration: 3 })
+    tl.from('.title', { opacity: 0, x: -300, duration: 0.5 }, 0)
+    tl.from('.sub-title', { opacity: 0, x: 400, duration: 1 }, 0)
+  }, []);
   return (
     <AppLayout fullWidth>
       <Head
@@ -168,30 +170,67 @@ const Home = (props) => {
               </Col> */}
             </Row>
           </Col>
-          
+
         </Row>
 
         <Row justify="center">
-        <Col span={18}>
-        <Row justify="space-around" align="middle" gutter={[20, 40]}>
-        <Col xs={12} md={5}>
-            {/* <MintingPanel size="small" /> */}
-            <div style={{ width: '100%', height: '100%'  }}>
-              <Image
-                draggable={false}
-                alt="icon"
-                src="squat-animation.gif"
-                // style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              />
-            </div>
-          </Col>
-          <Col xs={24} md={10}><AirdropPanel /></Col>
+          <Col span={18}>
+            <Row justify="space-around" align="middle" gutter={[20, 40]}>
+              <Col xs={12} md={5}>
+                {/* <MintingPanel size="small" /> */}
+                <div style={{ width: '100%', height: '100%' }}>
+                  <Image
+                    draggable={false}
+                    alt="icon"
+                    src="squat-animation.gif"
+                  // style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                  />
+                </div>
+              </Col>
+              <Col xs={24} md={10}><AirdropPanel /></Col>
 
-        </Row>
-        </Col>
+            </Row>
+          </Col>
         </Row>
       </div>
-      <Row justify="center" style={{ paddingTop: 40 }}>
+      <Row justify="center" align="middle" style={{ paddingTop: 40, textAlign: 'center',  minHeight: 500 }}>
+        <Col xs={22} md={14} style={{ border: '8px dashed #2b2b2b', borderRadius: 50, padding: 30, minHeight: 200 }}>
+          <Row justify="center">
+          <Col xs={7} md={4}>
+            <div><Image src="logo.png" alt="logo" /></div>
+            </Col>
+          </Row>
+          <Row justify="center" align="middle" style={{  minHeight: 200 }} >
+           
+            <Col>
+
+            <h1
+            style={{
+              color: "#2b2b2b",
+              fontSize: useBreakpoint().xs ? 28 : 32,
+              fontWeight: "600",
+            }}
+          >
+            {data.total} / 10,000
+          </h1>
+            <h1
+            style={{
+              color: "#2b2b2b",
+              fontSize: useBreakpoint().xs ? 24 : 28,
+              fontWeight: "600",
+            }}
+          >
+            Contract Address
+          </h1>
+          <div style={{
+              color: "#2b2b2b",
+              fontSize: useBreakpoint().xs ? 16 : 22,
+              fontWeight: "600",
+            }}>{'0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'}</div></Col>
+          </Row>
+        </Col>
+      </Row>
+            <Row justify="center" style={{ paddingTop: 40 }}>
         <Col span={20}>
           <h1
             style={{
@@ -209,8 +248,8 @@ const Home = (props) => {
           <CollectionList collections={latest_nfts} />
         </Col>
       </Row>
-      <div style={{ padding: '40px 0px'}}>
-      <RoadMap />
+      <div style={{ padding: '40px 0px' }}>
+        <RoadMap />
       </div>
       <Team />
       <FAQ />

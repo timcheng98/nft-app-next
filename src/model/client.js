@@ -45,29 +45,29 @@ export const getCustomStaticProps = async ({ params }, pathname, revalidate = 1)
 
 const blockchaindata = async () => {
 	let name = await contract.methods.name()
-	.call();
+		.call();
 
-let price = await contract.methods.cost()
-	.call();
+	let price = await contract.methods.cost()
+		.call();
 	const amountToSend = web3.utils.fromWei(
 		_.toString(price),
 	); // Convert to wei value
 
-const total = await contract.methods.totalSupply()
-	.call();
+	const total = await contract.methods.totalSupply()
+		.call();
 
-const airdrop = await contract.methods.aidrop_amount()
-	.call();
-const total_airdrop = await contract.methods.AIRDROP_AMOUNT()
-	.call();
+	const airdrop = await contract.methods.aidrop_amount()
+		.call();
+	const total_airdrop = await contract.methods.AIRDROP_AMOUNT()
+		.call();
 
-	
+
 	return {
 		name,
 		total: _.toInteger(total),
-          price: _.toInteger(amountToSend),
-          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop),
-          total_airdrop: _.toInteger(total_airdrop)
+		price: _.toInteger(amountToSend),
+		airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop),
+		total_airdrop: _.toInteger(total_airdrop)
 	}
 }
 

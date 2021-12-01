@@ -91,7 +91,7 @@ const Collection = (props) => {
 											<Col span={24} style={defaultStyles.header}>
 												<a
 													rel='noreferrer'
-													href={`https://polygonscan.com/token/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a?a=${collection.edition}`}
+													href={`https://polygonscan.com/token/${process.env.NETX_PUBLIC_CONTRACT_ADDRESS}?a=${collection.edition}`}
 													target='_blank'
 												>
 													{collection.name}

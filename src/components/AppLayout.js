@@ -8,7 +8,7 @@ import { connect, init } from '../redux/blockchain/blockchainActions';
 import { fetchData } from '../redux/data/dataActions';
 import WalletModal from './WalletModal';
 
-const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
+const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true }) => {
 	const dispatch = useDispatch()
 	const state = useSelector(state=> state)
 	useEffect(() => {
@@ -38,7 +38,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff' }) => {
 				</Col>
 			</Row>
 
-			<AppFooter />
+			{footer && <AppFooter />}
 			<AppTabBar />
 			<WalletModal />
 		</div>

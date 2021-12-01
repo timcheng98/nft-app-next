@@ -16,9 +16,9 @@ import React, { useState, useEffect, useRef } from "react";
 import WalletModal from "../components/WalletModal";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
-import { fetchData } from "../redux/data/dataActions";
+import { fetchData, fetchDataSuccess } from "../redux/data/dataActions";
 
-const MintingPanel = ({ size = "normal" }) => {
+const MintingPanel = ({ size = 'normal' }) => {
   const [percent, setPercent] = useState(0);
   const dispatch = useDispatch();
   const [visible, setVisible] = useState(false);
@@ -29,18 +29,27 @@ const MintingPanel = ({ size = "normal" }) => {
   let interval = useRef();
   let value = useRef(0)
 
-
   useEffect(() => {
-    let target = 500;
-    let increment = 5;
+    console.log(data)
+    if (!data || data.total < 1) return;
+    let target = data.total;
+    let increment = 1;
     interval.current = setInterval(() => {
-      if (value.current >= target) return clearInterval(interval.current);
-	  value.current += increment
-      setPercent((prev) => prev + increment);
-    }, 10);
+      if (stop.current) return;
+      if (value.current >= target) {
+        clearInterval(interval.current);
+        stop.current = true
+        return
+      }
+      value.current += increment
+      setPercent((prev) => {
+        if (prev + increment > target) return target;
+        return prev + increment
+      });
+    }, 100);
 
-    return () =>  clearInterval(interval.current);
-  }, []);
+    return () => clearInterval(interval.current);
+  }, [data]);
 
   useEffect(() => {
     setLoading(true);
@@ -86,7 +95,7 @@ const MintingPanel = ({ size = "normal" }) => {
   };
 
   return (
-    <Row justify="center">
+    <Row justify="center" style={{ paddingTop: 30 }}>
       <Col xs={24} md={size === "small" ? 18 : 24}>
         <div
           style={{
@@ -96,9 +105,9 @@ const MintingPanel = ({ size = "normal" }) => {
         >
           <Row justify="space-between">
             <Col span={4} style={defaultStyles.header}>
-              Airdrop
+              Mint
             </Col>
-            <Col xs={13} md={size === "small" ? 12 : 7}>
+            <Col xs={13} md={size === "small" ? 12 : 10}>
               <Button
                 icon={<GiftOutline style={{ fontSize: 20, marginRight: 5 }} />}
                 style={{
@@ -108,7 +117,7 @@ const MintingPanel = ({ size = "normal" }) => {
                 }}
                 className="app-button"
               >
-                Promotion
+                PRESALE
               </Button>
             </Col>
             <Divider style={{ margin: "10px 0px" }} />
@@ -118,7 +127,7 @@ const MintingPanel = ({ size = "normal" }) => {
               <Progress
                 strokeWidth={40}
                 strokeColor={'rgb(239, 199, 108)'}
-                percent={percent / 1000 * 100}
+                percent={percent / 10000 * 100}
                 showInfo={false}
                 status="active"
               />
@@ -133,46 +142,20 @@ const MintingPanel = ({ size = "normal" }) => {
                   transform: "translate(-50%, -50%)",
                 }}
               >
-                {percent} / 1000
+                {percent} / 10000
               </span>
             </Col>
           </Row>
           <Row gutter={[0, 20]}>
             <Col span={24}>
-              <div
-                style={{
-                  background: "rgba(0, 0, 0, 0.7)",
-                  borderRadius: 10,
-                  width: "100%",
-                  height: "100%",
-
-                  zIndex: 1,
-                  position: "absolute",
-                  top: 0,
-                  left: 0,
-                }}
-              />
-              <GiftOutline
-                className="scale"
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  zIndex: 99,
-                  color: "#fff",
-                  fontSize: size === "small" ? 30 : 60,
-                }}
-              />
+              
               <div style={{ width: "100%", zIndex: 1 }}>
-                <Image src="logo.png" alt="?" className="collection" />
+                <Image src="blindbox.png" alt="?" className="collection" />
               </div>
             </Col>
 
             <Col
-            style={{                  display: 'none'
-          }}
-            span={24}>
+              span={24}>
               <Input
                 value={blockchain.account ? _.toInteger(amount) : undefined}
                 // defaultValue={1}
@@ -219,7 +202,6 @@ const MintingPanel = ({ size = "normal" }) => {
                 style={{
                   ...defaultStyles.card,
                   padding: "20px 20px",
-                  display: 'none'
                 }}
               >
                 <Row justify="center">
@@ -229,7 +211,7 @@ const MintingPanel = ({ size = "normal" }) => {
                       textAlign: "center",
                     }}
                   >
-                    50% OFF
+                    PRESALE
                   </Col>
                 </Row>
                 <Row justify="space-between" style={{ marginBottom: 10 }}>
@@ -249,16 +231,7 @@ const MintingPanel = ({ size = "normal" }) => {
                       </Col>
 
                       <Col>{`${blockchain.account ? data.price : "50"}`}</Col>
-                      {blockchain.account && (
-                        <Col>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              fontSize: 12,
-                            }}
-                          >{`${data.price * 2}`}</span>
-                        </Col>
-                      )}
+                     
                     </Row>
                   </Col>
                 </Row>
@@ -277,21 +250,11 @@ const MintingPanel = ({ size = "normal" }) => {
                           />
                         </div>
                       </Col>
-                      <Col>{`${
-                        blockchain.account
+                      <Col>{`${blockchain.account
                           ? (amount ? amount : 0) * data.price
                           : "50"
-                      }`}</Col>
-                      {blockchain.account && (
-                        <Col>
-                          <span
-                            style={{
-                              textDecoration: "line-through",
-                              fontSize: 12,
-                            }}
-                          >{`${(amount ? amount : 0) * data.price * 2}`}</span>
-                        </Col>
-                      )}
+                        }`}</Col>
+                     
                     </Row>
                   </Col>
                 </Row>
@@ -310,9 +273,8 @@ const MintingPanel = ({ size = "normal" }) => {
                           />
                         </div>
                       </Col>
-                      <Col>{`${
-                        blockchain.balance ? blockchain.balance : "0"
-                      }`}</Col>
+                      <Col>{`${blockchain.balance ? blockchain.balance : "0"
+                        }`}</Col>
                     </Row>
                   </Col>
                 </Row>
@@ -340,7 +302,7 @@ const MintingPanel = ({ size = "normal" }) => {
                 style={{ width: "100%", height: 50, fontSize: 20 }}
                 className="app-button"
               >
-                {blockchain.account ? "Claim" : "Connect Wallet"}
+                {blockchain.account ? "Mint" : "Connect Wallet"}
               </Button>
             </Col>
           </Row>

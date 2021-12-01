@@ -1,6 +1,6 @@
 import AppLayout from '../components/AppLayout';
 // import Image from '../components/Image';
-import {CaretDownOutlined } from '@ant-design/icons';
+import { CaretDownOutlined } from '@ant-design/icons';
 import {
 	Row,
 	Col,
@@ -37,14 +37,14 @@ const Mint = (props) => {
 	useEffect(() => {
 		dispatch(init())
 		dispatch(
-      fetchDataSuccess({
-        name: props.name,
-        total: _.toInteger(props.total),
-        price: _.toInteger(props.amountToSend),
-        airdrop: _.toInteger(props.airdrop),
-        total_airdrop: _.toInteger(props.total_airdrop)
-      })
-    );
+			fetchDataSuccess({
+				name: props.name,
+				total: _.toInteger(props.total),
+				price: _.toInteger(props.amountToSend),
+				airdrop: _.toInteger(props.airdrop),
+				total_airdrop: _.toInteger(props.total_airdrop)
+			})
+		);
 	}, [])
 
 	// useEffect(() => {
@@ -91,44 +91,57 @@ const Mint = (props) => {
 	};
 
 	return (
-		<AppLayout fullWidth>
+		<AppLayout fullWidth footer={false}>
 			<Header
 				title='Mint | Squat Panda'
 				description='Squat Panda - Mint the Squat Panda'
 			/>
-<div style={{ width: "100%", position: 'relative' }} className="banner-container" >
-          <Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
-        </div>
-				<Row justify="center" style={{ margin: '40px 0px' }}>
-						<div className="chevron"></div>
-						<div className="chevron"></div>
-						<div className="chevron"></div>
-						<span className="text">Scroll down</span>
-				</Row>
-			<Row justify="center">
-			<Col span={24} style={{ textAlign: 'center', fontSize: 44 }}>
-
-					</Col>
-			<Col span={22}>
-			<Row>
-			<Col span={24} style={defaultStyles.banner}>
-					Claim a Squat Panda
-				</Col>
-				<Col xs={22} md={14} style={defaultStyles.subBody}>
-				Squat Panda are 10,000 art pieces with a one-of-a-kind digital
-					collection of various NFTs that are stored on the Polygon Blockchain.
-					Each one has been meticulously created, hand-picked, and perfectly
-					formed.
-				</Col>
-				</Row>
-			</Col>
+			<div style={{ background: "url('bg.png')", opacity: 0.65, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingBottom: 100 }}></div>
+			<div style={{ width: "100%", position: 'relative' }} className="banner-container" >
+				<Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
+			</div>
+			<Row justify="center" style={{ margin: '40px 0px' }}>
+				<div className="chevron"></div>
+				<div className="chevron"></div>
+				<div className="chevron"></div>
+				<span className="text">Scroll down</span>
 			</Row>
-				<Row justify='center' style={{ marginBottom: 20 }}>
-				
+			<Row justify="center">
+				<Col span={24} style={{ textAlign: 'center', fontSize: 44 }}>
+
+				</Col>
+				<Col span={22}>
+					<Row>
+						<Col span={24} style={defaultStyles.banner}>
+							Claim a Squat Panda
+						</Col>
+						<Col xs={22} md={14} style={defaultStyles.subBody}>
+							Squat Panda are 10,000 art pieces with a one-of-a-kind digital
+							collection of various NFTs that are stored on the Polygon Blockchain.
+							Each one has been meticulously created, hand-picked, and perfectly
+							formed.
+						</Col>
+					</Row>
+				</Col>
+			</Row>
+			<Row justify='center' style={{ marginBottom: 20 }}>
+
 				<Col xs={22} md={8}>
-						<AirdropMintingPanel />
-					</Col>
-				</Row>
+					{/* <AirdropMintingPanel /> */}
+					<MintingPanel />
+				</Col>
+			</Row>
+			<Row justify='center' style={{ minHeight: 250	 }}>
+				<Col span={8}>
+			<Divider>
+				<b>Reminds & Instructions</b>
+			</Divider>
+				<p>1. 500 NFTs can be claimed for free and every address can claim one NFT</p>
+				<p>2. Each one has been meticulously created, and perfectly formed</p>
+				<p>3. NFTs can mint on Polygon Network and trade on Opensea marketplace</p>
+				<p>4. Donate 1% NFT revenue to World Wide Fund for Nature (WWF)</p>
+				</Col>
+			</Row>
 		</AppLayout>
 	);
 };
