@@ -128,7 +128,7 @@ const Home = (props) => {
         Each one has been meticulously created, hand-picked, and perfectly
         formed.'
 			/>
-			<Row justify='center' ref={conRef} className='' style={{ height: '100vh', overflow: 'hidden'}}>
+			<Row justify='center' ref={conRef} className='' style={{ height: '80vh', overflow: 'hidden'}}>
 				<Col span={18}>
 					<Row justify='center' align='middle' style={{ height: '100vh'}} gutter={[20, 40]}>
 						<Col xs={24} md={24}>
