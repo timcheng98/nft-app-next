@@ -15,8 +15,8 @@ const RoadMap = () => {
 				scrollTrigger: {
 					trigger: container,
 					pin: true,   // pin the trigger element while active,
-					toggleActions: "play none none reverse",
-					start: "top-=200px top", // when the top of the trigger hits the top of the viewport
+					// toggleActions: "play none none reverse",
+					start: "top-=150px top", // when the top of the trigger hits the top of the viewport
 					// end: "+=4000", // end after scrolling 500px beyond the start
 					scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
 					snap: {
@@ -38,7 +38,7 @@ const RoadMap = () => {
 	}, []);
 
 	return (
-		<Row justify='center' className="row" style={{ backgroundColor: '#fff' }}>
+		<Row  justify='center' className="row" style={{ backgroundColor: '#fff' }}>
 			<Col span={20}>
 				<Row>
 					<Col xs={24} md={10} >
@@ -203,6 +203,7 @@ const RoadMap = () => {
 								>
 									And Much More...
 								</h1>
+								<div className="section" />
 							</Col>
 						</Row>
 

@@ -1,7 +1,9 @@
 import { Row, Col } from 'antd';
 import React, { useState, useEffect } from 'react';
 import { Collapse } from 'antd-mobile';
-
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 const { Panel } = Collapse;
 
 const FAQ = () => {
@@ -10,6 +12,30 @@ const FAQ = () => {
 	// Wait until after client-side hydration to show
 	useEffect(() => {
 		setShowChild(true);
+
+		// let tl = gsap.timeline({
+		// 	scrollTrigger: {
+		// 		trigger: '.faq',
+		// 		pin: true,   // pin the trigger element while active,
+		// 		// toggleActions: "play none none reverse",
+		// 		start: "top top", // when the top of the trigger hits the top of the viewport
+		// 		// end: "+=4000", // end after scrolling 500px beyond the start
+		// 		scrub: 1, // smooth scrubbing, takes 1 second to "catch up" to the scrollbar
+		// 		snap: {
+		// 			snapTo: "labels", // snap to the closest label in the timeline
+		// 			duration: { min: 0.2, max: 3 }, // the snap animation should be at least 0.2 seconds, but no more than 3 seconds (determined by velocity)
+		// 			delay: 0.2, // wait 0.2 seconds from the last scroll event before doing the snapping
+		// 			ease: "power1.inOut" // the ease of the snap animation ("power3" by default)
+		// 		},
+		// 		markers: true
+		// 	}
+		// });
+
+		// tl.addLabel("start")
+		// 	.from('.faq-section', { opacity: 0, y: 200, duration: 1 })
+
+
+
 	}, []);
 
 	if (!showChild) {
@@ -19,6 +45,7 @@ const FAQ = () => {
 
 	return (
 		<Row
+			className="faq"
 			justify='center'
 			style={{
 				// marginTop: 40,
@@ -27,6 +54,7 @@ const FAQ = () => {
 			}}
 		>
 			<Col
+				className="faq-section"
 				xs={22}
 				md={20}
 				style={{

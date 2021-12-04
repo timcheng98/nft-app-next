@@ -58,11 +58,16 @@ const responsiveHeader = {
 };
 
 const Home = (props) => {
+	const screens = useBreakpoint()
 	const dispatch = useDispatch();
 	const data = useSelector((state) => state.data);
 	const conRef = React.useRef();
 	const targetRef = React.useRef();
 	const { latest_nfts } = props;
+	const displayRef = React.useRef(false)
+	const [show, setShow] = useState(false)
+
+
 	// wait until DOM has been rendered
 
 	useEffect(() => {
@@ -87,18 +92,23 @@ const Home = (props) => {
 		tl2
 			.addLabel('start')
 			.to('.scroll', { opacity: 0 })
-			.from('.squat-animation', { opacity: 0.5, scale: 0, duration: 2 })
+			.from('.squat-animation', { opacity: 0.5, scale: 0, duration: 1 })
 			.to('.squat-animation', { opacity: 0, scale: 1, duration: 1 })
 			.to('.squat-animation', { opacity: 1, scale: 0.8, duration: 1 })
-			.to('.scroll', { opacity: 1, duration: 1 })
-			.to('.squat-animation', { duration: 4 })
+			.from('.scroll', { opacity: 1, y: 400, duration: 1 })
+			.to('.squat-animation', { duration: 2 })
+			// .from('.scroll', { duration: 2 })
+			// .from('.scroll', { y: -200, duration: 2 })
 			.eventCallback('onComplete', () => {
-				document.querySelector('.pin-spacer').style.display = 'none';
+				conRef.current.remove();
+				displayRef.current = true
+				setShow(displayRef.current)
         let tl = gsap.timeline();
         tl.addLabel('start');
+				// targetRef.current.style.display = 'block'
         // tl.from('.carousel-container', { opacity: 0, duration: 3 })
-        tl.from('.title', { opacity: 0, x: -300, duration: 0.5 }, 0);
-        tl.from('.sub-title', { opacity: 0, x: 400, duration: 1 }, 0);
+        tl.from('.title', { opacity: 0, x: '-5%', duration: 0.5 }, 0);
+        tl.from('.sub-title', { opacity: 0, x: '5%', duration: 1 }, 0);
 				// conRef.current.style.display = 'none'
 				// targetRef.current.scrollIntoView()
 			})
@@ -110,7 +120,7 @@ const Home = (props) => {
 
 	useEffect(() => {}, []);
 	return (
-		<AppLayout fullWidth>
+		<AppLayout fullWidth display={displayRef.current}>
 			<Head
 				title='Squat Panda'
 				description='Squat Panda are 10,000 art pieces with a one-of-a-kind digital
@@ -118,13 +128,13 @@ const Home = (props) => {
         Each one has been meticulously created, hand-picked, and perfectly
         formed.'
 			/>
-			<Row justify='center' ref={conRef} className='container'>
+			<Row justify='center' ref={conRef} className='' style={{ height: '100vh', overflow: 'hidden'}}>
 				<Col span={18}>
-					<Row justify='center' align='middle' gutter={[20, 40]}>
+					<Row justify='center' align='middle' style={{ height: '100vh'}} gutter={[20, 40]}>
 						<Col xs={24} md={24}>
 							{/* <MintingPanel size="small" /> */}
 							<Row justify='center'>
-								<Col xs={12} md={8}>
+								<Col xs={20} md={6}>
 									{' '}
 									<div style={{ width: '100%', height: '100%' }}>
 										<Image
@@ -134,24 +144,20 @@ const Home = (props) => {
 											src='squat-animation.gif'
 											// style={{ width: "100%", height: "100%", objectFit: "cover" }}
 										/>
+													<Row justify="center" >
+<Col span={24}>								<img className="scroll" src="/brand-logo.png" style={{width: '100%'}} /></Col>
+							</Row>
 									</div>
+									
 								</Col>
 							</Row>
+				
 						</Col>
-					</Row>
-					<Row
-						className='scroll'
-						justify='center'
-						style={{ margin: '40px 0px' }}
-					>
-						<div className='chevron'></div>
-						<div className='chevron'></div>
-						<div className='chevron'></div>
-						<span className='text'>Scroll down</span>
 					</Row>
 				</Col>
 			</Row>
-			<div ref={targetRef} />
+			{show &&
+			<div >
 			<Carousel
 				swipeable
 				draggable={false}
@@ -194,7 +200,7 @@ const Home = (props) => {
 				<Row
 					gutter={[0, 40]}
 					justify='center'
-					align='middle'
+					// align='middle'
 					style={{ minHeight: 300 }}
 				>
 					<Col xs={22} md={20}>
@@ -281,7 +287,7 @@ const Home = (props) => {
 					</Col>
 				</Row>
 				<Row justify='center'>
-					<Col xs={24} md={7}>
+					<Col xs={20} md={7}>
 						<AirdropPanel />
 					</Col>
 				</Row>
@@ -313,7 +319,7 @@ const Home = (props) => {
 							<h1
 								style={{
 									color: '#2b2b2b',
-									fontSize: useBreakpoint().xs ? 28 : 32,
+									fontSize: screens.xs ? 28 : 32,
 									fontWeight: '600',
 								}}
 							>
@@ -322,7 +328,7 @@ const Home = (props) => {
 							<h1
 								style={{
 									color: '#2b2b2b',
-									fontSize: useBreakpoint().xs ? 24 : 28,
+									fontSize: screens.xs ? 24 : 28,
 									fontWeight: '600',
 								}}
 							>
@@ -331,7 +337,7 @@ const Home = (props) => {
 							<div
 								style={{
 									color: '#2b2b2b',
-									fontSize: useBreakpoint().xs ? 16 : 22,
+									fontSize: screens.xs ? 16 : 22,
 									fontWeight: '600',
 									wordBreak: 'break-word',
 								}}
@@ -360,12 +366,14 @@ const Home = (props) => {
 					<CollectionList collections={latest_nfts} />
 				</Col>
 			</Row>
-			<div style={{ padding: '40px 0px' }}>
+			<div className="roadmap" style={{ padding: '40px 0px' }}>
 				<RoadMap />
 			</div>
 			<Team />
 			<FAQ />
 			<Partners />
+			</div>
+}
 		</AppLayout>
 	);
 };

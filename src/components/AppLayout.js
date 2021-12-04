@@ -2,7 +2,7 @@ import AppTabBar from './AppTabBar';
 import AppHeader from './AppHeader';
 import AppFooter from './AppFooter';
 import { Row, Col, Affix } from 'antd';
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { connect, init } from '../redux/blockchain/blockchainActions';
 import { fetchData } from '../redux/data/dataActions';
@@ -13,14 +13,15 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 
-const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true }) => {
+const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true, display }) => {
+
 // 	useEffect(() => {
 // 		let tl = gsap.timeline();
 
 // 		tl.addLabel("start")
 // 		tl.to('.section', { opacity: 0 })
 // 		// tl.to('.status-bar', { opacity: 0 })
-// 		tl.from('.section', { opacity: 0, y: -200, duration: 1, delay: 3 })
+// 		tl.from('.section', { opacity: 0, y: -200, duration: 1, delay: 4 })
 // 		// tl.from('.status-bar', { opacity: 0, y: 200, duration: 1 }, 1)
 // 		// tl.to('.status-bar', { opacity: 1 })
 // }, []);
@@ -44,11 +45,11 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true 
 
 	return (
 		<div style={{ backgroundColor: color }}>
-			{/* <Affix style={{ backgroundColor: '#fff', zIndex: 9999 }}> */}
-			<div className="section">
+			<Affix style={{ backgroundColor: '#fff', zIndex: 9999, display: display ? 'block' : 'none' }}>
+			<div className="section" style={{ zIndex: 99 }}>
 			<AppHeader />
 			</div>
-			{/* </Affix> */}
+			</Affix>
 
 			<Row justify='center'>
 				<Col span={fullWidth ? 24 : 22}>
@@ -56,9 +57,9 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true 
 				</Col>
 			</Row>
 
-			{footer && <AppFooter />}
+			{footer && display && <AppFooter />}
 			{/* <div className="status-bar"> */}
-			<AppTabBar />
+{display && 			<AppTabBar display={display} />}
 			{/* </div> */}
 			<WalletModal />
 		</div>
