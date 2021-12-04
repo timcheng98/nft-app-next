@@ -13,14 +13,10 @@ gsap.registerPlugin(ScrollTrigger);
 const AppHeader = () => {
   const dispatch = useDispatch()
   const blockchain = useSelector((state) => state.blockchain);
-	useEffect(() => {
-			let tl = gsap.timeline();
 
-			tl.addLabel("start")
-			tl.from('.logo', { opacity: 0, y: -200, duration: 1 })
-	}, []);
   return (
     <Row
+      className="header"
       justify="center"
       style={{
         padding: "0px",

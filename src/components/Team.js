@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col, Divider, Grid } from 'antd';
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
-
 const Team = () => {
+	const { useBreakpoint } = Grid
+	const xs = useBreakpoint().xs
 
 	useEffect(() => {
-
 			let tl = gsap.timeline({
 				scrollTrigger: {
 					trigger: '.team',
@@ -28,8 +28,8 @@ const Team = () => {
 
 			tl.addLabel("start")
 			tl.from('.team-header', { opacity: 0, y: -100, duration: 0.5 })
-			tl.from('.item-1', { opacity: 0, x: -300, duration: 0.2}, 0)
-			tl.from('.item-2', { opacity: 0, x: 300, duration: 0.2}, 0)
+			tl.from('.item-1', { opacity: 0, scale: 0.5, duration: 0.2}, 0)
+			tl.from('.item-2', { opacity: 0, scale: 0.5, duration: 0.2}, 0)
 
 
 			let tl2 = gsap.timeline({
@@ -51,8 +51,8 @@ const Team = () => {
 			});
 
 			tl2.addLabel("start")
-			tl2.from('.item-3', { opacity: 0, x: -300, duration: 0.5}, 0)
-			tl2.from('.item-4', { opacity: 0, x: 300, duration: 0.5}, 0)
+			tl2.from('.item-3', { opacity: 0, scale: 0.5, duration: 0.5}, 0)
+			tl2.from('.item-4', { opacity: 0, scale: 0.5, duration: 0.5}, 0)
 	}, []);
 
 	return (
