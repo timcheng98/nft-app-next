@@ -13,7 +13,7 @@ import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 
-const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true, display }) => {
+const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true, display = true }) => {
 
 // 	useEffect(() => {
 // 		let tl = gsap.timeline();
@@ -45,7 +45,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true,
 
 	return (
 		<div style={{ backgroundColor: color }}>
-			<Affix style={{ backgroundColor: '#fff', zIndex: 9999, display: display ? 'block' : 'none' }}>
+			<Affix style={{ backgroundColor: '#fff', zIndex: 9999, display: !state.data.showAnimation ? 'block' : 'none' }}>
 			<div className="section" style={{ zIndex: 99 }}>
 			<AppHeader />
 			</div>
@@ -57,9 +57,9 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true,
 				</Col>
 			</Row>
 
-			{footer && display && <AppFooter />}
+			{footer && !state.data.showAnimation && <AppFooter />}
 			{/* <div className="status-bar"> */}
-{display && 			<AppTabBar display={display} />}
+{!state.data.showAnimation && 			<AppTabBar />}
 			{/* </div> */}
 			<WalletModal />
 		</div>

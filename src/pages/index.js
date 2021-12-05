@@ -17,7 +17,7 @@ import {
 	getCustomStaticProps,
 	getCustomServerSideProps,
 } from '../model/client';
-import { fetchData, fetchDataSuccess } from '../redux/data/dataActions';
+import { fetchData, fetchDataSuccess, showAnimation } from '../redux/data/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
 
 import Link from 'next/link';
@@ -86,6 +86,7 @@ const Home = (props) => {
 		// // tl.from('.carousel-container', { opacity: 0, duration: 3 })
 		// tl.from('.title', { opacity: 0, x: -300, duration: 0.5 }, 0);
 		// tl.from('.sub-title', { opacity: 0, x: 400, duration: 1 }, 0);
+		if (!data.showAnimation) return conRef.current.remove();
 		let tl2 = gsap.timeline({
 			autoRemoveChildren: true,
 		});
@@ -102,7 +103,7 @@ const Home = (props) => {
 			.eventCallback('onComplete', () => {
 				conRef.current.remove();
 				displayRef.current = true
-				setShow(displayRef.current)
+				dispatch(showAnimation(false))
         let tl = gsap.timeline();
         tl.addLabel('start');
 				// targetRef.current.style.display = 'block'
@@ -120,7 +121,7 @@ const Home = (props) => {
 
 	useEffect(() => {}, []);
 	return (
-		<AppLayout fullWidth display={displayRef.current}>
+		<AppLayout fullWidth display={!data.showAnimation}>
 			<Head
 				title='Squat Panda'
 				description='Squat Panda are 10,000 art pieces with a one-of-a-kind digital
@@ -128,7 +129,7 @@ const Home = (props) => {
         Each one has been meticulously created, hand-picked, and perfectly
         formed.'
 			/>
-			<Row justify='center' ref={conRef} className='' style={{ height: '80vh', overflow: 'hidden'}}>
+			<Row justify='center' ref={conRef} className='' style={{ height: '80vh' }}>
 				<Col span={18}>
 					<Row justify='center' align='middle' style={{ height: '100vh'}} gutter={[20, 40]}>
 						<Col xs={24} md={24}>
@@ -156,7 +157,7 @@ const Home = (props) => {
 					</Row>
 				</Col>
 			</Row>
-			{show &&
+			{!data.showAnimation &&
 			<div >
 			<Carousel
 				swipeable

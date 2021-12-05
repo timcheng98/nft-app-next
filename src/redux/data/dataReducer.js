@@ -8,7 +8,8 @@ const initialState = {
   errorMsg: "",
   total: 0,
   airdrop: 0,
-  total_airdrop: 0
+  total_airdrop: 0,
+  showAnimation: true
 };
 
 const dataReducer = (state = initialState, action) => {
@@ -40,6 +41,12 @@ const dataReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         ...action.payload
+        // accountTokens: action.payload.accountTokens,
+      };
+    case "SHOW_ANIMATION":
+      return {
+        ...state,
+        showAnimation: action.payload,
         // accountTokens: action.payload.accountTokens,
       };
     default:

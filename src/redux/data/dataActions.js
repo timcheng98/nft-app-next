@@ -10,6 +10,13 @@ const fetchDataRequest = () => {
   };
 };
 
+export const showAnimation = (data) => {
+  return {
+    payload: data,
+    type: "SHOW_ANIMATION",
+  };
+};
+
 export const fetchDataSuccess = (payload) => {
   return {
     type: "CHECK_DATA_SUCCESS",
