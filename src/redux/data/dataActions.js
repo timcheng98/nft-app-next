@@ -128,7 +128,7 @@ export const fetchData = (account) => {
           allTokens: nfts,
           total: _.toInteger(total),
           price: _.toInteger(amountToSend),
-          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop),
+          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop) + 1,
           total_airdrop: _.toInteger(total_airdrop)
         })
       );
