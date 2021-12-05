@@ -93,7 +93,7 @@ const Home = (props) => {
 		tl2
 			.addLabel('start')
 			.to('.scroll', { opacity: 0 })
-			.from('.squat-animation', { opacity: 0.5, scale: 0, duration: 1 })
+			.from('.squat-animation', { opacity: 0.5, scale: 0, duration: 1,  })
 			.to('.squat-animation', { opacity: 0, scale: 1, duration: 1 })
 			.to('.squat-animation', { opacity: 1, scale: 0.8, duration: 1 })
 			.from('.scroll', { opacity: 1, y: 400, duration: 1 })
@@ -129,9 +129,9 @@ const Home = (props) => {
         Each one has been meticulously created, hand-picked, and perfectly
         formed.'
 			/>
-			<Row justify='center' ref={conRef} className='' style={{ height: '80vh' }}>
+			<Row justify='center' ref={conRef} className='' style={{ height: '100vh', background: 'rgb(243, 239, 255)' }}>
 				<Col span={18}>
-					<Row justify='center' align='middle' style={{ height: '100vh'}} gutter={[20, 40]}>
+					<Row justify='center' align='middle' style={{ height: '90vh'}} gutter={[20, 40]}>
 						<Col xs={24} md={24}>
 							{/* <MintingPanel size="small" /> */}
 							<Row justify='center'>
