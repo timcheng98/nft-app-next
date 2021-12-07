@@ -5,15 +5,16 @@ import { Row, Col, Affix } from 'antd';
 import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { connect, init } from '../redux/blockchain/blockchainActions';
-import { fetchData } from '../redux/data/dataActions';
+import { fetchData, showAnimation } from '../redux/data/dataActions';
 import WalletModal from './WalletModal';
-
+import { useRouter } from "next/router";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 
 const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true, display = true }) => {
+	const router = useRouter()
 
 // 	useEffect(() => {
 // 		let tl = gsap.timeline();
@@ -32,6 +33,12 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true,
 		dispatch(init())
 	}, [dispatch])
 
+	useEffect(() => {
+		if (router.pathname !== '/') {
+			dispatch(showAnimation(false))
+		}
+	}, [])
+	
 	useEffect(() => {
 		if (!localStorage.getItem('account')) return;
 		dispatch(connect(false))

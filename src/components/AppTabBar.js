@@ -21,23 +21,25 @@ const AppTabBar = () => {
   const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
+    console.log('router', router)
     if (router.pathname === "/") return setActiveKey("home");
     if (router.pathname === "/mint") return setActiveKey("mint");
     if (router.pathname === "/collection") return setActiveKey("account");
-    if (router.pathname === "/market") return setActiveKey("marekt");
+    if (router.pathname === "/marketplace") return setActiveKey("marekt");
     if (router.pathname === "/collection/[id]") return setActiveKey("marekt");
     if (router.pathname === "/traits") return setActiveKey("more");
     if (router.pathname === "/news") return setActiveKey("news");
-  }, []);
+  }, [router.pathname]);
 
   useEffect(() => {
     if (!clicked) return;
     if (activeKey === "home") return router.push("/");
     if (activeKey === "mint") return router.push("/mint");
     if (activeKey === "collection") return router.push("/account");
-    if (activeKey === "market") return router.push("/marketplace");
+    if (activeKey === "marketplace") return router.push("/marketplace");
     // if (activeKey === "rarity") return router.push("/traits");
   }, [activeKey, clicked]);
+
 
   const tabs = [
     {
@@ -60,8 +62,8 @@ const AppTabBar = () => {
       icon: <Button shape="circle" className="fire" icon={<FireFill className="fire-scale" style={{ fontSize: 32, }} />} />,
     },
     {
-      key: "market",
-      title: <span style={defaultStyles.tabBarTitle}>Market</span>,
+      key: "marketplace",
+      title: <span style={defaultStyles.tabBarTitle}>Marketplace</span>,
       icon: <GlobalOutline />,
     },
     {

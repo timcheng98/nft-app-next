@@ -75,7 +75,7 @@ const MintingPanel = ({ size = 'normal' }) => {
       "ether"
     ); // Convert to wei value
     blockchain.smartContract.methods
-      .mint(amount)
+      .mint(blockchain.account, amount)
       .send({ from: blockchain.account, value: amountToSend })
       .once("error", (err) => {
         console.log(err);
@@ -285,10 +285,9 @@ const MintingPanel = ({ size = 'normal' }) => {
                 disabled={loading}
                 onClick={async () => {
                   if (blockchain.account) {
+                    console.log('blockchain.balance', blockchain.balance)
                     if (
-                      blockchain.balance < amount * data.price ||
-                      amount * data.price === 0
-                    )
+                      blockchain.balance < amount * data.price)
                       return notification.warning({
                         message: "Insufficient MATIC in Wallet",
                       });

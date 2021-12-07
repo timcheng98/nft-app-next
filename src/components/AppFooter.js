@@ -24,7 +24,7 @@ const AppFooter = () => {
 					<Col xs={4} md={2} style={{ textAlign: 'center' }}>
 						<a
 							rel='noreferrer'
-							href='https://medium.com/@nft.squatpanda'
+							href='https://www.instagram.com/squat.panda.nft/'
 							target='_blank'
 						>
 							<InstagramFilled style={{ fontSize: 32,  color: '#1DA1F2' }} />

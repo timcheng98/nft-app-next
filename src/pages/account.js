@@ -8,7 +8,7 @@ import _ from 'lodash';
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
-import { setModalVisible } from '../redux/blockchain/blockchainActions';
+import { connect, setModalVisible } from '../redux/blockchain/blockchainActions';
 import { fetchAccountData } from '../redux/data/dataActions';
 import { useDispatch, useSelector } from 'react-redux';
 import { CollectionItem } from '../components/CollectionList';
@@ -20,6 +20,11 @@ const Account = () => {
 	const blockchain = useSelector((state) => state.blockchain);
 	const data = useSelector((state) => state.data);
 	
+	useEffect(() => {
+		dispatch(connect())
+
+	}, [])
+
 	useEffect(() => {
     if (!blockchain.smartContract) return;
     getAccountData()
@@ -37,7 +42,7 @@ const Account = () => {
 			/>
 
 			<Row justify='center' style={{ marginTop: 30 }}>
-				<Col xs={22} md={20}>
+				<Col xs={24} md={20}>
 					<Row>
 						<Col span={24} style={{
 							...defaultStyles.banner,
@@ -112,7 +117,7 @@ const Account = () => {
 						) : (
 							_.map(data.accountTokens, (item) => {
 								return (
-									<Col xs={18} md={6} key={item}>
+									<Col xs={24} md={6} key={item}>
 										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={item} />
 									</Col>
 								);
@@ -154,7 +159,6 @@ const Panel = () => {
 		setType(type)
 	}, [data.accountTokens])
 
-	console.log('data', data)
 
 	return (
 		<Row align='middle'>

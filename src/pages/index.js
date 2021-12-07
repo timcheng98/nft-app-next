@@ -67,7 +67,6 @@ const Home = (props) => {
 	const displayRef = React.useRef(false)
 	const [show, setShow] = useState(false)
 
-
 	// wait until DOM has been rendered
 
 	useEffect(() => {

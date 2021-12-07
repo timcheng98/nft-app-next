@@ -12,8 +12,8 @@ const Header = ({ title = 'Squat Panda', description }) => {
 				<link rel='manifest' href='https://www.squatpanda.online/manifest.json' />
 				<meta name='viewport' content='initial-scale=1.0, width=device-width' />
 				<meta name='description' content={description} />
-				<meta property='title' content={title}/>
-				<meta property='og:title' content={title} key='title' />
+				<meta property='title' content={`🐼 ${title}`}/>
+				<meta property='og:title' content={`🐼 ${title}`} key='title' />
 				<meta charSet="UTF-8" /> 
 				<meta name="robots" content="noindex,nofollow" />
 				<meta property='og:type' content='article' />
