@@ -4,7 +4,8 @@ import { Editor } from '@tinymce/tinymce-react';
 
 const Tinymce = ({
   initialValue = '',
-  setValue = () => {}
+  setValue = () => {},
+  height = 600
 })  => {
   const handleEditorChange = (e) => {
     // console.log(
@@ -17,10 +18,10 @@ const Tinymce = ({
 
   return (
     <Editor
-      apiKey={process.env.TINYMC_API}
+      apiKey="shjlvpwj1gjc8wa40ptdp6hzenhd8aa685s4mpb3z5jaszf7"
       initialValue={initialValue}
       init={{
-        height: 600,
+        height,
         selector: 'textarea#open-source-plugins',
         plugins: 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount imagetools textpattern noneditable help charmap quickbars emoticons',
         imagetools_cors_hosts: ['picsum.photos'],

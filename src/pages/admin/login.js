@@ -5,6 +5,7 @@ import defaultStyles from '../../core/theme/styles';
 import { getCustomStaticProps } from '../../model/client';
 import { signIn, useSession } from "next-auth/client";
 import {useRouter} from 'next/router';
+import React, { useEffect } from 'react'
 
 
 // import { useSession, getSession } from 'next-auth/client'
@@ -19,44 +20,27 @@ const Login = () => {
 	const [session] = useSession();
 	const [form] = Form.useForm();
 
+	useEffect(() => {
+		console.log(session)
+		if (session?.user) {
+			router.push('/admin/news')
+			return 
+		}
+		console.log(session)
+	}, [session])
+
 	const onFinish = async (values) => {
-		await axios.post('/api/login', values)
-		router.push('/admin/news')
+		signIn()
 	};
+	
 	return (
 		<AppLayout>
 			<Row justify='center' align="middle" style={{ minHeight: '60vh' }}>
 				<Col span={8}>
-					<h1 style={{
-						...defaultStyles.banner,
-						textAlign: 'center',
-						margin: '30px 0px'
-					}}>Login</h1>
 					<Form form={form} layout='vertical' onFinish={onFinish}>
-						<Form.Item  name="mobile" label="mobile">
-							<Input className='input-button' style={{
-								height: 54,
-								borderRadius: 15,
-								...defaultStyles.subHeader,
-							}} placeholder="Mobile" />
-						</Form.Item>
-						<Form.Item name="password" label="password">
-							<Input.Password  className="input-button" style={{
-								height: 54,
-								borderRadius: 15,
-								...defaultStyles.subHeader,
-							}} placeholder="Password" />
-						</Form.Item>
 						<Form.Item>
 							<Button
-							// href="/api/auth/signin"
-							onClick={(e) => {
-							e.preventDefault()
-							signIn()
-							router.push('/admin/news')
-
-					 }}
-								// htmlType="submit"
+								htmlType="submit"
 								style={{
 									height: 50,
 									borderRadius: 15,

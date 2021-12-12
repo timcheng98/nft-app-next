@@ -342,7 +342,7 @@ const Home = (props) => {
 									wordBreak: 'break-word',
 								}}
 							>
-								{process.env.NETX_PUBLIC_CONTRACT_ADDRESS}
+								0x5355b496F09bE260779a4E7CA6BC631D30bbAd96
 							</div>
 						</Col>
 					</Row>

@@ -5,7 +5,7 @@ import AppLayout from '../../../components/AppLayout';
 // import { getCustomStaticProps } from '../../../model/posts';
 import { useRouter } from 'next/router';
 import _ from 'lodash';
-import { EditOutlined, CheckOutlined } from '@ant-design/icons';
+import { EditOutlined, CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 
@@ -16,13 +16,12 @@ import { NewsForm } from './news_form';
 const NewsList = (props) => {
 	const [session] = useSession();
 	const router = useRouter();
-	const [visible, setVisible] = useState(false);
 	useEffect(() => {
 		if (!session) return;
 
-		if (session.user.email !== 'nft.wallstreetbets@gmail.com') {
-			router.push('/');
-		}
+		// if (session.user.email !== 'nft.squatpanda@gmail.com') {
+		// 	router.push('/');
+		// }
 	}, [session]);
 
 	const [dataSource, setDataSource] = useState([]);
@@ -33,8 +32,7 @@ const NewsList = (props) => {
 
 	const getData = async () => {
 		const resp = await axios.get('/api/post');
-		console.log(resp.data);
-		setDataSource(resp.data.data)
+		setDataSource(_.orderBy(resp.data.data, 'is_active', 'desc'))
 	};
 
 	const [form] = Form.useForm();
@@ -44,7 +42,7 @@ const NewsList = (props) => {
 			{
 				title: 'Operation',
 				dataIndex: 'id',
-				render: (value, key) => {
+				render: (value, record) => {
 					return (
 						<Row gutter={[8, 0]}>
 							<Col>
@@ -52,18 +50,39 @@ const NewsList = (props) => {
 									onClick={() => {
 										router.push(`/admin/news/news_form?id=${value}`);
 									}}
-									type='primary'
+									type='default'
 									icon={<EditOutlined />}
 									shape='circle'
 								/>
 							</Col>
 							<Col>
 								<Button
-									onClick={() => {
-										router.push(`/admin/news/${value}`);
+									onClick={async () => {
+										await axios.post(`/api/post`, {
+											...record,
+											email: session.user.email,
+											is_active: _.toInteger(!record.is_active)
+										});
+										getData()								
 									}}
-									type='primary'
+									type={record.is_active ? 'primary' : 'default'}
 									icon={<CheckOutlined />}
+									shape='circle'
+								/>
+							</Col>
+							<Col>
+								<Button
+									onClick={async () => {
+										await axios.post(`/api/post`, {
+											...record,
+											email: session.user.email,
+											is_active: _.toInteger(!record.is_active),
+											delete: 'True'
+										});
+										getData()								
+									}}
+									danger
+									icon={<DeleteOutlined />}
 									shape='circle'
 								/>
 							</Col>
@@ -80,6 +99,28 @@ const NewsList = (props) => {
 				title: 'Title',
 				dataIndex: 'title',
 				key: 'title',
+				width: 200,
+			},
+			{
+				title: 'Image',
+				dataIndex: 'image',
+				key: 'image',
+				render: (value) => {
+					return (
+						<div
+							className='news-images'
+							style={{
+								maxHeight: 300,
+								maxWidth: 200,
+								overflowY: 'scroll',
+								overflowX: 'hidden',
+							}}
+						>
+							{ReactHtmlParser(value)}
+						</div>
+					);
+				},
+				// width: 600
 			},
 			{
 				title: 'Short Content',
@@ -91,6 +132,7 @@ const NewsList = (props) => {
 							style={{
 								maxHeight: 300,
 								maxWidth: 600,
+								minWidth: 200,
 								overflowY: 'scroll',
 								overflowX: 'hidden',
 							}}
@@ -111,6 +153,7 @@ const NewsList = (props) => {
 							style={{
 								maxHeight: 300,
 								maxWidth: 600,
+								minWidth: 200,
 								overflowY: 'scroll',
 								overflowX: 'hidden',
 							}}
@@ -142,17 +185,17 @@ const NewsList = (props) => {
 
 	return (
 		<AppLayout>
-			<Row justify='center' align='middle' style={{ minHeight: '80vh' }}>
+			<Row justify='center' style={{ minHeight: '80vh', paddingTop: 100 }}>
 				<Col xs={24} md={22}>
-					{!visible && (
-						<Button onClick={() => setVisible(true)} className='app-button'>
+				
+						<Button
+
+					  	style={{
+							height: 40, 
+							width: 100, borderRadius: 10, backgroundColor: 'transparent', color: '#000', marginBottom: 20  }}
+						onClick={() => router.push('/admin/news/news_form')} className='app-button'>
 							Create
 						</Button>
-					)}
-
-					{visible ? (
-						<NewsForm goBack={() => setVisible(false)} />
-					) : (
 						<Table
 							scroll={{
 								x: 'max-content',
@@ -161,7 +204,6 @@ const NewsList = (props) => {
 							dataSource={dataSource}
 							columns={getColumns()}
 						/>
-					)}
 				</Col>
 			</Row>
 		</AppLayout>

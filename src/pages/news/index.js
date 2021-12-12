@@ -33,29 +33,33 @@ export default function News(props) {
 			<Row
 				justify='center'
 				className='news-list'
-				style={{ margin: '50px 0px' }}
+				style={{ margin: '50px 0px', paddingTop: 50 }}
 			>
-				<Col span={20}>
+				<Col xs={22} md={20}>
 					<Row justify='space-between' gutter={[10, 0]}>
 						{_.map(props.posts, (item) => {
 							return (
 								<Col
 									className='news'
 									key={item.id}
-									md={7}
+									md={12}
+									lg={7}
+									sm={24}
 									xs={24}
 									style={{
-										borderBottom: '5px solid rgb(40, 13, 95)',
+										// border: '2px solid rgb(40, 13, 95)',
 										paddingBottom: 10,
+										borderRadius: 10,
+										// padding: '10px 20px',
 										marginBottom: 40
 									}}
 								>
 									<Link href={`/news/${item.id}`}>
-										<Row gutter={[0, 10]} justify='center'>
-											<Col span={24} style={{ borderRadius: 30 }}>
+										<Row gutter={[0, 10]} justify='center' style={{cursor: 'pointer',}}>
+											<Col className='news-images' span={24} style={{ borderRadius: 8, backgroundColor: '#f5f5f5', marginBottom: 20, padding: 20, height: 200, justifyContent: 'center', display: 'flex', alignItems: 'center' }}>
 												{ReactHtmlParser(item.image)}
 											</Col>
-											<Col span={24}>
+											<Col span={22}>
 												<Typography.Paragraph
 													ellipsis={{
 														rows: 3,
@@ -69,7 +73,7 @@ export default function News(props) {
 													<div><h4 className='short-content'>{item.title}</h4></div>
 												</Typography.Paragraph>
 											</Col>
-											<Col span={24} >
+											<Col span={22} >
 												<Typography.Paragraph
 													ellipsis={{
 														rows: 4,
@@ -107,7 +111,7 @@ export default function News(props) {
 						data-height='500'
 						data-dnt='true'
 						data-theme='light'
-						href='https://twitter.com/NFT_WSB?ref_src=twsrc%5Etfw'
+						href='https://twitter.com/squatpanda?ref_src=twsrc%5Etfw'
 					>
 						Tweets by NFT_WSB
 					</a>

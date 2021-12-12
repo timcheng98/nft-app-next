@@ -1,4 +1,3 @@
-
 const PostModel = require('../../model/posts')
 
 export default async function handler(req, res) {
@@ -10,11 +9,13 @@ export default async function handler(req, res) {
       data = await PostModel.getPosts()
     }
   }
-  
+
   if (req.method === 'POST') {
-    if (req.body.email !== 'nft.wallstreetbets@gmail.com') return res.json({
-      status: 1
-    })
+    if (req.body.email !== 'nft.squatpanda@gmail.com') {
+      return res.json({
+        status: 1
+      })
+    }
     await PostModel.createPost(req.body.id, req.body)
   }
 

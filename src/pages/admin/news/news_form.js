@@ -28,6 +28,7 @@ export const NewsForm = ({ goBack }) => {
 	const [post, setPost] = useState({})
 
 	useEffect(() => {
+		if (!router.query?.id) return;
 		getData();
 	}, []);
 
@@ -39,27 +40,14 @@ export const NewsForm = ({ goBack }) => {
 		});
 	};
 
-	console.log(form.getFieldsValue());
-
 	useEffect(() => {
 		if (!session) return;
-
-		if (session.user.email !== 'nft.wallstreetbets@gmail.com') {
-			router.push('/');
-		}
 	}, [session]);
-
-	// useEffect(() => {
-	// 	form.setFieldsValue({
-	// 		title: '',
-	// 		content: '',
-	// 		...post,
-	// 	});
-	// }, [post]);
 
 	const onFinish = async (values) => {
 		await axios.post(`/api/post`, {
 			...values,
+			delete: 'False',
 			id: post?.id ?? undefined,
 			email: session.user.email,
 		});
@@ -70,7 +58,7 @@ export const NewsForm = ({ goBack }) => {
 
 	return (
 		<Row justify='center' align='middle' style={{ minHeight: '60vh' }}>
-			<Col xs={24} md={18}>
+			<Col xs={24} md={14}>
 				<Form onFinish={onFinish} form={form} layout='vertical'>
 					<Button
 						style={{ margin: '30px 0px' }}
@@ -79,7 +67,7 @@ export const NewsForm = ({ goBack }) => {
 					>
 						Go Back
 					</Button>
-					<Form.Item name='is_active' label='Status'>
+					<Form.Item name='is_active' label='Status' initialValue={1}>
 						<Radio.Group>
 							<Radio value={1}>Active</Radio>
 							<Radio value={0}>In Active</Radio>
@@ -91,18 +79,20 @@ export const NewsForm = ({ goBack }) => {
 							style={{
 								height: 40,
 								borderRadius: 15,
-								...defaultStyles.subHeader,
+								...defaultStyles.subBody,
 							}}
 						/>
 					</Form.Item>
 					<Form.Item name='image' label='Image'>
 						<Tinymce
+							height={300}
 							initialValue={post.image}
 							setValue={(value) => form.setFieldsValue({ image: value })}
 						/>
 					</Form.Item>
 					<Form.Item name='short_content' label='Short Content'>
 						<Tinymce
+							height={200}
 							initialValue={post.short_content}
 							setValue={(value) =>
 								form.setFieldsValue({ short_content: value })

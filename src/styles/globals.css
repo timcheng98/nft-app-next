@@ -21,6 +21,16 @@ a {
   border-radius: 100%;
 }
 
+.news-images p {
+  margin: 0;
+}
+
+.news-images img {
+  width: 100%;
+  object-fit: contain;
+  margin: auto;
+}
+
 .panda-icon {
   transform: scale(1);
   transition: all 0.2s;
