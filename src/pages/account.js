@@ -313,7 +313,7 @@ const Panel = () => {
 											// padding: '10px 20px',
 										}}
 									>
-										Normal <br />{type.normal}
+										Original <br />{type.original}
 									</Col>
 								</Row>
 							</div>

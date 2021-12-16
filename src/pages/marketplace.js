@@ -117,7 +117,7 @@ const Marketplace = ({ collections }) => {
 						<Option value={0}>Legendary</Option>
 						<Option value={1}>Super Rare</Option>
 						<Option value={2}>Rare</Option>
-						<Option value={3}>Normal</Option>
+						<Option value={3}>Original</Option>
 					</Select>
 				</Col>
 				<Col xs={24} md={2}>

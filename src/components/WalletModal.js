@@ -214,13 +214,13 @@ const AccountInfo = () => {
 							<a
 								rel='noreferrer'
 								target='_blank'
-								href={`https://polygonscan.com/address/${blockchain.account}`}
+								// href={`https://polygonscan.com/address/${blockchain.account}`}
 							>
 								View Transactions
 							</a>
 						</Col>
 					</Row>
-					<Row style={{ marginBottom: 20 }}>
+					{/* <Row style={{ marginBottom: 20 }}>
 						<Col span={24}>
 							<Button
 								onClick={() => {
@@ -241,7 +241,7 @@ const AccountInfo = () => {
 								Mint
 							</Button>
 						</Col>
-					</Row>
+					</Row> */}
 					<Row style={{ marginBottom: 30 }}>
 						<Col span={24}>
 							<Button

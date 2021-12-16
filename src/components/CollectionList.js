@@ -31,7 +31,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
   let rarity = () => {
     if (item <= 15) return "Super Rare";
     if (item <= 254) return "Rare";
-    return "Normal";
+    return "Original";
   };
   const getScore = () => {
     let score = 500; // base (Background)

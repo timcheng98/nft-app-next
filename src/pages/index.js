@@ -286,13 +286,21 @@ const Home = (props) => {
 						</Row>
 					</Col>
 				</Row>
+			
 				<Row justify='center'>
+					<Col xs={20} md={8}>
+						<a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
+					<Button className='app-button' style={{width: '100%', backgroundColor: 'transparent', color: '#000', height: 60, fontSize: 26}}>Apply Whitelist</Button>
+					</a>
+					</Col>
+				</Row>
+				{/* <Row justify='center'>
 					<Col xs={20} md={7}>
 						<AirdropPanel />
 					</Col>
-				</Row>
+				</Row> */}
 			</div>
-			<Row
+			{/* <Row
 				justify='center'
 				align='middle'
 				style={{ paddingTop: 40, textAlign: 'center', minHeight: 500 }}
@@ -347,8 +355,8 @@ const Home = (props) => {
 						</Col>
 					</Row>
 				</Col>
-			</Row>
-			<Row justify='center' style={{ paddingTop: 40 }}>
+			</Row> */}
+			{/* <Row justify='center' style={{ paddingTop: 40 }}>
 				<Col span={20}>
 					<h1
 						style={{
@@ -365,11 +373,11 @@ const Home = (props) => {
 				<Col span={20}>
 					<CollectionList collections={latest_nfts} />
 				</Col>
-			</Row>
+			</Row> */}
 			<div className="roadmap" style={{ padding: '40px 0px' }}>
 				<RoadMap />
 			</div>
-			<Team />
+			{/* <Team /> */}
 			<FAQ />
 			<Partners />
 			</div>

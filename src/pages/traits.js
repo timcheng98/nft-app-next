@@ -6,8 +6,10 @@ import { getCustomStaticProps } from '../model/client';
 import React from 'react';
 import Header from '../components/Head';
 const { Panel } = Collapse;
+import rarity_distribution from '../core/rarity_distribution.json'
 
 const Traits = (props) => {
+	console.log(rarity_distribution)
 	return (
 		<AppLayout>
 			<Header
@@ -32,15 +34,15 @@ const Traits = (props) => {
 				defaultActiveKey={['Background']}
 				ghost
 			>
-				{_.map(props.rarity, (item) => {
+				{_.map(rarity_distribution, (item, key) => {
 					return (
 						<Panel
 							header={
 								<span style={{ ...defaultStyles.subHeader, fontSize: 20 }}>
-									{item.name}
+									{key}
 								</span>
 							}
-							key={item.name}
+							key={key}
 							style={{
 								border: '1px solid #000',
 								...defaultStyles.card,
@@ -57,23 +59,13 @@ const Traits = (props) => {
 							<Row justify='space-between'>
 								<Col
 									xs={0}
-									md={18}
+									md={20}
 									style={{ ...defaultStyles.header, fontSize: 16 }}
 								>
 									Name
 								</Col>
-								<Col xs={0} md={6}>
+								<Col xs={0} md={4}>
 									<Row justify='space-between' gutter={[0, 0]}>
-										<Col
-											span={8}
-											style={{
-												...defaultStyles.header,
-												textAlign: 'start',
-												fontSize: 16,
-											}}
-										>
-											Type
-										</Col>
 										<Col
 											span={8}
 											style={{
@@ -99,15 +91,15 @@ const Traits = (props) => {
 							</Row>
 							<List
 								itemLayout='vertical'
-								dataSource={item.rarities}
+								dataSource={_.orderBy(item, 'rarity', 'asc')}
 								rowKey='name'
 								renderItem={(item) => (
 									<List.Item>
 										<Row justify='space-between'>
-											<Col xs={0} md={18} style={defaultStyles.subHeader}>
+											<Col xs={0} md={20} style={defaultStyles.subHeader}>
 												{item.name}
 											</Col>
-											<Col xs={0} md={6}>
+											<Col xs={0} md={4}>
 												<Row justify='space-between' gutter={[0, 0]}>
 													<Col
 														span={8}
@@ -116,7 +108,7 @@ const Traits = (props) => {
 															textAlign: 'start',
 														}}
 													>
-														{item.type}
+														{_.round(item.rarity * 10000 / 100)}
 													</Col>
 													<Col
 														span={8}
@@ -125,68 +117,7 @@ const Traits = (props) => {
 															textAlign: 'start',
 														}}
 													>
-														{_.floor(item.count)}
-													</Col>
-													<Col
-														span={8}
-														style={{
-															...defaultStyles.subHeader,
-															textAlign: 'start',
-														}}
-													>
-														{_.round(item.rate * 100, 2).toFixed(2)}%
-													</Col>
-												</Row>
-											</Col>
-											<Col xs={24} md={0} style={defaultStyles.subHeader}>
-												<span style={{ ...defaultStyles.header, fontSize: 12 }}>
-													Name
-												</span>{' '}
-												<br /> {item.name}
-											</Col>
-											<Col xs={24} md={0}>
-												<Row justify='space-between' gutter={[0, 0]}>
-													<Col
-														span={24}
-														style={{
-															...defaultStyles.subHeader,
-															textAlign: 'start',
-														}}
-													>
-														<span
-															style={{ ...defaultStyles.header, fontSize: 12 }}
-														>
-															Type
-														</span>{' '}
-														<br /> {item.type}
-													</Col>
-													<Col
-														span={24}
-														style={{
-															...defaultStyles.subHeader,
-															textAlign: 'start',
-														}}
-													>
-														<span
-															style={{ ...defaultStyles.header, fontSize: 12 }}
-														>
-															Count
-														</span>{' '}
-														<br /> {_.floor(item.count)}
-													</Col>
-													<Col
-														span={24}
-														style={{
-															...defaultStyles.subHeader,
-															textAlign: 'start',
-														}}
-													>
-														<span
-															style={{ ...defaultStyles.header, fontSize: 12 }}
-														>
-															Rarity
-														</span>{' '}
-														<br /> {_.round(item.rate * 100, 2).toFixed(2)}%
+														{item.rarity.toFixed(2)}%
 													</Col>
 												</Row>
 											</Col>

@@ -1,0 +1,364 @@
+{
+  "background": [
+    {
+      "rarity": 11.16,
+      "name": "Orange"
+    },
+    {
+      "rarity": 10.46,
+      "name": "Green"
+    },
+    {
+      "rarity": 11.65,
+      "name": "Purple"
+    },
+    {
+      "rarity": 10.32,
+      "name": "Light Grey"
+    },
+    {
+      "rarity": 10.97,
+      "name": "Red"
+    },
+    {
+      "rarity": 10.98,
+      "name": "Dark Grey"
+    },
+    {
+      "rarity": 11.33,
+      "name": "Emerald"
+    },
+    {
+      "rarity": 11.81,
+      "name": "Pink"
+    },
+    {
+      "rarity": 11.32,
+      "name": "Turquoise"
+    }
+  ],
+  "clothes": [
+    {
+      "rarity": 4.96,
+      "name": "Poopoo Underwear"
+    },
+    {
+      "rarity": 5.33,
+      "name": "Student Uniform"
+    },
+    {
+      "rarity": 4.99,
+      "name": "Punk Clothes"
+    },
+    {
+      "rarity": 5.16,
+      "name": "McDonald Clothes"
+    },
+    {
+      "rarity": 4.97,
+      "name": "456 Jacket"
+    },
+    {
+      "rarity": 4.75,
+      "name": "Chef Uniform"
+    },
+    {
+      "rarity": 4.88,
+      "name": "Gaming Underwear"
+    },
+    {
+      "rarity": 5.4,
+      "name": "Money Heist Red Shawl"
+    },
+    {
+      "rarity": 4.94,
+      "name": "Squid Game Red Shawl"
+    },
+    {
+      "rarity": 4.91,
+      "name": "Squat Panda Clothes"
+    },
+    {
+      "rarity": 4.98,
+      "name": "Goku Body"
+    },
+    {
+      "rarity": 5.13,
+      "name": "Joker Underwear"
+    },
+    {
+      "rarity": 5.17,
+      "name": "MJ Clothes"
+    },
+    {
+      "rarity": 5.2,
+      "name": "GangMember Underwear"
+    },
+    {
+      "rarity": 4.75,
+      "name": "Hawaii Swimming suit"
+    },
+    {
+      "rarity": 4.66,
+      "name": "Thanos Body"
+    },
+    {
+      "rarity": 4.92,
+      "name": "Venom Body"
+    },
+    {
+      "rarity": 5.21,
+      "name": "Samurai Clothes"
+    },
+    {
+      "rarity": 4.79,
+      "name": "Thor Body"
+    },
+    {
+      "rarity": 0.08,
+      "name": "Red Shawl"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Uncle McDonald Clothes"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Iron Man Body"
+    },
+    {
+      "rarity": 0.08,
+      "name": "Captain America Body"
+    }
+  ],
+  "mouth": [
+    {
+      "rarity": 12.19,
+      "name": "Student beard"
+    },
+    {
+      "rarity": 12.74,
+      "name": "GangMember beard"
+    },
+    {
+      "rarity": 12.41,
+      "name": "Thor Beard"
+    },
+    {
+      "rarity": 12.67,
+      "name": "Covid Mask"
+    },
+    {
+      "rarity": 11.75,
+      "name": "Samurai Mask"
+    },
+    {
+      "rarity": 12.26,
+      "name": "Hawaii Lips"
+    },
+    {
+      "rarity": 12.62,
+      "name": "Squat Panda Mouth"
+    }
+  ],
+  "hat": [
+    {
+      "rarity": 3.81,
+      "name": "Joker Hair"
+    },
+    {
+      "rarity": 3.66,
+      "name": "Punk Glasses01"
+    },
+    {
+      "rarity": 3.87,
+      "name": "McDonald Hat"
+    },
+    {
+      "rarity": 3.79,
+      "name": "GangMember Hat"
+    },
+    {
+      "rarity": 4.14,
+      "name": "Student Hair"
+    },
+    {
+      "rarity": 3.9,
+      "name": "MJ Hair"
+    },
+    {
+      "rarity": 3.82,
+      "name": "Captain America Mask"
+    },
+    {
+      "rarity": 3.97,
+      "name": "Chef Hat"
+    },
+    {
+      "rarity": 4.15,
+      "name": "Goku Hair"
+    },
+    {
+      "rarity": 3.5,
+      "name": "Icon Man Mask"
+    },
+    {
+      "rarity": 4.01,
+      "name": "Meme Glasses"
+    },
+    {
+      "rarity": 3.8,
+      "name": "Squid Game Mask"
+    },
+    {
+      "rarity": 3.87,
+      "name": "Money Heist Mask"
+    },
+    {
+      "rarity": 3.86,
+      "name": "Punk Glasses02"
+    },
+    {
+      "rarity": 3.79,
+      "name": "Samurai Helmet"
+    },
+    {
+      "rarity": 3.73,
+      "name": "MJ Sunglasses"
+    },
+    {
+      "rarity": 3.59,
+      "name": "Hawaiii Headband"
+    },
+    {
+      "rarity": 3.96,
+      "name": "Pirate Turban"
+    },
+    {
+      "rarity": 3.68,
+      "name": "Gaming VR"
+    },
+    {
+      "rarity": 4.16,
+      "name": "Punk Hair"
+    },
+    {
+      "rarity": 3.94,
+      "name": "Thanos Mask"
+    },
+    {
+      "rarity": 3.68,
+      "name": "Squat Panda Cap"
+    },
+    {
+      "rarity": 4,
+      "name": "Thor Helmet"
+    },
+    {
+      "rarity": 3.61,
+      "name": "Elvis Hair"
+    },
+    {
+      "rarity": 3.94,
+      "name": "Venom Mask"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Iron Man Mask"
+    }
+  ],
+  "hand": [
+    {
+      "rarity": 5.21,
+      "name": "Gaming Keyboard"
+    },
+    {
+      "rarity": 5.23,
+      "name": "Thor Mjolnir"
+    },
+    {
+      "rarity": 5.39,
+      "name": "Poopoo Toilet paper"
+    },
+    {
+      "rarity": 5.85,
+      "name": "Squat Panda Dumbbell"
+    },
+    {
+      "rarity": 5.42,
+      "name": "McDonald Coke"
+    },
+    {
+      "rarity": 5.53,
+      "name": "Money Heist Money Bag"
+    },
+    {
+      "rarity": 5.66,
+      "name": "Punk Guitar01"
+    },
+    {
+      "rarity": 5.75,
+      "name": "Joker Poker"
+    },
+    {
+      "rarity": 5.61,
+      "name": "Venom Hand Wraps"
+    },
+    {
+      "rarity": 5.36,
+      "name": "Punk Guitar02"
+    },
+    {
+      "rarity": 5.36,
+      "name": "Hawaii Coconut"
+    },
+    {
+      "rarity": 5.61,
+      "name": "Samurai Sword"
+    },
+    {
+      "rarity": 5.36,
+      "name": "GangMember Cigarette"
+    },
+    {
+      "rarity": 5.94,
+      "name": "Goku Dragon Ball"
+    },
+    {
+      "rarity": 5.6,
+      "name": "Eating Bamboo"
+    },
+    {
+      "rarity": 5.4,
+      "name": "Thanos Infinity Gauntlet"
+    },
+    {
+      "rarity": 5.76,
+      "name": "Chef Wok Shovel"
+    },
+    {
+      "rarity": 0.08,
+      "name": "Money Bag"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Dragon Ball"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Work Shovel"
+    },
+    {
+      "rarity": 0.07,
+      "name": "McDonal Coke"
+    },
+    {
+      "rarity": 0.07,
+      "name": "Repulsor Arm"
+    },
+    {
+      "rarity": 0.08,
+      "name": "Captain America Shield"
+    }
+  ]
+}
