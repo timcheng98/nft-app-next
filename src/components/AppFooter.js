@@ -33,7 +33,7 @@ const AppFooter = () => {
 					<Col xs={4} md={2} style={{ textAlign: 'center' }}>
 						<a
 							rel='noreferrer'
-							href='https://discord.com/invite/p5eNZYa3NY'
+							href='https://discord.gg/eeMRWEUAKV'
 							style={{ textAlign: 'center',  color: '#1DA1F2' }}
 							target='_blank'
 						>
