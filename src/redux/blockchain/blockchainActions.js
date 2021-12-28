@@ -91,7 +91,7 @@ export const connect = (showError = true) => {
               localStorage.setItem('account', currentAccount)
               const SmartContractObj = new web3.eth.Contract(
                 SmartContract.abi,
-                '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
+                '0xec048A13b46c31d91701cB1791E860Aac9a8d11A'
               );
               const balance = await web3.eth.getBalance(
                 currentAccount
@@ -124,10 +124,10 @@ export const connect = (showError = true) => {
         });
 
         const NetworkData = await SmartContract.networks[networkId];
-        if (networkId == 80001) {
+        if (networkId == 137) {
           const SmartContractObj = new web3.eth.Contract(
             SmartContract.abi,
-            '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
+            '0xec048A13b46c31d91701cB1791E860Aac9a8d11A'
           );
 
           // console.log(currentAccount);
@@ -168,8 +168,8 @@ export const connect = (showError = true) => {
           // dispatch(connectFailed('Change network to Polygon.'));
           await window.ethereum.request({
             method: "wallet_switchEthereumChain",
-            // params: [{ chainId: "0x89" }], // chainId must be in hexadecimal numbers - 137
-            params: [{ chainId: "13881" }], // chainId must be in hexadecimal numbers - 80001
+            params: [{ chainId: "0x89" }], // chainId must be in hexadecimal numbers - 137
+            // params: [{ chainId: "13881" }], // chainId must be in hexadecimal numbers - 80001
           });
         }
       } catch (err) {
@@ -195,7 +195,7 @@ export const init = () => {
       try {
         const SmartContractObj = new web3.eth.Contract(
           SmartContract.abi,
-          '0x5355b496F09bE260779a4E7CA6BC631D30bbAd96'
+          '0xec048A13b46c31d91701cB1791E860Aac9a8d11A'
         );
         dispatch(
           connectInit({

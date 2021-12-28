@@ -6,30 +6,27 @@ import { LeftOutline } from 'antd-mobile-icons';
 import Link from 'next/link';
 import Image from '../../components/Image';
 import defaultStyles from '../../core/theme/styles';
-import React from 'react';
+import React, { useState, useEffect} from 'react';
 import axios from 'axios';
 import _ from 'lodash';
 import { Popover } from 'antd-mobile';
 import { useRouter } from 'next/router';
 import { getCustomStaticPaths, getCustomStaticProps } from '../../model/client';
 import Header from '../../components/Head';
+import rarity from '../../core/rarity_distribution.json'
 const Collection = (props) => {
-	console.log(props)
 	const router = useRouter();
 	const { collection } = props;
 
-	const rarity = () => {
-		if (collection.edition <= 15) return 'Super Rare';
-		if (collection.edition <= 254) return 'Rare';
-		return 'Original';
-	};
+	const [rarities, setRarities] = useState({})
 
-	const getScore = () => {
-		let score = 500; // base (Background)
-		if (collection.edition <= 15) return 4 * 1500 * 2 + score;
-		if (collection.edition <= 254) return 4 * 1000 * 2 + score;
-		return 4 * 500 * 2 + score;
-	};
+	useEffect(() => {
+		let arr = []
+		_.map(rarity, (item) => {
+			arr = [...arr, ...item]
+		})
+		setRarities(_.keyBy(arr, 'name'))
+	}, [])
 
 	const getTrait = (item) => {
 		if (item.trait_type === 'background') return _.round((1 / 15) * 100, 2);
@@ -49,7 +46,7 @@ const Collection = (props) => {
 	return (
 		<AppLayout fullWidth>
 			<Header
-				title={`WSB#${collection.edition} | Squat Panda`}
+				title={`Squat Panda#${collection.edition} | Squat Panda`}
 				description='Squat Panda - Information the Squat Panda'
 			/>
 
@@ -113,19 +110,19 @@ const Collection = (props) => {
 												<Col>Rank</Col>
 												<Col>{collection.edition}</Col>
 											</Row>
-											<Row
+											{/* <Row
 												style={defaultStyles.subHeader}
 												justify='space-between'
 											>
 												<Col>Score</Col>
 												<Col>{getScore()}</Col>
-											</Row>
+											</Row> */}
 											<Row
 												style={defaultStyles.subHeader}
 												justify='space-between'
 											>
 												<Col>Rarity</Col>
-												<Col>{rarity()}</Col>
+												<Col>{collection.type}</Col>
 											</Row>
 											<Row
 												style={defaultStyles.subHeader}
@@ -165,7 +162,7 @@ const Collection = (props) => {
 									<Col span={24} style={defaultStyles.header}>
 										<a
 											rel='noreferrer'
-											href={`https://polygonscan.com/token/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a?a=${collection.edition}`}
+											href={`https://polygonscan.com/token/0xec048A13b46c31d91701cB1791E860Aac9a8d11A?a=${collection.edition}`}
 											target='_blank'
 										>
 											{collection.name}
@@ -178,7 +175,7 @@ const Collection = (props) => {
 										<a
 											rel='noreferrer'
 											target='_blank'
-											href={`https://opensea.io/assets/matic/0xd44642a1693fabdb9fa9a0c61ee4abd2a916302a/${collection.edition}`}
+											href={`https://opensea.io/assets/matic/0xec048A13b46c31d91701cB1791E860Aac9a8d11A/${collection.edition}`}
 										>
 											<Button
 												style={{
@@ -265,7 +262,7 @@ const Collection = (props) => {
 														}}
 														span={24}
 													>
-														{getTrait(item)} % have this trait
+														{rarities[item.value]?.rarity} % have this trait
 													</Col>
 												</Row>
 											</Col>

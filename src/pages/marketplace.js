@@ -14,10 +14,13 @@ import Header from '../components/Head';
 const { useBreakpoint } = Grid;
 const { Option } = Select;
 const Marketplace = ({ collections }) => {
+	console.log(collections)
 	const [loading, setLoading] = useState(false);
 	const [rarities, setRarities] = useState(undefined);
 	const [sortBy, setSortBy] = useState(1);
-	const [filteredCollections, setFilteredCollections] = useState(collections);
+	const [filteredCollections, setFilteredCollections] = useState(_.map(collections, (item, key) => {
+		return item
+	}));
 	const [nfts, setNft] = useState(_.slice(filteredCollections, 0, 20));
 
 	const loadMore = () => {

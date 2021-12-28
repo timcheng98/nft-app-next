@@ -127,14 +127,14 @@ const Mint = (props) => {
 			<Row justify='center' style={{ marginBottom: 20 }}>
 
 				<Col xs={22} md={8}>
-				<Row justify='center'>
+				{/* <Row justify='center'>
 					<Col xs={22} md={24} style={{padding: 30}}>
 						<a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
 					<Button className='app-button' style={{width: '100%', backgroundColor: 'transparent', color: '#000', height: 60, fontSize: 26}}>Apply Whitelist</Button>
 					</a>
 					</Col>
-				</Row>
-									{/* <AirdropMintingPanel /> */}
+				</Row> */}
+									<AirdropMintingPanel />
 					{/* <MintingPanel /> */}
 				</Col>
 			</Row>

@@ -41,16 +41,16 @@ const AppTabBar = () => {
 
 
   const tabs = [
-    // {
-    //   key: "home",
-    //   title: <span style={defaultStyles.tabBarTitle}>Home</span>,
-    //   icon: <AppstoreOutline />,
-    // },
-    // {
-    //   key: "collection",
-    //   title: <span style={defaultStyles.tabBarTitle}>Collection</span>,
-    //   icon: <GiftOutline />,
-    // },
+    {
+      key: "home",
+      title: <span style={defaultStyles.tabBarTitle}>Home</span>,
+      icon: <AppstoreOutline />,
+    },
+    {
+      key: "collection",
+      title: <span style={defaultStyles.tabBarTitle}>Collection</span>,
+      icon: <GiftOutline />,
+    },
     {
       key: "mint",
       title: <span style={{
@@ -62,38 +62,38 @@ const AppTabBar = () => {
       </span>,
       icon: <Button shape="circle" className="fire" icon={<FireFill className="fire-scale" style={{ fontSize: 32, }} />} />,
     },
-    // {
-    //   key: "marketplace",
-    //   title: <span style={defaultStyles.tabBarTitle}>Marketplace</span>,
-    //   icon: <GlobalOutline />,
-    // },
-    // {
-    //   key: "more",
-    //   title: <span style={defaultStyles.tabBarTitle}>More</span>,
-    //   icon: () => {
-    //     return (
-    //       <Popover
-    //         placement="top"
-    //         content={
-    //           <div style={{ width: 80 }}>
-    //             <Link href="/news">
-    //               <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
-    //                 <ContentOutline style={{ marginRight: 5 }} />{' '} News
-    //               </h3>
-    //             </Link>
-    //             <Link href="/traits">
-    //               <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
-    //                 <PieOutline style={{ marginRight: 5 }} />{' '} Rarity
-    //               </h3>
-    //             </Link>
-    //           </div>
-    //         }
-    //       >
-    //         <MoreOutline />
-    //       </Popover>
-    //     );
-    //   },
-    // },
+    {
+      key: "marketplace",
+      title: <span style={defaultStyles.tabBarTitle}>Marketplace</span>,
+      icon: <GlobalOutline />,
+    },
+    {
+      key: "more",
+      title: <span style={defaultStyles.tabBarTitle}>More</span>,
+      icon: () => {
+        return (
+          <Popover
+            placement="top"
+            content={
+              <div style={{ width: 80 }}>
+                <Link href="/news">
+                  <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
+                    <ContentOutline style={{ marginRight: 5 }} />{' '} News
+                  </h3>
+                </Link>
+                {/* <Link href="/traits">
+                  <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
+                    <PieOutline style={{ marginRight: 5 }} />{' '} Rarity
+                  </h3>
+                </Link> */}
+              </div>
+            }
+          >
+            <MoreOutline />
+          </Popover>
+        );
+      },
+    },
   ];
 
   return (

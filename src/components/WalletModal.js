@@ -308,7 +308,7 @@ const ConnectWallet = () => {
 						onClick={() => {
 							if (!blockchain.account) {
 								dispatch(connect());
-								dispatch(setModalVisible(false))
+								// dispatch(setModalVisible(false))
 							}
 						}}
 					>

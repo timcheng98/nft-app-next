@@ -30,7 +30,6 @@ const MintingPanel = ({ size = 'normal' }) => {
   let value = useRef(0)
 
   useEffect(() => {
-    console.log(data)
     if (!data || data.total < 1) return;
     let target = data.total;
     let increment = 1;

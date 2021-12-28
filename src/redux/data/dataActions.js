@@ -20,21 +20,21 @@ export const showAnimation = (data) => {
 export const fetchDataSuccess = (payload) => {
   return {
     type: "CHECK_DATA_SUCCESS",
-    payload: payload,
+    payload,
   };
 };
 
 const fetchAccountDataSuccess = (payload) => {
   return {
     type: "CHECK_ACCOUNT_DATA_SUCCESS",
-    payload: payload,
+    payload,
   };
 };
 
 const fetchDataFailed = (payload) => {
   return {
     type: "CHECK_DATA_FAILED",
-    payload: payload,
+    payload,
   };
 };
 export const fetchAccountData = () => {
@@ -47,7 +47,6 @@ export const fetchAccountData = () => {
           store.getState().blockchain.account
         )
         .call();
-
 
       // const baseURI = await store
       //   .getState()
@@ -78,17 +77,32 @@ export const fetchData = (account) => {
     try {
       let web3 = new Web3(window.ethereum);
       let name = await store
-      .getState()
-      .blockchain.smartContract.methods.name()
-      .call();
-      
+        .getState()
+        .blockchain.smartContract.methods.name()
+        .call();
+
+      let whitelisted = false;
+      if (account) {
+        whitelisted = await store
+        .getState()
+        .blockchain.smartContract.methods.whitelisted(account)
+        .call();
+      }
+ 
+
+      let all_whitelist = await store
+        .getState()
+        .blockchain.smartContract.methods.all_whitelist()
+        .call();
+      // console.log('whitelisted', whitelisted)
+      // console.log('all_whitelist', all_whitelist)
       let price = await store
         .getState()
         .blockchain.smartContract.methods.cost()
         .call();
-        const amountToSend = web3.utils.fromWei(
-          _.toString(price),
-        ); // Convert to wei value
+      const amountToSend = web3.utils.fromWei(
+        _.toString(price),
+      ); // Convert to wei value
 
       const total = await store
         .getState()
@@ -97,14 +111,14 @@ export const fetchData = (account) => {
 
       const airdrop = await store
         .getState()
-        .blockchain.smartContract.methods.aidrop_amount()
+        .blockchain.smartContract.methods.airdrop_claimed()
         .call();
       const total_airdrop = await store
         .getState()
-        .blockchain.smartContract.methods.AIRDROP_AMOUNT()
+        .blockchain.smartContract.methods.TOTAL_AIRDROP_AMOUNT()
         .call();
 
-        const baseURI = await store
+      const baseURI = await store
         .getState()
         .blockchain.smartContract.methods.baseURI().call()
 
@@ -128,8 +142,10 @@ export const fetchData = (account) => {
           allTokens: nfts,
           total: _.toInteger(total),
           price: _.toNumber(amountToSend),
-          airdrop: _.toInteger(total_airdrop) - _.toInteger(airdrop) + 1,
-          total_airdrop: _.toInteger(total_airdrop)
+          airdrop: _.toInteger(airdrop),
+          total_airdrop: _.toInteger(total_airdrop),
+          whitelisted,
+          all_whitelist
         })
       );
     } catch (err) {

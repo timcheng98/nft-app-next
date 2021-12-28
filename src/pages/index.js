@@ -118,7 +118,8 @@ const Home = (props) => {
 		// tl2.clear();
 	}, []);
 
-	useEffect(() => {}, []);
+	// useEffect(() => {}, []);
+	// console.log(props.latest_nft)
 	return (
 		<AppLayout fullWidth display={!data.showAnimation}>
 			<Head
@@ -227,8 +228,8 @@ const Home = (props) => {
 								<div className='sub-title' style={defaultStyles.subHeader}>
 									Squat Panda is a tribute to the digital collectibles created
 									by anonymous developers, and innovative algorithms. These
-									10,000 pieces of artworks are inspired by the famous WSB
-									events, recalling the inner artist in you.
+									10,000 pieces of artworks are inspired by the CryptoPunks
+									NFT, recalling the inner artist in you.
 								</div>
 							</Col>
 							{/* <Col xs={24} md={22}>
@@ -287,20 +288,20 @@ const Home = (props) => {
 					</Col>
 				</Row>
 			
-				<Row justify='center'>
+				{/* <Row justify='center'>
 					<Col xs={20} md={8}>
 						<a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
 					<Button className='app-button' style={{width: '100%', backgroundColor: 'transparent', color: '#000', height: 60, fontSize: 26}}>Apply Whitelist</Button>
 					</a>
 					</Col>
-				</Row>
-				{/* <Row justify='center'>
+				</Row> */}
+				<Row justify='center'>
 					<Col xs={20} md={7}>
 						<AirdropPanel />
 					</Col>
-				</Row> */}
+				</Row>
 			</div>
-			{/* <Row
+			<Row
 				justify='center'
 				align='middle'
 				style={{ paddingTop: 40, textAlign: 'center', minHeight: 500 }}
@@ -350,13 +351,13 @@ const Home = (props) => {
 									wordBreak: 'break-word',
 								}}
 							>
-								0x5355b496F09bE260779a4E7CA6BC631D30bbAd96
+								0xec048A13b46c31d91701cB1791E860Aac9a8d11A
 							</div>
 						</Col>
 					</Row>
 				</Col>
-			</Row> */}
-			{/* <Row justify='center' style={{ paddingTop: 40 }}>
+			</Row>
+			<Row justify='center' style={{ paddingTop: 40 }}>
 				<Col span={20}>
 					<h1
 						style={{
@@ -371,13 +372,13 @@ const Home = (props) => {
 			</Row>
 			<Row justify='center' style={{ padding: '30px 0px', paddingBottom: 30 }}>
 				<Col span={20}>
-					<CollectionList collections={latest_nfts} />
+					<CollectionList collections={props.latest_nft} />
 				</Col>
-			</Row> */}
+			</Row>
 			<div className="roadmap" style={{ padding: '40px 0px' }}>
 				<RoadMap />
 			</div>
-			{/* <Team /> */}
+			<Team />
 			<FAQ />
 			<Partners />
 			</div>

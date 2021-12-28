@@ -46,7 +46,7 @@ const AppLayout = ({ children, fullWidth = false, color = '#fff', footer = true,
 
 	useEffect(() => {
     if (!state.blockchain.smartContract) return;
-    dispatch(fetchData());
+    dispatch(fetchData(state.blockchain.account));
   }, [state.blockchain.smartContract, dispatch]);
 	
 

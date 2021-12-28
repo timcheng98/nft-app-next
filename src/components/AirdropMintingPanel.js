@@ -61,7 +61,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 
   useEffect(() => {
     if (!blockchain.smartContract) return;
-    dispatch(fetchData());
+    dispatch(fetchData(blockchain.account));
   }, [blockchain.smartContract, dispatch]);
 
   const claim = async (count) => {
@@ -72,7 +72,8 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 		}
 
 		setLoading(true);
-		blockchain.smartContract.methods.airdrop().send({ from: blockchain.account }).once('error', (err) => {
+    console.log(blockchain.smartContract.methods.airdrop)
+		await blockchain.smartContract.methods.airdrop().send({ from: blockchain.account }).once('error', (err) => {
 				// console.log(err);
 				setLoading(false);
 				notification.error({
@@ -90,6 +91,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 
 
   const getName = () => {
+    if (!data.whitelisted) return 'Apply Whitelist';
     if (blockchain.aidrop_claimed) return 'Claimed';
     if (blockchain.account) return "Claim";
     return "Connect Wallet";
@@ -129,7 +131,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
               <Progress
                 strokeWidth={40}
                 strokeColor={'rgb(239, 199, 108)'}
-                percent={percent / 1000 * 100}
+                percent={percent / 500 * 100}
                 showInfo={false}
                 status="active"
               />
@@ -154,6 +156,35 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
               </div>
                 <Image src="blindbox.png" alt="?" className="collection" />
             </Col>
+            {!data.whitelisted && !blockchain.aidrop_claimed ? 
+              <Col span={24}>
+            <a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
+              <Button
+                ref={buttonRef}
+                autoFocus
+                disabled={loading || blockchain.aidrop_claimed}
+                loading={loading}
+                onClick={async () => {
+                  if (!data.whitelisted) {
+                    return;
+                  };
+                  if (blockchain.account) {
+                    await claim();
+                    return;
+                  }
+
+                  dispatch(setModalVisible(true))
+                }}
+                style={{ width: "100%", height: 50, fontSize: 20 }}
+                className="app-button"
+              >
+                {getName()}
+                
+              </Button>
+
+            </a>
+              </Col>
+:
             <Col span={24}>
               <Button
                 ref={buttonRef}
@@ -161,6 +192,9 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
                 disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {
+                  if (!data.whitelisted) {
+                    return;
+                  };
                   if (blockchain.account) {
                     await claim();
                     return;
@@ -175,6 +209,8 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
                 
               </Button>
             </Col>
+            
+            }
           </Row>
         </div>
       </Col>

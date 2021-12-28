@@ -15,7 +15,8 @@ import { CollectionItem } from '../components/CollectionList';
 import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
 
-const Account = () => {
+const Account = (props) => {
+	console.log(props)
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
 	const data = useSelector((state) => state.data);
@@ -59,7 +60,7 @@ const Account = () => {
 						<Divider />
 					</Row>
 					{blockchain.account ? (
-						<Panel />
+						<Panel collections={props.collections} />
 					) : (
 						<Row justify='center'>
 							<Col xs={24} md={12}>
@@ -118,7 +119,7 @@ const Account = () => {
 							_.map(data.accountTokens, (item) => {
 								return (
 									<Col xs={24} md={6} key={item}>
-										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={item} />
+										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={props.collections[item]} />
 									</Col>
 								);
 							})
@@ -131,7 +132,7 @@ const Account = () => {
 	);
 };
 
-const Panel = () => {
+const Panel = ({ collections }) => {
 	const blockchain = useSelector((state) => state.blockchain);
 	const data = useSelector((state) => state.data);
 
@@ -139,7 +140,7 @@ const Panel = () => {
 		legendary: 0,
 		super_rare: 0,
 		rare: 0,
-		normal: 0
+		original: 0
 	})
 
 	useEffect(() => {
@@ -148,13 +149,26 @@ const Panel = () => {
 			legendary: 0,
 			super_rare: 0,
 			rare: 0,
-			normal: 0
+			original: 0
 		}
 		_.map(data.accountTokens, (item) => {
-			if (item < 5) return type.legendary = type.legendary + 1
-			if (item < 15) return type.super_rare = type.super_rare + 1
-			if (item < 100) return type.rare = type.rare + 1
-			return type.normal = type.normal + 1
+			const nft = collections[item]
+			if (nft.type === 'legendary') {
+				type.legendary = type.legendary + 1
+				return 
+			}
+			if (nft.type === 'super_rare') {
+				type.super_rare = type.super_rare + 1
+				return 
+			}
+			if (nft.type === 'rare') {
+				type.rare = type.rare + 1
+				return 
+			}
+			if (nft.type === 'original') {
+				type.original = type.original + 1
+				return 
+			}
 		})
 		setType(type)
 	}, [data.accountTokens])

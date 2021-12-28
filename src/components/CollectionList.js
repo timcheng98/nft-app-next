@@ -28,6 +28,7 @@ const responsive = {
 
 export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) => {
   // if (!item) return null;
+  // console.log(item)
   let rarity = () => {
     if (item <= 15) return "Super Rare";
     if (item <= 254) return "Rare";
@@ -42,7 +43,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
 
   return (
     <Col xs={xs} md={md}>
-      <Link href={`/collection/${item}`}>
+      <Link href={`/collection/${item.edition}`}>
         <div
           className="card-hover"
           style={{
@@ -63,8 +64,8 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
               width: "100%",
               height: "100%",
             }}
-            src={`${item}`}
-            alt="wsb"
+            src={`${item.edition}`}
+            alt="squat panda"
             external
             className="collection"
           />
@@ -78,16 +79,16 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
                 Squat Panda
               </Col>
               <Col style={{ color: "#2b2b2b", fontWeight: "500" }}>
-                {rarity()}
+              {item.type}
               </Col>
             </Row>
             <Row justify="space-between">
               <Col style={{ color: "#2b2b2b", fontWeight: "600" }}>
-                Squat Panda #{item}
+                Squat Panda #{item.edition}
               </Col>
-              <Col style={{ fontWeight: "700", color: "gray" }}>
-                Score {getScore()}
-              </Col>
+              {/* <Col style={{ fontWeight: "700", color: "gray" }}>
+                type {item.type}
+              </Col> */}
             </Row>
           </div>
         </div>
@@ -96,7 +97,7 @@ export const CollectionItem = ({ item, xs = 22, md = 20, containerStyle = {} }) 
   );
 };
 
-const CollectionCarousel = ({ collections }) => {
+const CollectionCarousel = (props) => {
   return (
     <Carousel
       swipeable
@@ -112,7 +113,7 @@ const CollectionCarousel = ({ collections }) => {
       containerClass="carousel-container"
       removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
     >
-      {_.map(collections, (item) => {
+      {_.map(props.collections, (item) => {
         return <CollectionItem key={item} item={item} />;
       })}
     </Carousel>

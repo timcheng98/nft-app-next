@@ -109,7 +109,7 @@ const Team = () => {
 												marginTop: 10,
 											}}
 										>
-											XXX
+											RL
 										</Divider>
 										<p
 											style={{
@@ -118,9 +118,7 @@ const Team = () => {
 												fontWeight: 'bold',
 											}}
 										>
-											Co-founder and the technical manager of Squat Panda. Full
-											Stack developer in Web, Mobile and blockchain aspect. I
-											believe blockchain can change the world.
+											Cofounder and concept artist - keen on digital design and motion graphic, believes decentralization bring us fair world.
 										</p>
 									</Col>
 								</Row>
@@ -159,8 +157,7 @@ const Team = () => {
 											}}
 										>
 											Co-founder and the technical manager of Squat Panda. Full
-											Stack developer in Web, Mobile and blockchain aspect. I
-											believe blockchain can change the world.
+											Stack developer in blockchain aspect.
 										</p>
 									</Col>
 								</Row>
@@ -195,7 +192,7 @@ const Team = () => {
 												marginTop: 10,
 											}}
 										>
-											XXX
+											Sharjeel
 										</Divider>
 										<p
 											style={{
@@ -204,9 +201,7 @@ const Team = () => {
 												fontWeight: 'bold',
 											}}
 										>
-											Co-founder and the technical manager of Squat Panda. Full
-											Stack developer in Web, Mobile and blockchain aspect. I
-											believe blockchain can change the world.
+											Graphic Designer, responsible for the graphics design of the Squat Panda
 										</p>
 									</Col>
 								</Row>
@@ -235,7 +230,7 @@ const Team = () => {
 												marginTop: 10,
 											}}
 										>
-											Tim
+											Hans
 										</Divider>
 										<p
 											style={{
@@ -244,9 +239,7 @@ const Team = () => {
 												fontWeight: 'bold',
 											}}
 										>
-											Co-founder and the technical manager of Squat Panda. Full
-											Stack developer in Web, Mobile and blockchain aspect. I
-											believe blockchain can change the world.
+											Chief Marketing Officer, an emerging market economic theorist who is keen on disruptive innovative technologies
 										</p>
 									</Col>
 								</Row>

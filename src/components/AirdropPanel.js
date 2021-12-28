@@ -73,7 +73,7 @@ const AirdropPanel = () => {
             <Progress
               strokeWidth={40}
               strokeColor={"rgb(239, 199, 108)"}
-              percent={percent / 1000 * 100}
+              percent={percent / 500 * 100}
               showInfo={false}
               status="active"
             />
@@ -88,7 +88,7 @@ const AirdropPanel = () => {
                 transform: "translate(-50%, -50%)",
               }}
             >
-              {percent} / 1000
+              {percent} / 500
             </span>
           </Col>
           <Col span={18} style={{ paddingBottom: 10 }}>

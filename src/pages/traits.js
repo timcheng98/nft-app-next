@@ -9,7 +9,6 @@ const { Panel } = Collapse;
 import rarity_distribution from '../core/rarity_distribution.json'
 
 const Traits = (props) => {
-	console.log(rarity_distribution)
 	return (
 		<AppLayout>
 			<Header
