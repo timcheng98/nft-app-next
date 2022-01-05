@@ -86,9 +86,9 @@ const blockchaindata = async () => {
 
 export async function getCustomStaticPaths() {
   let totalSupply = await contract.methods.totalSupply().call();
-  const paths = _.times(_.toInteger(totalSupply) + 1, (item) => {
+  const paths = _.times(_.toInteger(totalSupply), (item) => {
     return {
-      params: { id: `${item}` },
+      params: { id: `${item + 1}` },
     };
   });
 
@@ -112,8 +112,6 @@ const getAllNFTs = async (totalSupply) => {
     `http://api.squatpanda.online/api/creature?total=${_.toInteger(totalSupply)
     }`
   );
-
-  console.log(resp.data.data);
 
   return {
     collections: _.keyBy(resp.data.data, 'edition'),
