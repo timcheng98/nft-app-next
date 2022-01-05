@@ -32,7 +32,6 @@ export const getCustomStaticProps = async (
       // console.log('item', collections[item])
       return collections[item]
     })
-    // console.log('latestNFTs', latestNFTs)
     _.assign(clientProps, { latest_nft: latestNFTs });
   }
   if (pathname === '/marketplace') {
@@ -114,6 +113,8 @@ const getAllNFTs = async (totalSupply) => {
     }`
   );
 
+  console.log(resp.data.data);
+
   return {
     collections: _.keyBy(resp.data.data, 'edition'),
   };
@@ -133,15 +134,15 @@ const getNFTsSingle = async (id) => {
 
 const getLatestNfts = async (totalSupply) => {
   let nfts = [];
-  if (totalSupply <= 9) {
-    for (let i = _.toInteger(totalSupply) - 1; i >= 0; i -= 1) {
+  if (totalSupply <= 10) {
+    for (let i = _.toInteger(totalSupply); i >= 1; i -= 1) {
       nfts.push(_.toInteger(i));
     }
   }
 
-  if (totalSupply > 9) {
-    let limit = _.toInteger(totalSupply) - 8;
-    for (let i = _.toInteger(totalSupply) - 1; i >= limit; i -= 1) {
+  if (totalSupply > 10) {
+    let limit = _.toInteger(totalSupply) - 9;
+    for (let i = _.toInteger(totalSupply); i >= limit; i -= 1) {
       nfts.push(_.toInteger(i));
     }
   }

@@ -123,14 +123,14 @@ export const fetchData = (account) => {
         .blockchain.smartContract.methods.baseURI().call()
 
       let nfts = [];
-      if (total <= 9) {
-        for (let i = total; i >= 0; i -= 1) {
+      if (total <= 10) {
+        for (let i = total; i >= 1; i -= 1) {
           nfts.push(_.toInteger(i));
         }
       }
 
-      if (total > 9) {
-        let limit = total - 8;
+      if (total > 10) {
+        let limit = total - 9;
         for (let i = total - 1; i >= limit; i -= 1) {
           nfts.push(_.toInteger(i));
         }
