@@ -75,7 +75,7 @@ const Collection = (props) => {
 												height: '100%',
 											}}
 											src={`${collection.edition}`}
-											alt='wsb'
+											alt='squat panda'
 											external
 											className='collection'
 										/>
@@ -88,12 +88,31 @@ const Collection = (props) => {
 											<Col span={24} style={defaultStyles.header}>
 												<a
 													rel='noreferrer'
-													href={`https://polygonscan.com/token/${process.env.NETX_PUBLIC_CONTRACT_ADDRESS}?a=${collection.edition}`}
+													href={`https://polygonscan.com/token/0xec048A13b46c31d91701cB1791E860Aac9a8d11A?a=${collection.edition}`}
 													target='_blank'
 												>
 													{collection.name}
 												</a>
 											</Col>
+											<Col span={24}>
+										<a
+											rel='noreferrer'
+											target='_blank'
+											href={`https://opensea.io/assets/matic/0xec048A13b46c31d91701cB1791E860Aac9a8d11A/${collection.edition}`}
+										>
+											<Button
+												style={{
+													background: 'rgb(21, 178, 229)',
+													border: 'none',
+													width: 160,
+												}}
+												className='app-button'
+												icon={<SendOutline style={{ margin: '0px 5px' }} />}
+											>
+												Opensea
+											</Button>
+										</a>
+									</Col>
 											{/* <Col span={24}>Owned by</Col>
                       <Col span={24}>Current Price</Col>
                       <Col span={24}>Highest Bid</Col> */}

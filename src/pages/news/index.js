@@ -113,7 +113,7 @@ export default function News(props) {
 						data-theme='light'
 						href='https://twitter.com/squatpanda?ref_src=twsrc%5Etfw'
 					>
-						Tweets by NFT_WSB
+						Tweets by Squat Panda
 					</a>
 				</Col>
 			</Row>
