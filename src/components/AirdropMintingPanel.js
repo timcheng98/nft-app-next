@@ -89,9 +89,8 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 			});
 	};
 
-
   const getName = () => {
-    if (!data.whitelisted) return 'Apply Whitelist';
+    if (!data.whitelisted && !data.all_whitelist) return 'Apply Whitelist';
     if (blockchain.aidrop_claimed) return 'Claimed';
     if (blockchain.account) return "Claim";
     return "Connect Wallet";
@@ -156,7 +155,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
               </div>
                 <Image src="blindbox.png" alt="?" className="collection" />
             </Col>
-            {!data.whitelisted && !blockchain.aidrop_claimed ? 
+            {/* {(!data.whitelisted || !data.all_whitelist) && !blockchain.aidrop_claimed ? 
               <Col span={24}>
             <a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
               <Button
@@ -165,9 +164,9 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
                 disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {
-                  if (!data.whitelisted) {
-                    return;
-                  };
+                  // if (!data.whitelisted || !data.all_whitelist) {
+                  //   return;
+                  // };
                   if (blockchain.account) {
                     await claim();
                     return;
@@ -184,7 +183,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 
             </a>
               </Col>
-:
+: */}
             <Col span={24}>
               <Button
                 ref={buttonRef}
@@ -192,7 +191,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
                 disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {
-                  if (!data.whitelisted) {
+                  if (!data.whitelisted && !data.all_whitelist) {
                     return;
                   };
                   if (blockchain.account) {
@@ -210,7 +209,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
               </Button>
             </Col>
             
-            }
+            {/* } */}
           </Row>
         </div>
       </Col>
