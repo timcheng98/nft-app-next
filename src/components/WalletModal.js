@@ -332,7 +332,7 @@ const ConnectWallet = () => {
 					<a
 						target='_blank'
 						rel='noreferrer'
-						href='https://quickswap-layer2.medium.com/guide-how-to-set-up-custom-matic-mainnet-rpc-for-metamask-transfer-assets-from-l1-to-l2-to-use-3b1e55ccb5cb'
+						href='https://docs.polygon.technology/docs/develop/metamask/config-polygon-on-metamask/'
 					>
 						<Button
 							style={{

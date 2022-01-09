@@ -90,7 +90,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 	};
 
   const getName = () => {
-    if (!data.whitelisted && !data.all_whitelist) return 'Apply Whitelist';
+    if (!data.whitelisted && !data.all_whitelist) return 'Claim';
     if (blockchain.aidrop_claimed) return 'Claimed';
     if (blockchain.account) return "Claim";
     return "Connect Wallet";
@@ -192,6 +192,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
                 loading={loading}
                 onClick={async () => {
                   if (!data.whitelisted && !data.all_whitelist) {
+                    dispatch(setModalVisible(true))
                     return;
                   };
                   if (blockchain.account) {

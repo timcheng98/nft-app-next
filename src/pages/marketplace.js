@@ -13,14 +13,14 @@ import Header from '../components/Head';
 
 const { useBreakpoint } = Grid;
 const { Option } = Select;
-const Marketplace = ({ collections }) => {
-	console.log(collections)
+const Marketplace = (props) => {
+	const collections = _.map(props.collections, (item, key) => {
+		return item
+	});
 	const [loading, setLoading] = useState(false);
 	const [rarities, setRarities] = useState(undefined);
 	const [sortBy, setSortBy] = useState(1);
-	const [filteredCollections, setFilteredCollections] = useState(_.map(collections, (item, key) => {
-		return item
-	}));
+	const [filteredCollections, setFilteredCollections] = useState(collections);
 	const [nfts, setNft] = useState(_.slice(filteredCollections, 0, 20));
 
 	const loadMore = () => {
@@ -148,7 +148,7 @@ const Marketplace = ({ collections }) => {
 					);
 				})}
 			</Row>
-			{_.size(nfts) > 20 &&
+			{_.size(filteredCollections) > 20 && _.last(filteredCollections).edition !== _.last(nfts).edition &&
 				<Row justify='center' style={{ margin: '30px 0px' }}>
 					<Col xs={8} md={3}>
 						<Button
