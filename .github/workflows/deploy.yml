@@ -1,9 +1,11 @@
 name: Build & Deploy
+
 on:
   push:
     branches: [main-panda-testing]
 
 jobs:
+  timeout-minutes: 3600
   deploy:
     runs-on: ubuntu-latest
     steps:
