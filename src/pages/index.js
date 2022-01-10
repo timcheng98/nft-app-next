@@ -387,7 +387,7 @@ const Home = (props) => {
 	);
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
 	return getCustomStaticProps(context, '/', 1);
 };
 

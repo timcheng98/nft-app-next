@@ -11,10 +11,11 @@ import axios from 'axios';
 import _ from 'lodash';
 import { Popover } from 'antd-mobile';
 import { useRouter } from 'next/router';
-import { getCustomStaticPaths, getCustomStaticProps } from '../../model/client';
+import { getCustomStaticPaths, getCustomStaticProps, getCustomServerSideProps } from '../../model/client';
 import Header from '../../components/Head';
 import rarity from '../../core/rarity_distribution.json'
 const Collection = (props) => {
+	console.log(props)
 	const router = useRouter();
 	const { collection } = props;
 
@@ -297,11 +298,11 @@ const Collection = (props) => {
 	);
 };
 
-export const getStaticPaths = async () => {
-	return getCustomStaticPaths();
-};
-export const getStaticProps = async (context) => {
-	return getCustomStaticProps(context, '/collection/[id]');
+// export const getStaticPaths = async () => {
+// 	return getCustomStaticPaths();
+// };
+export const getServerSideProps = async (context) => {
+	return getCustomServerSideProps(context, '/collection/[id]');
 };
 
 // export async function getStaticProps({ params }) {

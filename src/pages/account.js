@@ -4,7 +4,7 @@ import defaultStyles from '../core/theme/styles';
 import { Toast } from 'antd-mobile';
 import Link from 'next/link';
 import _ from 'lodash';
-
+import axios from 'axios'
 import { CopyOutlined, LogoutOutlined } from '@ant-design/icons';
 
 import React, { useEffect, useState } from 'react';
@@ -16,15 +16,14 @@ import { getCustomStaticProps } from '../model/client';
 import Header from '../components/Head';
 
 const Account = (props) => {
-	console.log(props)
 	const dispatch = useDispatch();
 	const blockchain = useSelector((state) => state.blockchain);
 	const data = useSelector((state) => state.data);
-	
+	const [accountNfts, setAccountNfts] = useState([])
 	useEffect(() => {
 		dispatch(connect())
-
 	}, [])
+	
 
 	useEffect(() => {
     if (!blockchain.smartContract) return;
@@ -33,6 +32,16 @@ const Account = (props) => {
 
 	const getAccountData = () => {
 		dispatch(fetchAccountData());
+	};
+
+	useEffect(() => {
+		getData();
+	}, [data.accountTokens]);
+
+	const getData = async () => {
+		if (_.isEmpty(data.accountTokens)) return;
+		const resp = await axios.post('/api/nft', { nfts: data.accountTokens });
+		setAccountNfts(resp.data.data)
 	};
 
 	return (
@@ -60,7 +69,7 @@ const Account = (props) => {
 						<Divider />
 					</Row>
 					{blockchain.account ? (
-						<Panel collections={props.collections} />
+						<Panel collections={accountNfts} />
 					) : (
 						<Row justify='center'>
 							<Col xs={24} md={12}>
@@ -116,10 +125,11 @@ const Account = (props) => {
 								You have no NFTs
 							</Col>
 						) : (
-							_.map(data.accountTokens, (item) => {
+							_.map(accountNfts, (item) => {
+								console.log(item.collection);
 								return (
 									<Col xs={24} md={6} key={item}>
-										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={props.collections[item]} />
+										<CollectionItem containerStyle={{ border: 'none' }} xs={24} md={24} item={item.collection} />
 									</Col>
 								);
 							})
@@ -151,8 +161,8 @@ const Panel = ({ collections }) => {
 			rare: 0,
 			original: 0
 		}
-		_.map(data.accountTokens, (item) => {
-			const nft = collections[item]
+		_.map(collections, (item) => {
+			const nft = item.collection
 			if (nft.type === 'legendary') {
 				type.legendary = type.legendary + 1
 				return 
@@ -339,8 +349,8 @@ const Panel = ({ collections }) => {
 	);
 };
 
-export const getStaticProps = async (context) => {
-	return getCustomStaticProps(context, '/account', 1);
-};
+// export const getStaticProps = async (context) => {
+// 	return getCustomStaticProps(context, '/account', 1);
+// };
 
 export default Account;
