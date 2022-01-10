@@ -18,11 +18,11 @@ const responsive = {
   },
   tablet: {
     breakpoint: { max: 1024, min: 464 },
-    items: 1,
+    items: 2,
   },
   mobile: {
     breakpoint: { max: 464, min: 0 },
-    items: 1,
+    items: 2,
   },
 };
 
@@ -101,15 +101,15 @@ const CollectionCarousel = (props) => {
   return (
     <Carousel
       swipeable
-      draggable
+      // draggable
       showDots={false}
       responsive={responsive}
       ssr={true}
       infinite={true}
       autoPlay
-      autoPlaySpeed={3000}
+      autoPlaySpeed={5000}
       keyBoardControl
-      transitionDuration={2000}
+      transitionDuration={1000}
       containerClass="carousel-container"
       removeArrowOnDeviceType={["desktop", "tablet", "mobile"]}
     >

@@ -144,7 +144,7 @@ const Account = (props) => {
 
 const Panel = ({ collections }) => {
 	const blockchain = useSelector((state) => state.blockchain);
-	const data = useSelector((state) => state.data);
+	// const data = useSelector((state) => state.data);
 
 	const [type, setType] = useState({
 		legendary: 0,
@@ -154,7 +154,7 @@ const Panel = ({ collections }) => {
 	})
 
 	useEffect(() => {
-		if (_.isEmpty(data.accountTokens)) return;
+		if (_.isEmpty(collections)) return;
 		let type = {
 			legendary: 0,
 			super_rare: 0,
@@ -181,7 +181,7 @@ const Panel = ({ collections }) => {
 			}
 		})
 		setType(type)
-	}, [data.accountTokens])
+	}, [collections])
 
 
 	return (
