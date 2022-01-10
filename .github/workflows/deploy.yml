@@ -5,8 +5,8 @@ on:
     branches: [main-panda-testing]
 
 jobs:
-  timeout-minutes: 3600
   deploy:
+    timeout-minutes: 3600
     runs-on: ubuntu-latest
     steps:
       - name: Setup
