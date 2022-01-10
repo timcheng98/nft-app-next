@@ -1,4 +1,5 @@
 name: Build & Deploy
+command_timeout: 200m
 on:
   push:
     branches: [main-panda-testing]
