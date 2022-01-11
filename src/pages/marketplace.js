@@ -142,7 +142,7 @@ const Marketplace = (props) => {
 			<Row gutter={[20, 40]} justify={useBreakpoint().xs ? 'center' : 'start'}>
 				{_.map(nfts, (item) => {
 					return (
-						<Col key={item} xs={18} sm={12} md={8} lg={6}>
+						<Col key={item} xs={12} sm={12} md={8} lg={6}>
 							<CollectionItem xs={24} md={22} item={item} />
 						</Col>
 					);
