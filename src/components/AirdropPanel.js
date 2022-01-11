@@ -105,7 +105,7 @@ const AirdropPanel = () => {
                 }}
               >
                 <Row gutter={[14, 0]} align="middle">
-                  <Col span={12}>Claim NFT</Col>
+                  <Col span={12}>All Claimed</Col>
                 </Row>
               </Button>
             </Link>

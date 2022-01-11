@@ -90,6 +90,7 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
 	};
 
   const getName = () => {
+    return 'All Claimed'
     if (!data.whitelisted && !data.all_whitelist) return 'Claim';
     if (blockchain.aidrop_claimed) return 'Claimed';
     if (blockchain.account) return "Claim";
@@ -188,7 +189,8 @@ const AirdropMintingPanel = ({ size = "normal" }) => {
               <Button
                 ref={buttonRef}
                 autoFocus
-                disabled={loading || blockchain.aidrop_claimed}
+                disabled
+                // disabled={loading || blockchain.aidrop_claimed}
                 loading={loading}
                 onClick={async () => {
                   if (!data.whitelisted && !data.all_whitelist) {

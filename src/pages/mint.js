@@ -98,7 +98,7 @@ const Mint = (props) => {
 			/>
 			<div style={{ background: "url('bg.png')", opacity: 0.65, position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', paddingBottom: 100 }}></div>
 			<div style={{ width: "100%", position: 'relative' }} className="banner-container" >
-				<Image src="airdrop-banner.jpg" width={3} height={1} alt="banner" />
+				<Image src="banner2.jpg" width={3} height={1} alt="banner" />
 			</div>
 			<Row justify="center" style={{ margin: '40px 0px' }}>
 				<div className="chevron"></div>
