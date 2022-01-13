@@ -36,7 +36,7 @@ const AppTabBar = () => {
     if (activeKey === "mint") return router.push("/mint");
     if (activeKey === "collection") return router.push("/account");
     if (activeKey === "marketplace") return router.push("/marketplace");
-    // if (activeKey === "rarity") return router.push("/traits");
+    if (activeKey === "rarity") return router.push("/traits");
   }, [activeKey, clicked]);
 
 
@@ -81,11 +81,11 @@ const AppTabBar = () => {
                     <ContentOutline style={{ marginRight: 5 }} />{' '} News
                   </h3>
                 </Link>
-                {/* <Link href="/traits">
+                <Link href="/traits">
                   <h3 style={{ ...defaultStyles.tabBarTitle, cursor: "pointer" }}>
                     <PieOutline style={{ marginRight: 5 }} />{' '} Rarity
                   </h3>
-                </Link> */}
+                </Link>
               </div>
             }
           >
