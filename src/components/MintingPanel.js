@@ -13,10 +13,11 @@ import {
 import defaultStyles from "../core/theme/styles";
 import { Popover } from "antd-mobile";
 import React, { useState, useEffect, useRef } from "react";
-import WalletModal from "../components/WalletModal";
+// import WalletModal from "../components/WalletModal";
 import { useDispatch, useSelector } from "react-redux";
 import _ from "lodash";
-import { fetchData, fetchDataSuccess } from "../redux/data/dataActions";
+import { setModalVisible } from "../redux/blockchain/blockchainActions";
+import { fetchData } from "../redux/data/dataActions";
 
 const MintingPanel = ({ size = 'normal' }) => {
   const [percent, setPercent] = useState(0);
@@ -32,7 +33,7 @@ const MintingPanel = ({ size = 'normal' }) => {
   useEffect(() => {
     if (!data || data.total < 1) return;
     let target = data.total;
-    let increment = 1;
+    let increment = 2;
     interval.current = setInterval(() => {
       if (stop.current) return;
       if (value.current >= target) {
@@ -45,7 +46,7 @@ const MintingPanel = ({ size = 'normal' }) => {
         if (prev + increment > target) return target;
         return prev + increment
       });
-    }, 100);
+    });
 
     return () => clearInterval(interval.current);
   }, [data]);
@@ -295,7 +296,7 @@ const MintingPanel = ({ size = 'normal' }) => {
                     return;
                   }
 
-                  setVisible(true);
+                  dispatch(setModalVisible(true))
                 }}
                 style={{ width: "100%", height: 50, fontSize: 20 }}
                 className="app-button"

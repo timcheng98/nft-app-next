@@ -58,7 +58,7 @@ const AppTabBar = () => {
         fontSize: 20,
         color: '#bd4f6c'
       }}>
-        Airdrop
+        Presale
       </span>,
       icon: <Button shape="circle" className="fire" icon={<FireFill className="fire-scale" style={{ fontSize: 32, }} />} />,
     },

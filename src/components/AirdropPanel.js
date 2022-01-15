@@ -15,9 +15,9 @@ const AirdropPanel = () => {
   let stop = useRef(false)
 
   useEffect(() => {
-    if (!data || data.airdrop < 1) return;
-    let target = data.airdrop;
-    let increment = 1;
+    if (!data || data.total < 1) return;
+    let target = data.total;
+    let increment = 2;
     interval.current = setInterval(() => {
       if (stop.current) return;
       if (value.current >= target)  {
@@ -30,7 +30,7 @@ const AirdropPanel = () => {
         if (prev + increment > target) return target;
         return prev + increment
       });
-    }, 10);
+    });
 
     return () =>  clearInterval(interval.current);
   }, [data]);
@@ -66,14 +66,14 @@ const AirdropPanel = () => {
               style={{ height: 60 }}
               align="middle"
             >
-              <Col>Airdrop</Col>
+              <Col>Presale</Col>
             </Row>
           </Col>
           <Col span={18}>
             <Progress
               strokeWidth={40}
               strokeColor={"rgb(239, 199, 108)"}
-              percent={percent / 500 * 100}
+              percent={percent /  10000 * 100}
               showInfo={false}
               status="active"
             />
@@ -88,7 +88,7 @@ const AirdropPanel = () => {
                 transform: "translate(-50%, -50%)",
               }}
             >
-              {percent} / 500
+              {percent} / 10000
             </span>
           </Col>
           <Col span={18} style={{ paddingBottom: 10 }}>
@@ -105,7 +105,7 @@ const AirdropPanel = () => {
                 }}
               >
                 <Row gutter={[14, 0]} align="middle">
-                  <Col span={12}>All Claimed</Col>
+                  <Col span={12}>Mint</Col>
                 </Row>
               </Button>
             </Link>

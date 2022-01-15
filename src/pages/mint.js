@@ -11,7 +11,7 @@ import {
 	notification,
 } from 'antd';
 import Image from "../components/Image";
-
+import moment from 'moment';
 import defaultStyles from '../core/theme/styles';
 import { Popover } from 'antd-mobile';
 import React, { useState, useEffect } from 'react';
@@ -113,7 +113,7 @@ const Mint = (props) => {
 				<Col span={22}>
 					<Row>
 						<Col span={24} style={defaultStyles.banner}>
-							Claim a Squat Panda
+							Mint a Squat Panda
 						</Col>
 						<Col xs={22} md={14} style={defaultStyles.subBody}>
 							Squat Panda are 10,000 art pieces with a one-of-a-kind digital
@@ -127,26 +127,28 @@ const Mint = (props) => {
 			<Row justify='center' style={{ marginBottom: 20 }}>
 
 				<Col xs={22} md={8}>
-				{/* <Row justify='center'>
+					{/* <Row justify='center'>
 					<Col xs={22} md={24} style={{padding: 30}}>
 						<a href="https://forms.gle/mj6ha7NP9ruxUokk9" target="_blank">
 					<Button className='app-button' style={{width: '100%', backgroundColor: 'transparent', color: '#000', height: 60, fontSize: 26}}>Apply Whitelist</Button>
 					</a>
 					</Col>
 				</Row> */}
-									<AirdropMintingPanel />
-					{/* <MintingPanel /> */}
+					{moment().unix() > 1642269600 ?
+						<MintingPanel />
+						: <AirdropMintingPanel />
+					}
 				</Col>
 			</Row>
-			<Row justify='center' style={{ minHeight: 250	 }}>
+			<Row justify='center' style={{ minHeight: 250 }}>
 				<Col xs={20} md={8}>
-			<Divider>
-				<b>Reminds & Instructions</b>
-			</Divider>
-				<p>1. 500 NFTs can be claimed for free and every address can claim one NFT</p>
-				<p>2. Each one has been meticulously created, and perfectly formed</p>
-				<p>3. NFTs can mint on Polygon Network and trade on Opensea marketplace</p>
-				<p>4. Donate 1% NFT revenue to World Wide Fund for Nature (WWF)</p>
+					<Divider>
+						<b>Reminds & Instructions</b>
+					</Divider>
+					<p>1. 500 NFTs can be claimed for free and every address can claim one NFT</p>
+					<p>2. Each one has been meticulously created, and perfectly formed</p>
+					<p>3. NFTs can mint on Polygon Network and trade on Opensea marketplace</p>
+					<p>4. Donate 1% NFT revenue to World Wide Fund for Nature (WWF)</p>
 				</Col>
 			</Row>
 		</AppLayout>
